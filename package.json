@@ -5,8 +5,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "tsx src/lessons/lesson01-first-llm-call.ts"
+    "lesson:01": "tsx src/lessons/lesson01-first-llm-call/index.ts",
+    "lesson:02": "tsx src/lessons/lesson02-prompt-messages/index.ts"
   },
   "keywords": [],
   "author": "",

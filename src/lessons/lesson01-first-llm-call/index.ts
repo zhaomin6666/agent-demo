@@ -15,7 +15,7 @@ async function main() {
   }
 
   const model = new ChatOpenAI({
-    model: "qwen3.5-flash",
+    model: "qwen3.6-flash",
     temperature: 0,
     apiKey,
     configuration: {
