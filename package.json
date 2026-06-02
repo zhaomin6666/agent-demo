@@ -7,7 +7,8 @@
   "scripts": {
     "lesson:01": "tsx src/lessons/lesson01-first-llm-call/index.ts",
     "lesson:02": "tsx src/lessons/lesson02-prompt-messages/index.ts",
-    "lesson:03": "tsx src/lessons/lesson03-structured-output/index.ts"
+    "lesson:03": "tsx src/lessons/lesson03-structured-output/index.ts",
+    "lesson:04": "tsx src/lessons/lesson04-intent-classifier/index.ts"
   },
   "keywords": [],
   "author": "",
