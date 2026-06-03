@@ -8,7 +8,8 @@
     "lesson:01": "tsx src/lessons/lesson01-first-llm-call/index.ts",
     "lesson:02": "tsx src/lessons/lesson02-prompt-messages/index.ts",
     "lesson:03": "tsx src/lessons/lesson03-structured-output/index.ts",
-    "lesson:04": "tsx src/lessons/lesson04-intent-classifier/index.ts"
+    "lesson:04": "tsx src/lessons/lesson04-intent-classifier/index.ts",
+    "lesson:05": "tsx src/lessons/lesson05-tool-calling/index.ts"
   },
   "keywords": [],
   "author": "",
@@ -23,6 +24,7 @@
     "@langchain/core": "^1.1.48",
     "@langchain/openai": "^1.4.7",
     "dotenv": "^17.4.2",
+    "langchain": "^1.4.2",
     "zod": "^4.4.3"
   }
 }

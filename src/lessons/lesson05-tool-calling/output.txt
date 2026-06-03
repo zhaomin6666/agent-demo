@@ -1,0 +1,523 @@
+==============================
+用户输入： 我们的企业知识库支持哪些数据源接入？
+
+========== 实际请求大模型的 HTTP 内容 ==========
+URL:
+https://dashscope.aliyuncs.com/compatible-mode/v1/chat/completions
+
+Method:
+POST
+
+Headers:
+{
+  "accept": "application/json",
+  "authorization": "Bearer ***",
+  "content-type": "application/json",
+  "user-agent": "langchainjs-openai/1.0.0 ((node/v22.18.0; win32; x64))",
+  "x-stainless-arch": "x64",
+  "x-stainless-lang": "js",
+  "x-stainless-os": "Windows",
+  "x-stainless-package-version": "6.39.1",
+  "x-stainless-retry-count": "0",
+  "x-stainless-runtime": "node",
+  "x-stainless-runtime-version": "v22.18.0"
+}
+
+Body:
+{
+  "model": "qwen3.6-flash",
+  "temperature": 0,
+  "stream": false,
+  "tools": [
+    {
+      "type": "function",
+      "function": {
+        "name": "search_knowledge_base",
+        "description": "查询企业AI知识库中的内部资料，当用户询问知识库、RAG、文档接入、检索优化、Agent 工具规范时使用。",
+        "parameters": {
+          "$schema": "https://json-schema.org/draft/2020-12/schema",
+          "type": "object",
+          "properties": {
+            "query": {
+              "type": "string",
+              "description": "用于检索知识库的关键词，例如：RAG、数据源、工具调用规范"
+            }
+          },
+          "required": [
+            "query"
+          ],
+          "additionalProperties": false
+        }
+      }
+    },
+    {
+      "type": "function",
+      "function": {
+        "name": "create_ticket",
+        "description": "创建技术支持工单。当用户明确要求反馈问题、创建工单、提交故障、联系技术支持时使用。",
+        "parameters": {
+          "$schema": "https://json-schema.org/draft/2020-12/schema",
+          "type": "object",
+          "properties": {
+            "title": {
+              "type": "string",
+              "description": "工单标题，简短概括用户遇到的问题"
+            },
+            "description": {
+              "type": "string",
+              "description": "工单详细描述"
+            },
+            "priority": {
+              "type": "string",
+              "enum": [
+                "low",
+                "medium",
+                "high"
+              ],
+              "description": "工单优先级"
+            }
+          },
+          "required": [
+            "title",
+            "description",
+            "priority"
+          ],
+          "additionalProperties": false
+        }
+      }
+    }
+  ],
+  "messages": [
+    {
+      "role": "system",
+      "content": "\n你是一个企业 AI 知识库 / Agent Demo 助手。\n\n规则：\n1. 如果用户问的是企业知识库、RAG、文档接入、检索优化、Agent 工具规范，优先调用 search_knowledge_base。\n2. 如果用户要求创建工单、反馈问题、提交故障，调用 create_ticket。\n3. 不要编造内部系统信息，能查工具就查工具。\n4. 工具执行后，请用自然语言总结工具返回结果。\n            "
+    },
+    {
+      "role": "user",
+      "content": "我们的企业知识库支持哪些数据源接入？"
+    }
+  ]
+}
+============================================
+
+
+第一次模型返回：
+content: 
+tool_calls: [
+  {
+    "name": "search_knowledge_base",
+    "args": {
+      "query": "数据源接入"
+    },
+    "type": "tool_call",
+    "id": "call_1dfc6a68c398428ba1d767eb"
+  }
+]
+
+准备执行工具：search_knowledge_base
+工具参数： {
+  "query": "数据源接入"
+}
+
+工具执行结果：
+{
+  "query": "数据源接入",
+  "count": 0,
+  "results": []
+}
+
+========== 实际请求大模型的 HTTP 内容 ==========
+URL:
+https://dashscope.aliyuncs.com/compatible-mode/v1/chat/completions
+
+Method:
+POST
+
+Headers:
+{
+  "accept": "application/json",
+  "authorization": "Bearer ***",
+  "content-type": "application/json",
+  "user-agent": "langchainjs-openai/1.0.0 ((node/v22.18.0; win32; x64))",
+  "x-stainless-arch": "x64",
+  "x-stainless-lang": "js",
+  "x-stainless-os": "Windows",
+  "x-stainless-package-version": "6.39.1",
+  "x-stainless-retry-count": "0",
+  "x-stainless-runtime": "node",
+  "x-stainless-runtime-version": "v22.18.0"
+}
+
+Body:
+{
+  "model": "qwen3.6-flash",
+  "temperature": 0,
+  "stream": false,
+  "tools": [
+    {
+      "type": "function",
+      "function": {
+        "name": "search_knowledge_base",
+        "description": "查询企业AI知识库中的内部资料，当用户询问知识库、RAG、文档接入、检索优化、Agent 工具规范时使用。",
+        "parameters": {
+          "$schema": "https://json-schema.org/draft/2020-12/schema",
+          "type": "object",
+          "properties": {
+            "query": {
+              "type": "string",
+              "description": "用于检索知识库的关键词，例如：RAG、数据源、工具调用规范"
+            }
+          },
+          "required": [
+            "query"
+          ],
+          "additionalProperties": false
+        }
+      }
+    },
+    {
+      "type": "function",
+      "function": {
+        "name": "create_ticket",
+        "description": "创建技术支持工单。当用户明确要求反馈问题、创建工单、提交故障、联系技术支持时使用。",
+        "parameters": {
+          "$schema": "https://json-schema.org/draft/2020-12/schema",
+          "type": "object",
+          "properties": {
+            "title": {
+              "type": "string",
+              "description": "工单标题，简短概括用户遇到的问题"
+            },
+            "description": {
+              "type": "string",
+              "description": "工单详细描述"
+            },
+            "priority": {
+              "type": "string",
+              "enum": [
+                "low",
+                "medium",
+                "high"
+              ],
+              "description": "工单优先级"
+            }
+          },
+          "required": [
+            "title",
+            "description",
+            "priority"
+          ],
+          "additionalProperties": false
+        }
+      }
+    }
+  ],
+  "messages": [
+    {
+      "role": "system",
+      "content": "\n你是一个企业 AI 知识库 / Agent Demo 助手。\n\n规则：\n1. 如果用户问的是企业知识库、RAG、文档接入、检索优化、Agent 工具规范，优先调用 search_knowledge_base。\n2. 如果用户要求创建工单、反馈问题、提交故障，调用 create_ticket。\n3. 不要编造内部系统信息，能查工具就查工具。\n4. 工具执行后，请用自然语言总结工具返回结果。\n            "
+    },
+    {
+      "role": "user",
+      "content": "我们的企业知识库支持哪些数据源接入？"
+    },
+    {
+      "role": "assistant",
+      "content": "",
+      "tool_calls": [
+        {
+          "id": "call_1dfc6a68c398428ba1d767eb",
+          "type": "function",
+          "function": {
+            "name": "search_knowledge_base",
+            "arguments": "{\"query\":\"数据源接入\"}"
+          }
+        }
+      ]
+    },
+    {
+      "role": "tool",
+      "content": "{\n  \"query\": \"数据源接入\",\n  \"count\": 0,\n  \"results\": []\n}",
+      "name": "search_knowledge_base",
+      "tool_call_id": "call_1dfc6a68c398428ba1d767eb"
+    }
+  ]
+}
+============================================
+
+
+最终回答：
+目前知识库检索中未找到关于“数据源接入”的具体详细文档。不过，通常企业级 AI 知识库（RAG 系统）支持多种主流数据源的接入，常见的包括：
+
+1.  **非结构化文档**：PDF、Word (.docx)、Excel (.xlsx)、PPT、TXT、Markdown 等文件。
+2.  **网页内容**：通过 URL 抓取网页文本。
+3.  **结构化数据**：部分高级系统支持连接数据库（如 MySQL, PostgreSQL）或 API 接口。
+4.  **即时通讯/协作工具**：部分集成支持从飞书、钉钉、企业微信等平台导入文档。
+
+建议您查看具体的产品使用手册或联系技术支持以获取针对您当前版本的确切支持列表和配置指南。如果您有特定的文件格式无法上传，欢迎提供更多信息，我可以帮您查询更详细的规范或协助提交工单。
+
+==============================
+用户输入： 知识库搜索 PDF 内容经常搜不到，帮我创建一个高优先级工单。
+
+========== 实际请求大模型的 HTTP 内容 ==========
+URL:
+https://dashscope.aliyuncs.com/compatible-mode/v1/chat/completions
+
+Method:
+POST
+
+Headers:
+{
+  "accept": "application/json",
+  "authorization": "Bearer ***",
+  "content-type": "application/json",
+  "user-agent": "langchainjs-openai/1.0.0 ((node/v22.18.0; win32; x64))",
+  "x-stainless-arch": "x64",
+  "x-stainless-lang": "js",
+  "x-stainless-os": "Windows",
+  "x-stainless-package-version": "6.39.1",
+  "x-stainless-retry-count": "0",
+  "x-stainless-runtime": "node",
+  "x-stainless-runtime-version": "v22.18.0"
+}
+
+Body:
+{
+  "model": "qwen3.6-flash",
+  "temperature": 0,
+  "stream": false,
+  "tools": [
+    {
+      "type": "function",
+      "function": {
+        "name": "search_knowledge_base",
+        "description": "查询企业AI知识库中的内部资料，当用户询问知识库、RAG、文档接入、检索优化、Agent 工具规范时使用。",
+        "parameters": {
+          "$schema": "https://json-schema.org/draft/2020-12/schema",
+          "type": "object",
+          "properties": {
+            "query": {
+              "type": "string",
+              "description": "用于检索知识库的关键词，例如：RAG、数据源、工具调用规范"
+            }
+          },
+          "required": [
+            "query"
+          ],
+          "additionalProperties": false
+        }
+      }
+    },
+    {
+      "type": "function",
+      "function": {
+        "name": "create_ticket",
+        "description": "创建技术支持工单。当用户明确要求反馈问题、创建工单、提交故障、联系技术支持时使用。",
+        "parameters": {
+          "$schema": "https://json-schema.org/draft/2020-12/schema",
+          "type": "object",
+          "properties": {
+            "title": {
+              "type": "string",
+              "description": "工单标题，简短概括用户遇到的问题"
+            },
+            "description": {
+              "type": "string",
+              "description": "工单详细描述"
+            },
+            "priority": {
+              "type": "string",
+              "enum": [
+                "low",
+                "medium",
+                "high"
+              ],
+              "description": "工单优先级"
+            }
+          },
+          "required": [
+            "title",
+            "description",
+            "priority"
+          ],
+          "additionalProperties": false
+        }
+      }
+    }
+  ],
+  "messages": [
+    {
+      "role": "system",
+      "content": "\n你是一个企业 AI 知识库 / Agent Demo 助手。\n\n规则：\n1. 如果用户问的是企业知识库、RAG、文档接入、检索优化、Agent 工具规范，优先调用 search_knowledge_base。\n2. 如果用户要求创建工单、反馈问题、提交故障，调用 create_ticket。\n3. 不要编造内部系统信息，能查工具就查工具。\n4. 工具执行后，请用自然语言总结工具返回结果。\n            "
+    },
+    {
+      "role": "user",
+      "content": "知识库搜索 PDF 内容经常搜不到，帮我创建一个高优先级工单。"
+    }
+  ]
+}
+============================================
+
+
+第一次模型返回：
+content: 
+tool_calls: [
+  {
+    "name": "create_ticket",
+    "args": {
+      "title": "知识库搜索 PDF 内容经常搜不到",
+      "description": "用户在搜索知识库中的 PDF 内容时，经常出现无法检索到的情况，影响使用体验。",
+      "priority": "high"
+    },
+    "type": "tool_call",
+    "id": "call_f492378a8e9749b58d02a3fa"
+  }
+]
+
+准备执行工具：create_ticket
+工具参数： {
+  "title": "知识库搜索 PDF 内容经常搜不到",
+  "description": "用户在搜索知识库中的 PDF 内容时，经常出现无法检索到的情况，影响使用体验。",
+  "priority": "high"
+}
+
+工具执行结果：
+{
+  "ticketNo": "TICKET-1780408865015",
+  "title": "知识库搜索 PDF 内容经常搜不到",
+  "description": "用户在搜索知识库中的 PDF 内容时，经常出现无法检索到的情况，影响使用体验。",
+  "priority": "high",
+  "status": "created",
+  "message": "工单已创建成功"
+}
+
+========== 实际请求大模型的 HTTP 内容 ==========
+URL:
+https://dashscope.aliyuncs.com/compatible-mode/v1/chat/completions
+
+Method:
+POST
+
+Headers:
+{
+  "accept": "application/json",
+  "authorization": "Bearer ***",
+  "content-type": "application/json",
+  "user-agent": "langchainjs-openai/1.0.0 ((node/v22.18.0; win32; x64))",
+  "x-stainless-arch": "x64",
+  "x-stainless-lang": "js",
+  "x-stainless-os": "Windows",
+  "x-stainless-package-version": "6.39.1",
+  "x-stainless-retry-count": "0",
+  "x-stainless-runtime": "node",
+  "x-stainless-runtime-version": "v22.18.0"
+}
+
+Body:
+{
+  "model": "qwen3.6-flash",
+  "temperature": 0,
+  "stream": false,
+  "tools": [
+    {
+      "type": "function",
+      "function": {
+        "name": "search_knowledge_base",
+        "description": "查询企业AI知识库中的内部资料，当用户询问知识库、RAG、文档接入、检索优化、Agent 工具规范时使用。",
+        "parameters": {
+          "$schema": "https://json-schema.org/draft/2020-12/schema",
+          "type": "object",
+          "properties": {
+            "query": {
+              "type": "string",
+              "description": "用于检索知识库的关键词，例如：RAG、数据源、工具调用规范"
+            }
+          },
+          "required": [
+            "query"
+          ],
+          "additionalProperties": false
+        }
+      }
+    },
+    {
+      "type": "function",
+      "function": {
+        "name": "create_ticket",
+        "description": "创建技术支持工单。当用户明确要求反馈问题、创建工单、提交故障、联系技术支持时使用。",
+        "parameters": {
+          "$schema": "https://json-schema.org/draft/2020-12/schema",
+          "type": "object",
+          "properties": {
+            "title": {
+              "type": "string",
+              "description": "工单标题，简短概括用户遇到的问题"
+            },
+            "description": {
+              "type": "string",
+              "description": "工单详细描述"
+            },
+            "priority": {
+              "type": "string",
+              "enum": [
+                "low",
+                "medium",
+                "high"
+              ],
+              "description": "工单优先级"
+            }
+          },
+          "required": [
+            "title",
+            "description",
+            "priority"
+          ],
+          "additionalProperties": false
+        }
+      }
+    }
+  ],
+  "messages": [
+    {
+      "role": "system",
+      "content": "\n你是一个企业 AI 知识库 / Agent Demo 助手。\n\n规则：\n1. 如果用户问的是企业知识库、RAG、文档接入、检索优化、Agent 工具规范，优先调用 search_knowledge_base。\n2. 如果用户要求创建工单、反馈问题、提交故障，调用 create_ticket。\n3. 不要编造内部系统信息，能查工具就查工具。\n4. 工具执行后，请用自然语言总结工具返回结果。\n            "
+    },
+    {
+      "role": "user",
+      "content": "知识库搜索 PDF 内容经常搜不到，帮我创建一个高优先级工单。"
+    },
+    {
+      "role": "assistant",
+      "content": "",
+      "tool_calls": [
+        {
+          "id": "call_f492378a8e9749b58d02a3fa",
+          "type": "function",
+          "function": {
+            "name": "create_ticket",
+            "arguments": "{\"title\":\"知识库搜索 PDF 内容经常搜不到\",\"description\":\"用户在搜索知识库中的 PDF 内容时，经常出现无法检索到的情况，影响使用体验。\",\"priority\":\"high\"}"
+          }
+        }
+      ]
+    },
+    {
+      "role": "tool",
+      "content": "{\n  \"ticketNo\": \"TICKET-1780408865015\",\n  \"title\": \"知识库搜索 PDF 内容经常搜不到\",\n  \"description\": \"用户在搜索知识库中的 PDF 内容时，经常出现无法检索到的情况，影响使用体验。\",\n  \"priority\": \"high\",\n  \"status\": \"created\",\n  \"message\": \"工单已创建成功\"\n}",
+      "name": "create_ticket",
+      "tool_call_id": "call_f492378a8e9749b58d02a3fa"
+    }
+  ]
+}
+============================================
+
+
+最终回答：
+工单已创建成功。
+
+**工单详情：**
+*   **工单号：** TICKET-1780408865015
+*   **标题：** 知识库搜索 PDF 内容经常搜不到
+*   **优先级：** 高
+*   **状态：** 已创建
+
+技术支持团队将尽快处理您的问题。
