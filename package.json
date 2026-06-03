@@ -13,7 +13,8 @@
     "lesson:06": "tsx src/lessons/lesson06-tool-executor/index.ts",
     "lesson:07": "tsx src/lessons/lesson07-agent-loop/index.ts",
     "lesson:08": "tsx src/lessons/lesson08-langgraph-agent/index.ts",
-    "lesson:09": "tsx src/lessons/lesson09-langgraph-state/index.ts"
+    "lesson:09": "tsx src/lessons/lesson09-langgraph-state/index.ts",
+    "lesson:10": "tsx src/lessons/lesson10-langgraph-checkpoint/index.ts"
   },
   "keywords": [],
   "author": "",
