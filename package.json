@@ -9,7 +9,8 @@
     "lesson:02": "tsx src/lessons/lesson02-prompt-messages/index.ts",
     "lesson:03": "tsx src/lessons/lesson03-structured-output/index.ts",
     "lesson:04": "tsx src/lessons/lesson04-intent-classifier/index.ts",
-    "lesson:05": "tsx src/lessons/lesson05-tool-calling/index.ts"
+    "lesson:05": "tsx src/lessons/lesson05-tool-calling/index.ts",
+    "lesson:06": "tsx src/lessons/lesson06-tool-executor/index.ts"
   },
   "keywords": [],
   "author": "",

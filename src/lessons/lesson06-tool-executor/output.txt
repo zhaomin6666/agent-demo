@@ -1,0 +1,113 @@
+==============================
+用户输入： 我们的企业知识库支持哪些数据源接入？
+
+第一次模型返回：
+content: 
+tool_calls: [
+  {
+    "name": "search_knowledge_base",
+    "args": {
+      "query": "企业知识库支持的数据源接入"
+    },
+    "type": "tool_call",
+    "id": "call_7726e2d979664e2bbac4b10e"
+  }
+]
+
+工具执行日志：
+[
+  {
+    "toolName": "search_knowledge_base",
+    "toolCallId": "call_7726e2d979664e2bbac4b10e",
+    "args": {
+      "query": "企业知识库支持的数据源接入"
+    },
+    "status": "success",
+    "content": "{\n  \"query\": \"企业知识库支持的数据源接入\",\n  \"count\": 0,\n  \"results\": []\n}",
+    "durationMs": 12
+  }
+]
+
+最终回答：
+很抱歉，在当前的企业知识库中暂未检索到关于“数据源接入”的具体支持列表文档。
+
+通常这类信息可能会包含在《RAG 架构指南》、《数据接入规范》或《Agent 开发手册》等文档中。如果您需要确认目前支持的具体数据源类型（如 PDF, Word, API 接口等），建议您：
+
+1. 尝试使用更具体的关键词再次查询，例如：“PDF 接入”、“API 数据源”。
+2. 或者直接联系技术支持团队获取最新的接入规范。
+
+==============================
+用户输入： RAG 检索效果不好，一般可以从哪些方面优化？
+
+第一次模型返回：
+content: 
+tool_calls: [
+  {
+    "name": "search_knowledge_base",
+    "args": {
+      "query": "RAG 检索优化"
+    },
+    "type": "tool_call",
+    "id": "call_2fa6f418464547b9a339431e"
+  }
+]
+
+工具执行日志：
+[
+  {
+    "toolName": "search_knowledge_base",
+    "toolCallId": "call_2fa6f418464547b9a339431e",
+    "args": {
+      "query": "RAG 检索优化"
+    },
+    "status": "success",
+    "content": "{\n  \"query\": \"RAG 检索优化\",\n  \"count\": 0,\n  \"results\": []\n}",
+    "durationMs": 0
+  }
+]
+
+最终回答：
+抱歉，目前企业知识库中暂时没有关于“RAG 检索优化”的具体内部资料。建议您参考通用的 RAG 优化策略，例如优化文档切片、改进向量检索算法或调整 Prompt 等。
+
+==============================
+用户输入： 知识库搜索 PDF 内容经常搜不到，帮我创建一个高优先级工单。
+
+第一次模型返回：
+content: 
+tool_calls: [
+  {
+    "name": "create_ticket",
+    "args": {
+      "title": "知识库搜索 PDF 内容经常搜不到",
+      "description": "用户在通过企业 AI 知识库搜索 PDF 文档内容时，发现经常无法检索到相关内容，影响使用体验。",
+      "priority": "high"
+    },
+    "type": "tool_call",
+    "id": "call_12e03b4c58fc404a8022b20e"
+  }
+]
+
+工具执行日志：
+[
+  {
+    "toolName": "create_ticket",
+    "toolCallId": "call_12e03b4c58fc404a8022b20e",
+    "args": {
+      "title": "知识库搜索 PDF 内容经常搜不到",
+      "description": "用户在通过企业 AI 知识库搜索 PDF 文档内容时，发现经常无法检索到相关内容，影响使用体验。",
+      "priority": "high"
+    },
+    "status": "success",
+    "content": "{\n  \"ticketNo\": \"TICKET-1780453019252\",\n  \"title\": \"知识库搜索 PDF 内容经常搜不到\",\n  \"description\": \"用户在通过企业 AI 知识库搜索 PDF 文档内容时，发现经常无法检索到相关内容，影响使用体验。\",\n  \"priority\": \"high\",\n  \"status\": \"created\",\n  \"message\": \"工单已创建，后续将由技术支持人员跟进。\"\n}",
+    "durationMs": 1
+  }
+]
+
+最终回答：
+工单已创建，后续将由技术支持人员跟进。
+
+**工单详情：**
+*   **工单号:** TICKET-1780453019252
+*   **标题:** 知识库搜索 PDF 内容经常搜不到
+*   **优先级:** 高
+*   **状态:** 已创建
