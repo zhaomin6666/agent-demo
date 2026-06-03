@@ -1,0 +1,284 @@
+
+========================================
+用户输入： 我们的企业知识库支持哪些数据源接入？
+
+========== LangGraph LLM 节点，第 1 轮 ==========
+
+模型返回 content:
+
+
+模型返回 tool_calls:
+[
+  {
+    "name": "search_knowledge_base",
+    "args": {
+      "query": "数据源接入"
+    },
+    "type": "tool_call",
+    "id": "call_e141f37576ee45998cc0e93b"
+  }
+]
+
+========== LangGraph Tool 节点 ==========
+
+工具执行日志:
+[
+  {
+    "toolName": "search_knowledge_base",
+    "toolCallId": "call_e141f37576ee45998cc0e93b",
+    "args": {
+      "query": "数据源接入"
+    },
+    "status": "success",
+    "content": "{\n  \"query\": \"数据源接入\",\n  \"count\": 0,\n  \"results\": []\n}",
+    "durationMs": 2
+  }
+]
+
+========== LangGraph LLM 节点，第 2 轮 ==========
+
+模型返回 content:
+很抱歉，经过检索，我们的企业知识库中暂时没有关于“数据源接入”的详细文档。
+
+建议您直接联系技术支持团队获取最新的支持列表和接入指南，或者您可以提供更多具体的关键词，我再为您尝试检索。
+
+模型返回 tool_calls:
+[]
+
+========== LangGraph 最终结果 ==========
+循环轮次： 2
+最终回答：
+很抱歉，经过检索，我们的企业知识库中暂时没有关于“数据源接入”的详细文档。
+
+建议您直接联系技术支持团队获取最新的支持列表和接入指南，或者您可以提供更多具体的关键词，我再为您尝试检索。
+
+工具执行总记录：
+[
+  {
+    "toolName": "search_knowledge_base",
+    "toolCallId": "call_e141f37576ee45998cc0e93b",
+    "args": {
+      "query": "数据源接入"
+    },
+    "status": "success",
+    "content": "{\n  \"query\": \"数据源接入\",\n  \"count\": 0,\n  \"results\": []\n}",
+    "durationMs": 2
+  }
+]
+
+
+========================================
+用户输入： 先查一下 RAG 检索效果不好怎么办，然后基于查询结果帮我创建一个中优先级工单。
+
+========== LangGraph LLM 节点，第 1 轮 ==========
+
+模型返回 content:
+
+
+模型返回 tool_calls:
+[
+  {
+    "name": "search_knowledge_base",
+    "args": {
+      "query": "RAG 检索效果不好怎么办"
+    },
+    "type": "tool_call",
+    "id": "call_e25833b2962d48988d635493"
+  }
+]
+
+========== LangGraph Tool 节点 ==========
+
+工具执行日志:
+[
+  {
+    "toolName": "search_knowledge_base",
+    "toolCallId": "call_e25833b2962d48988d635493",
+    "args": {
+      "query": "RAG 检索效果不好怎么办"
+    },
+    "status": "success",
+    "content": "{\n  \"query\": \"RAG 检索效果不好怎么办\",\n  \"count\": 1,\n  \"results\": [\n    {\n      \"id\": \"doc-002\",\n      \"title\": \"RAG 检索效果不好怎么办\",\n      \"content\": \"如果 RAG 检索效果不好，可以从文档切分、Embedding 模型、召回数量、关键词补充、重排序、Prompt 约束等方面优化。\",\n      \"tags\": [\n        \"knowledge_base\",\n        \"rag\",\n        \"retrieval\"\n      ]\n    }\n  ]\n}",
+    "durationMs": 1
+  }
+]
+
+========== LangGraph LLM 节点，第 2 轮 ==========
+
+模型返回 content:
+
+
+模型返回 tool_calls:
+[
+  {
+    "name": "create_ticket",
+    "args": {
+      "title": "RAG 检索效果不佳问题反馈",
+      "description": "用户反馈 RAG 检索效果不好。根据知识库建议，可能需要从文档切分、Embedding 模型、召回数量、关键词补充、重排序、Prompt 约束等方面进行优化排查。",
+      "priority": "medium"
+    },
+    "type": "tool_call",
+    "id": "call_e0f76c91df554f18b65c87cd"
+  }
+]
+
+========== LangGraph Tool 节点 ==========
+
+工具执行日志:
+[
+  {
+    "toolName": "create_ticket",
+    "toolCallId": "call_e0f76c91df554f18b65c87cd",
+    "args": {
+      "title": "RAG 检索效果不佳问题反馈",
+      "description": "用户反馈 RAG 检索效果不好。根据知识库建议，可能需要从文档切分、Embedding 模型、召回数量、关键词补充、重排序、Prompt 约束等方面进行优化排查。",
+      "priority": "medium"
+    },
+    "status": "success",
+    "content": "{\n  \"ticketNo\": \"TICKET-1780484148927\",\n  \"title\": \"RAG 检索效果不佳问题反馈\",\n  \"description\": \"用户反馈 RAG 检索效果不好。根据知识库建议，可能需要从文档切分、Embedding 模型、召回数量、关键词补充、重排序、Prompt 约束等方面进行优化排查。\",\n  \"priority\": \"medium\",\n  \"status\": \"created\",\n  \"message\": \"工单已创建，后续将由技术支持人员跟进。\"\n}",
+    "durationMs": 0
+  }
+]
+
+========== LangGraph LLM 节点，第 3 轮 ==========
+
+模型返回 content:
+已为您查询知识库并创建工单。
+
+**知识库建议：**
+如果 RAG 检索效果不好，可以从文档切分、Embedding 模型、召回数量、关键词补充、重排序、Prompt 约束等方面进行优化。
+
+**工单信息：**
+*   **工单号：** TICKET-1780484148927
+*   **标题：** RAG 检索效果不佳问题反馈
+*   **优先级：** 中
+*   **状态：** 已创建
+
+后续将由技术支持人员跟进处理。
+
+模型返回 tool_calls:
+[]
+
+========== LangGraph 最终结果 ==========
+循环轮次： 3
+最终回答：
+已为您查询知识库并创建工单。
+
+**知识库建议：**
+如果 RAG 检索效果不好，可以从文档切分、Embedding 模型、召回数量、关键词补充、重排序、Prompt 约束等方面进行优化。
+
+**工单信息：**
+*   **工单号：** TICKET-1780484148927
+*   **标题：** RAG 检索效果不佳问题反馈
+*   **优先级：** 中
+*   **状态：** 已创建
+
+后续将由技术支持人员跟进处理。
+
+工具执行总记录：
+[
+  {
+    "toolName": "search_knowledge_base",
+    "toolCallId": "call_e25833b2962d48988d635493",
+    "args": {
+      "query": "RAG 检索效果不好怎么办"
+    },
+    "status": "success",
+    "content": "{\n  \"query\": \"RAG 检索效果不好怎么办\",\n  \"count\": 1,\n  \"results\": [\n    {\n      \"id\": \"doc-002\",\n      \"title\": \"RAG 检索效果不好怎么办\",\n      \"content\": \"如果 RAG 检索效果不好，可以从文档切分、Embedding 模型、召回数量、关键词补充、重排序、Prompt 约束等方面优化。\",\n      \"tags\": [\n        \"knowledge_base\",\n        \"rag\",\n        \"retrieval\"\n      ]\n    }\n  ]\n}",
+    "durationMs": 1
+  },
+  {
+    "toolName": "create_ticket",
+    "toolCallId": "call_e0f76c91df554f18b65c87cd",
+    "args": {
+      "title": "RAG 检索效果不佳问题反馈",
+      "description": "用户反馈 RAG 检索效果不好。根据知识库建议，可能需要从文档切分、Embedding 模型、召回数量、关键词补充、重排序、Prompt 约束等方面进行优化排查。",
+      "priority": "medium"
+    },
+    "status": "success",
+    "content": "{\n  \"ticketNo\": \"TICKET-1780484148927\",\n  \"title\": \"RAG 检索效果不佳问题反馈\",\n  \"description\": \"用户反馈 RAG 检索效果不好。根据知识库建议，可能需要从文档切分、Embedding 模型、召回数量、关键词补充、重排序、Prompt 约束等方面进行优化排查。\",\n  \"priority\": \"medium\",\n  \"status\": \"created\",\n  \"message\": \"工单已创建，后续将由技术支持人员跟进。\"\n}",
+    "durationMs": 0
+  }
+]
+
+
+========================================
+用户输入： 知识库搜索 PDF 内容经常搜不到，帮我创建一个高优先级工单。
+
+========== LangGraph LLM 节点，第 1 轮 ==========
+
+模型返回 content:
+
+
+模型返回 tool_calls:
+[
+  {
+    "name": "create_ticket",
+    "args": {
+      "title": "知识库搜索 PDF 内容经常搜不到",
+      "description": "用户在通过知识库搜索 PDF 文档内容时，经常出现无法检索到相关内容的情况，影响使用体验。",
+      "priority": "high"
+    },
+    "type": "tool_call",
+    "id": "call_d743d3efce8148dfbde5a416"
+  }
+]
+
+========== LangGraph Tool 节点 ==========
+
+工具执行日志:
+[
+  {
+    "toolName": "create_ticket",
+    "toolCallId": "call_d743d3efce8148dfbde5a416",
+    "args": {
+      "title": "知识库搜索 PDF 内容经常搜不到",
+      "description": "用户在通过知识库搜索 PDF 文档内容时，经常出现无法检索到相关内容的情况，影响使用体验。",
+      "priority": "high"
+    },
+    "status": "success",
+    "content": "{\n  \"ticketNo\": \"TICKET-1780484151580\",\n  \"title\": \"知识库搜索 PDF 内容经常搜不到\",\n  \"description\": \"用户在通过知识库搜索 PDF 文档内容时，经常出现无法检索到相关内容的情况，影响使用体验。\",\n  \"priority\": \"high\",\n  \"status\": \"created\",\n  \"message\": \"工单已创建，后续将由技术支持人员跟进。\"\n}",
+    "durationMs": 0
+  }
+]
+
+========== LangGraph LLM 节点，第 2 轮 ==========
+
+模型返回 content:
+已为您创建高优先级工单：
+
+*   **工单编号**：TICKET-1780484151580
+*   **标题**：知识库搜索 PDF 内容经常搜不到
+*   **状态**：已创建
+
+后续将由技术支持人员跟进处理。
+
+模型返回 tool_calls:
+[]
+
+========== LangGraph 最终结果 ==========
+循环轮次： 2
+最终回答：
+已为您创建高优先级工单：
+
+*   **工单编号**：TICKET-1780484151580
+*   **标题**：知识库搜索 PDF 内容经常搜不到
+*   **状态**：已创建
+
+后续将由技术支持人员跟进处理。
+
+工具执行总记录：
+[
+  {
+    "toolName": "create_ticket",
+    "toolCallId": "call_d743d3efce8148dfbde5a416",
+    "args": {
+      "title": "知识库搜索 PDF 内容经常搜不到",
+      "description": "用户在通过知识库搜索 PDF 文档内容时，经常出现无法检索到相关内容的情况，影响使用体验。",
+      "priority": "high"
+    },
+    "status": "success",
+    "content": "{\n  \"ticketNo\": \"TICKET-1780484151580\",\n  \"title\": \"知识库搜索 PDF 内容经常搜不到\",\n  \"description\": \"用户在通过知识库搜索 PDF 文档内容时，经常出现无法检索到相关内容的情况，影响使用体验。\",\n  \"priority\": \"high\",\n  \"status\": \"created\",\n  \"message\": \"工单已创建，后续将由技术支持人员跟进。\"\n}",
+    "durationMs": 0
+  }
+]

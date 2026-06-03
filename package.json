@@ -11,7 +11,8 @@
     "lesson:04": "tsx src/lessons/lesson04-intent-classifier/index.ts",
     "lesson:05": "tsx src/lessons/lesson05-tool-calling/index.ts",
     "lesson:06": "tsx src/lessons/lesson06-tool-executor/index.ts",
-    "lesson:07": "tsx src/lessons/lesson07-agent-loop/index.ts"
+    "lesson:07": "tsx src/lessons/lesson07-agent-loop/index.ts",
+    "lesson:08": "tsx src/lessons/lesson08-langgraph-agent/index.ts"
   },
   "keywords": [],
   "author": "",
@@ -24,6 +25,7 @@
   },
   "dependencies": {
     "@langchain/core": "^1.1.48",
+    "@langchain/langgraph": "^1.3.3",
     "@langchain/openai": "^1.4.7",
     "dotenv": "^17.4.2",
     "langchain": "^1.4.2",
