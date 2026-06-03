@@ -1,0 +1,616 @@
+========================================
+用户输入： 我们的企业知识库支持哪些数据源接入？
+
+========== LangGraph LLM 节点，第 1 轮 ==========
+
+模型返回 content:
+
+
+模型返回 tool_calls:
+[
+  {
+    "name": "search_knowledge_base",
+    "args": {
+      "query": "数据源接入"
+    },
+    "type": "tool_call",
+    "id": "call_d30b97be53d346d7971fab8b"
+  }
+]
+
+========== LangGraph Tool 节点 ==========
+
+工具执行日志:
+[
+  {
+    "toolName": "search_knowledge_base",
+    "toolCallId": "call_d30b97be53d346d7971fab8b",
+    "args": {
+      "query": "数据源接入"
+    },
+    "status": "success",
+    "content": "{\n  \"query\": \"数据源接入\",\n  \"count\": 0,\n  \"results\": []\n}",
+    "durationMs": 2
+  }
+]
+
+========== LangGraph LLM 节点，第 2 轮 ==========
+
+模型返回 content:
+
+
+模型返回 tool_calls:
+[
+  {
+    "name": "search_knowledge_base",
+    "args": {
+      "query": "RAG 数据源"
+    },
+    "type": "tool_call",
+    "id": "call_7934f51a5b674829965b42c9"
+  }
+]
+
+========== LangGraph Tool 节点 ==========
+
+工具执行日志:
+[
+  {
+    "toolName": "search_knowledge_base",
+    "toolCallId": "call_7934f51a5b674829965b42c9",
+    "args": {
+      "query": "RAG 数据源"
+    },
+    "status": "success",
+    "content": "{\n  \"query\": \"RAG 数据源\",\n  \"count\": 0,\n  \"results\": []\n}",
+    "durationMs": 1
+  }
+]
+
+========== LangGraph LLM 节点，第 3 轮 ==========
+
+模型返回 content:
+
+
+模型返回 tool_calls:
+[
+  {
+    "name": "search_knowledge_base",
+    "args": {
+      "query": "接入"
+    },
+    "type": "tool_call",
+    "id": "call_148f8e1fc8b342489e834179"
+  }
+]
+
+========== LangGraph Tool 节点 ==========
+
+工具执行日志:
+[
+  {
+    "toolName": "search_knowledge_base",
+    "toolCallId": "call_148f8e1fc8b342489e834179",
+    "args": {
+      "query": "接入"
+    },
+    "status": "success",
+    "content": "{\n  \"query\": \"接入\",\n  \"count\": 0,\n  \"results\": []\n}",
+    "durationMs": 0
+  }
+]
+
+========== LangGraph LLM 节点，第 4 轮 ==========
+
+模型返回 content:
+
+
+模型返回 tool_calls:
+[
+  {
+    "name": "search_knowledge_base",
+    "args": {
+      "query": "文档"
+    },
+    "type": "tool_call",
+    "id": "call_e542fdaf4f5a46d5b053dbe7"
+  }
+]
+
+========== LangGraph Tool 节点 ==========
+
+工具执行日志:
+[
+  {
+    "toolName": "search_knowledge_base",
+    "toolCallId": "call_e542fdaf4f5a46d5b053dbe7",
+    "args": {
+      "query": "文档"
+    },
+    "status": "success",
+    "content": "{\n  \"query\": \"文档\",\n  \"count\": 2,\n  \"results\": [\n    {\n      \"id\": \"doc-001\",\n      \"title\": \"企业知识库支持的数据源\",\n      \"content\": \"企业知识库当前支持 Markdown、PDF、Word、网页 URL、内部 FAQ 文档等数据源。后续会扩展数据库表和工单系统数据。\",\n      \"tags\": [\n        \"knowledge_base\",\n        \"datasource\",\n        \"rag\"\n      ]\n    },\n    {\n      \"id\": \"doc-002\",\n      \"title\": \"RAG 检索效果不好怎么办\",\n      \"content\": \"如果 RAG 检索效果不好，可以从文档切分、Embedding 模型、召回数量、关键词补充、重排序、Prompt 约束等方面优化。\",\n      \"tags\": [\n        \"knowledge_base\",\n        \"rag\",\n        \"retrieval\"\n      ]\n    }\n  ]\n}",
+    "durationMs": 0
+  }
+]
+
+========== LangGraph LLM 节点，第 5 轮 ==========
+
+模型返回 content:
+根据知识库资料，企业知识库当前支持以下数据源接入：
+
+*   **Markdown**
+*   **PDF**
+*   **Word**
+*   **网页 URL**
+*   **内部 FAQ 文档**
+
+此外，后续计划扩展对数据库表和工单系统数据的支持。
+
+模型返回 tool_calls:
+[]
+
+========== LangGraph 最终结果 ==========
+当前节点： final_answer
+停止原因： final_answer
+循环轮次： 5
+是否达到最大轮次： false
+
+最终回答：
+根据知识库资料，企业知识库当前支持以下数据源接入：
+
+*   **Markdown**
+*   **PDF**
+*   **Word**
+*   **网页 URL**
+*   **内部 FAQ 文档**
+
+此外，后续计划扩展对数据库表和工单系统数据的支持。
+
+最后一次工具结果：
+{
+  "toolName": "search_knowledge_base",
+  "toolCallId": "call_e542fdaf4f5a46d5b053dbe7",
+  "args": {
+    "query": "文档"
+  },
+  "status": "success",
+  "content": "{\n  \"query\": \"文档\",\n  \"count\": 2,\n  \"results\": [\n    {\n      \"id\": \"doc-001\",\n      \"title\": \"企业知识库支持的数据源\",\n      \"content\": \"企业知识库当前支持 Markdown、PDF、Word、网页 URL、内部 FAQ 文档等数据源。后续会扩展数据库表和工单系统数据。\",\n      \"tags\": [\n        \"knowledge_base\",\n        \"datasource\",\n        \"rag\"\n      ]\n    },\n    {\n      \"id\": \"doc-002\",\n      \"title\": \"RAG 检索效果不好怎么办\",\n      \"content\": \"如果 RAG 检索效果不好，可以从文档切分、Embedding 模型、召回数量、关键词补充、重排序、Prompt 约束等方面优化。\",\n      \"tags\": [\n        \"knowledge_base\",\n        \"rag\",\n        \"retrieval\"\n      ]\n    }\n  ]\n}",
+  "durationMs": 0
+}
+
+执行轨迹：
+[
+  {
+    "event": "llm_end",
+    "nodeName": "llm",
+    "loopCount": 1,
+    "message": "LLM 调用完成，tool_calls 数量：1",
+    "createdAt": "2026-06-03T14:39:16.381Z"
+  },
+  {
+    "event": "tool_end",
+    "nodeName": "tools",
+    "loopCount": 1,
+    "message": "工具执行完成，执行数量：1，是否存在错误：false",
+    "createdAt": "2026-06-03T14:39:16.387Z"
+  },
+  {
+    "event": "llm_end",
+    "nodeName": "llm",
+    "loopCount": 2,
+    "message": "LLM 调用完成，tool_calls 数量：1",
+    "createdAt": "2026-06-03T14:39:17.072Z"
+  },
+  {
+    "event": "tool_end",
+    "nodeName": "tools",
+    "loopCount": 2,
+    "message": "工具执行完成，执行数量：1，是否存在错误：false",
+    "createdAt": "2026-06-03T14:39:17.075Z"
+  },
+  {
+    "event": "llm_end",
+    "nodeName": "llm",
+    "loopCount": 3,
+    "message": "LLM 调用完成，tool_calls 数量：1",
+    "createdAt": "2026-06-03T14:39:20.263Z"
+  },
+  {
+    "event": "tool_end",
+    "nodeName": "tools",
+    "loopCount": 3,
+    "message": "工具执行完成，执行数量：1，是否存在错误：false",
+    "createdAt": "2026-06-03T14:39:20.264Z"
+  },
+  {
+    "event": "llm_end",
+    "nodeName": "llm",
+    "loopCount": 4,
+    "message": "LLM 调用完成，tool_calls 数量：1",
+    "createdAt": "2026-06-03T14:39:22.841Z"
+  },
+  {
+    "event": "tool_end",
+    "nodeName": "tools",
+    "loopCount": 4,
+    "message": "工具执行完成，执行数量：1，是否存在错误：false",
+    "createdAt": "2026-06-03T14:39:22.844Z"
+  },
+  {
+    "event": "llm_end",
+    "nodeName": "llm",
+    "loopCount": 5,
+    "message": "LLM 调用完成，tool_calls 数量：0",
+    "createdAt": "2026-06-03T14:39:24.690Z"
+  },
+  {
+    "event": "route_to_end",
+    "nodeName": "final_answer",
+    "loopCount": 5,
+    "message": "模型没有继续返回 tool_calls，流程正常结束。",
+    "createdAt": "2026-06-03T14:39:24.691Z"
+  }
+]
+
+工具执行总记录：
+[
+  {
+    "toolName": "search_knowledge_base",
+    "toolCallId": "call_d30b97be53d346d7971fab8b",
+    "args": {
+      "query": "数据源接入"
+    },
+    "status": "success",
+    "content": "{\n  \"query\": \"数据源接入\",\n  \"count\": 0,\n  \"results\": []\n}",
+    "durationMs": 2
+  },
+  {
+    "toolName": "search_knowledge_base",
+    "toolCallId": "call_7934f51a5b674829965b42c9",
+    "args": {
+      "query": "RAG 数据源"
+    },
+    "status": "success",
+    "content": "{\n  \"query\": \"RAG 数据源\",\n  \"count\": 0,\n  \"results\": []\n}",
+    "durationMs": 1
+  },
+  {
+    "toolName": "search_knowledge_base",
+    "toolCallId": "call_148f8e1fc8b342489e834179",
+    "args": {
+      "query": "接入"
+    },
+    "status": "success",
+    "content": "{\n  \"query\": \"接入\",\n  \"count\": 0,\n  \"results\": []\n}",
+    "durationMs": 0
+  },
+  {
+    "toolName": "search_knowledge_base",
+    "toolCallId": "call_e542fdaf4f5a46d5b053dbe7",
+    "args": {
+      "query": "文档"
+    },
+    "status": "success",
+    "content": "{\n  \"query\": \"文档\",\n  \"count\": 2,\n  \"results\": [\n    {\n      \"id\": \"doc-001\",\n      \"title\": \"企业知识库支持的数据源\",\n      \"content\": \"企业知识库当前支持 Markdown、PDF、Word、网页 URL、内部 FAQ 文档等数据源。后续会扩展数据库表和工单系统数据。\",\n      \"tags\": [\n        \"knowledge_base\",\n        \"datasource\",\n        \"rag\"\n      ]\n    },\n    {\n      \"id\": \"doc-002\",\n      \"title\": \"RAG 检索效果不好怎么办\",\n      \"content\": \"如果 RAG 检索效果不好，可以从文档切分、Embedding 模型、召回数量、关键词补充、重排序、Prompt 约束等方面优化。\",\n      \"tags\": [\n        \"knowledge_base\",\n        \"rag\",\n        \"retrieval\"\n      ]\n    }\n  ]\n}",
+    "durationMs": 0
+  }
+]
+
+
+========================================
+用户输入： 先查一下 RAG 检索效果不好怎么办，然后基于查询结果帮我创建一个中优先级工单。
+
+========== LangGraph LLM 节点，第 1 轮 ==========
+
+模型返回 content:
+
+
+模型返回 tool_calls:
+[
+  {
+    "name": "search_knowledge_base",
+    "args": {
+      "query": "RAG 检索效果不好怎么办"
+    },
+    "type": "tool_call",
+    "id": "call_40c25c201c29429b8a838048"
+  }
+]
+
+========== LangGraph Tool 节点 ==========
+
+工具执行日志:
+[
+  {
+    "toolName": "search_knowledge_base",
+    "toolCallId": "call_40c25c201c29429b8a838048",
+    "args": {
+      "query": "RAG 检索效果不好怎么办"
+    },
+    "status": "success",
+    "content": "{\n  \"query\": \"RAG 检索效果不好怎么办\",\n  \"count\": 1,\n  \"results\": [\n    {\n      \"id\": \"doc-002\",\n      \"title\": \"RAG 检索效果不好怎么办\",\n      \"content\": \"如果 RAG 检索效果不好，可以从文档切分、Embedding 模型、召回数量、关键词补充、重排序、Prompt 约束等方面优化。\",\n      \"tags\": [\n        \"knowledge_base\",\n        \"rag\",\n        \"retrieval\"\n      ]\n    }\n  ]\n}",
+    "durationMs": 0
+  }
+]
+
+========== LangGraph LLM 节点，第 2 轮 ==========
+
+模型返回 content:
+
+
+模型返回 tool_calls:
+[
+  {
+    "name": "create_ticket",
+    "args": {
+      "title": "RAG 检索效果优化问题",
+      "description": "用户反馈 RAG 检索效果不好，建议从文档切分、Embedding 模型、召回数量、关键词补充、重排序、Prompt 约束等方面进行优化。",
+      "priority": "medium"
+    },
+    "type": "tool_call",
+    "id": "call_15fe1484342d4087b60de8fc"
+  }
+]
+
+========== LangGraph Tool 节点 ==========
+
+工具执行日志:
+[
+  {
+    "toolName": "create_ticket",
+    "toolCallId": "call_15fe1484342d4087b60de8fc",
+    "args": {
+      "title": "RAG 检索效果优化问题",
+      "description": "用户反馈 RAG 检索效果不好，建议从文档切分、Embedding 模型、召回数量、关键词补充、重排序、Prompt 约束等方面进行优化。",
+      "priority": "medium"
+    },
+    "status": "success",
+    "content": "{\n  \"ticketNo\": \"TICKET-1780497567249\",\n  \"title\": \"RAG 检索效果优化问题\",\n  \"description\": \"用户反馈 RAG 检索效果不好，建议从文档切分、Embedding 模型、召回数量、关键词补充、重排序、Prompt 约束等方面进行优化。\",\n  \"priority\": \"medium\",\n  \"status\": \"created\",\n  \"message\": \"工单已创建，后续将由技术支持人员跟进。\"\n}",
+    "durationMs": 0
+  }
+]
+
+========== LangGraph LLM 节点，第 3 轮 ==========
+
+模型返回 content:
+已为您查询知识库并创建工单。
+
+**知识库建议：**
+如果 RAG 检索效果不好，可以从文档切分、Embedding 模型、召回数量、关键词补充、重排序、Prompt 约束等方面进行优化。
+
+**工单信息：**
+*   **工单号：** TICKET-1780497567249
+*   **标题：** RAG 检索效果优化问题
+*   **优先级：** 中
+*   **状态：** 已创建
+
+后续将由技术支持人员跟进处理。
+
+模型返回 tool_calls:
+[]
+
+========== LangGraph 最终结果 ==========
+当前节点： final_answer
+停止原因： final_answer
+循环轮次： 3
+是否达到最大轮次： false
+
+最终回答：
+已为您查询知识库并创建工单。
+
+**知识库建议：**
+如果 RAG 检索效果不好，可以从文档切分、Embedding 模型、召回数量、关键词补充、重排序、Prompt 约束等方面进行优化。
+
+**工单信息：**
+*   **工单号：** TICKET-1780497567249
+*   **标题：** RAG 检索效果优化问题
+*   **优先级：** 中
+*   **状态：** 已创建
+
+后续将由技术支持人员跟进处理。
+
+最后一次工具结果：
+{
+  "toolName": "create_ticket",
+  "toolCallId": "call_15fe1484342d4087b60de8fc",
+  "args": {
+    "title": "RAG 检索效果优化问题",
+    "description": "用户反馈 RAG 检索效果不好，建议从文档切分、Embedding 模型、召回数量、关键词补充、重排序、Prompt 约束等方面进行优化。",
+    "priority": "medium"
+  },
+  "status": "success",
+  "content": "{\n  \"ticketNo\": \"TICKET-1780497567249\",\n  \"title\": \"RAG 检索效果优化问题\",\n  \"description\": \"用户反馈 RAG 检索效果不好，建议从文档切分、Embedding 模型、召回数量、关键词补充、重排序、Prompt 约束等方面进行优化。\",\n  \"priority\": \"medium\",\n  \"status\": \"created\",\n  \"message\": \"工单已创建，后续将由技术支持人员跟进。\"\n}",
+  "durationMs": 0
+}
+
+执行轨迹：
+[
+  {
+    "event": "llm_end",
+    "nodeName": "llm",
+    "loopCount": 1,
+    "message": "LLM 调用完成，tool_calls 数量：1",
+    "createdAt": "2026-06-03T14:39:26.355Z"
+  },
+  {
+    "event": "tool_end",
+    "nodeName": "tools",
+    "loopCount": 1,
+    "message": "工具执行完成，执行数量：1，是否存在错误：false",
+    "createdAt": "2026-06-03T14:39:26.357Z"
+  },
+  {
+    "event": "llm_end",
+    "nodeName": "llm",
+    "loopCount": 2,
+    "message": "LLM 调用完成，tool_calls 数量：1",
+    "createdAt": "2026-06-03T14:39:27.248Z"
+  },
+  {
+    "event": "tool_end",
+    "nodeName": "tools",
+    "loopCount": 2,
+    "message": "工具执行完成，执行数量：1，是否存在错误：false",
+    "createdAt": "2026-06-03T14:39:27.249Z"
+  },
+  {
+    "event": "llm_end",
+    "nodeName": "llm",
+    "loopCount": 3,
+    "message": "LLM 调用完成，tool_calls 数量：0",
+    "createdAt": "2026-06-03T14:39:28.342Z"
+  },
+  {
+    "event": "route_to_end",
+    "nodeName": "final_answer",
+    "loopCount": 3,
+    "message": "模型没有继续返回 tool_calls，流程正常结束。",
+    "createdAt": "2026-06-03T14:39:28.343Z"
+  }
+]
+
+工具执行总记录：
+[
+  {
+    "toolName": "search_knowledge_base",
+    "toolCallId": "call_40c25c201c29429b8a838048",
+    "args": {
+      "query": "RAG 检索效果不好怎么办"
+    },
+    "status": "success",
+    "content": "{\n  \"query\": \"RAG 检索效果不好怎么办\",\n  \"count\": 1,\n  \"results\": [\n    {\n      \"id\": \"doc-002\",\n      \"title\": \"RAG 检索效果不好怎么办\",\n      \"content\": \"如果 RAG 检索效果不好，可以从文档切分、Embedding 模型、召回数量、关键词补充、重排序、Prompt 约束等方面优化。\",\n      \"tags\": [\n        \"knowledge_base\",\n        \"rag\",\n        \"retrieval\"\n      ]\n    }\n  ]\n}",
+    "durationMs": 0
+  },
+  {
+    "toolName": "create_ticket",
+    "toolCallId": "call_15fe1484342d4087b60de8fc",
+    "args": {
+      "title": "RAG 检索效果优化问题",
+      "description": "用户反馈 RAG 检索效果不好，建议从文档切分、Embedding 模型、召回数量、关键词补充、重排序、Prompt 约束等方面进行优化。",
+      "priority": "medium"
+    },
+    "status": "success",
+    "content": "{\n  \"ticketNo\": \"TICKET-1780497567249\",\n  \"title\": \"RAG 检索效果优化问题\",\n  \"description\": \"用户反馈 RAG 检索效果不好，建议从文档切分、Embedding 模型、召回数量、关键词补充、重排序、Prompt 约束等方面进行优化。\",\n  \"priority\": \"medium\",\n  \"status\": \"created\",\n  \"message\": \"工单已创建，后续将由技术支持人员跟进。\"\n}",
+    "durationMs": 0
+  }
+]
+
+
+========================================
+用户输入： 知识库搜索 PDF 内容经常搜不到，帮我创建一个高优先级工单。
+
+========== LangGraph LLM 节点，第 1 轮 ==========
+
+模型返回 content:
+
+
+模型返回 tool_calls:
+[
+  {
+    "name": "create_ticket",
+    "args": {
+      "title": "知识库搜索 PDF 内容经常搜不到",
+      "description": "用户反馈知识库搜索 PDF 内容经常搜不到，需要技术支持协助排查。",
+      "priority": "high"
+    },
+    "type": "tool_call",
+    "id": "call_e9d2636d9e3c4a40b23b244a"
+  }
+]
+
+========== LangGraph Tool 节点 ==========
+
+工具执行日志:
+[
+  {
+    "toolName": "create_ticket",
+    "toolCallId": "call_e9d2636d9e3c4a40b23b244a",
+    "args": {
+      "title": "知识库搜索 PDF 内容经常搜不到",
+      "description": "用户反馈知识库搜索 PDF 内容经常搜不到，需要技术支持协助排查。",
+      "priority": "high"
+    },
+    "status": "success",
+    "content": "{\n  \"ticketNo\": \"TICKET-1780497613454\",\n  \"title\": \"知识库搜索 PDF 内容经常搜不到\",\n  \"description\": \"用户反馈知识库搜索 PDF 内容经常搜不到，需要技术支持协助排查。\",\n  \"priority\": \"high\",\n  \"status\": \"created\",\n  \"message\": \"工单已创建，后续将由技术支持人员跟进。\"\n}",
+    "durationMs": 1
+  }
+]
+
+========== LangGraph LLM 节点，第 2 轮 ==========
+
+模型返回 content:
+工单已创建，后续将由技术支持人员跟进。
+
+模型返回 tool_calls:
+[]
+
+========== LangGraph 最终结果 ==========
+当前节点： final_answer
+停止原因： final_answer
+循环轮次： 2
+是否达到最大轮次： false
+
+最终回答：
+工单已创建，后续将由技术支持人员跟进。
+
+最后一次工具结果：
+{
+  "toolName": "create_ticket",
+  "toolCallId": "call_e9d2636d9e3c4a40b23b244a",
+  "args": {
+    "title": "知识库搜索 PDF 内容经常搜不到",
+    "description": "用户反馈知识库搜索 PDF 内容经常搜不到，需要技术支持协助排查。",
+    "priority": "high"
+  },
+  "status": "success",
+  "content": "{\n  \"ticketNo\": \"TICKET-1780497613454\",\n  \"title\": \"知识库搜索 PDF 内容经常搜不到\",\n  \"description\": \"用户反馈知识库搜索 PDF 内容经常搜不到，需要技术支持协助排查。\",\n  \"priority\": \"high\",\n  \"status\": \"created\",\n  \"message\": \"工单已创建，后续将由技术支持人员跟进。\"\n}",
+  "durationMs": 1
+}
+
+执行轨迹：
+[
+  {
+    "event": "llm_end",
+    "nodeName": "llm",
+    "loopCount": 1,
+    "message": "LLM 调用完成，tool_calls 数量：1",
+    "createdAt": "2026-06-03T14:40:13.453Z"
+  },
+  {
+    "event": "tool_end",
+    "nodeName": "tools",
+    "loopCount": 1,
+    "message": "工具执行完成，执行数量：1，是否存在错误：false",
+    "createdAt": "2026-06-03T14:40:13.455Z"
+  },
+  {
+    "event": "llm_end",
+    "nodeName": "llm",
+    "loopCount": 2,
+    "message": "LLM 调用完成，tool_calls 数量：0",
+    "createdAt": "2026-06-03T14:40:13.904Z"
+  },
+  {
+    "event": "route_to_end",
+    "nodeName": "final_answer",
+    "loopCount": 2,
+    "message": "模型没有继续返回 tool_calls，流程正常结束。",
+    "createdAt": "2026-06-03T14:40:13.905Z"
+  }
+]
+
+工具执行总记录：
+[
+  {
+    "toolName": "create_ticket",
+    "toolCallId": "call_e9d2636d9e3c4a40b23b244a",
+    "args": {
+      "title": "知识库搜索 PDF 内容经常搜不到",
+      "description": "用户反馈知识库搜索 PDF 内容经常搜不到，需要技术支持协助排查。",
+      "priority": "high"
+    },
+    "status": "success",
+    "content": "{\n  \"ticketNo\": \"TICKET-1780497613454\",\n  \"title\": \"知识库搜索 PDF 内容经常搜不到\",\n  \"description\": \"用户反馈知识库搜索 PDF 内容经常搜不到，需要技术支持协助排查。\",\n  \"priority\": \"high\",\n  \"status\": \"created\",\n  \"message\": \"工单已创建，后续将由技术支持人员跟进。\"\n}",
+    "durationMs": 1
+  }
+]
