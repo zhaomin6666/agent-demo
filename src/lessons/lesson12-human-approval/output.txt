@@ -1,0 +1,426 @@
+========================================
+thread_id： lesson12-approval-approved
+是否已有历史： false
+用户输入： 知识库搜索 PDF 内容经常搜不到，帮我创建一个高优先级工单。
+
+========== LangGraph LLM 节点，第 1 轮 ==========
+
+状态中的 messages 数量:
+2
+
+实际传给模型的 messages 数量:
+2
+
+模型返回 content:
+
+
+模型返回 tool_calls:
+[
+  {
+    "name": "create_ticket",
+    "args": {
+      "title": "知识库搜索 PDF 内容经常搜不到",
+      "description": "用户反馈在知识库中搜索 PDF 内容时，经常出现无法检索到的情况，影响使用体验。",
+      "priority": "high"
+    },
+    "type": "tool_call",
+    "id": "call_73a5f86f14504d3fb731a10b"
+  }
+]
+
+========== 触发人工确认 ==========
+[
+  {
+    "type": "tool_approval",
+    "message": "工具 create_ticket 需要人工确认后才能执行。",
+    "pendingAction": {
+      "actionId": "approval-1780925514063",
+      "toolName": "create_ticket",
+      "toolCallId": "call_73a5f86f14504d3fb731a10b",
+      "args": {
+        "title": "知识库搜索 PDF 内容经常搜不到",
+        "description": "用户反馈在知识库中搜索 PDF 内容时，经常出现无法检索到的情况，影响使用体验。",
+        "priority": "high"
+      },
+      "riskLevel": "high",
+      "reason": "该工具会创建业务数据，需要用户确认后才能执行。",
+      "createdAt": "2026-06-08T13:31:54.063Z"
+    }
+  }
+]
+
+========== 模拟人工确认结果 ==========
+{
+  "approved": true,
+  "comment": "确认创建高优先级工单。",
+  "reviewer": "demo-user",
+  "reviewedAt": "2026-06-08T13:31:49.017Z"
+}
+
+========== LangGraph Tool 节点 ==========
+
+工具执行日志:
+[
+  {
+    "toolName": "create_ticket",
+    "toolCallId": "call_73a5f86f14504d3fb731a10b",
+    "args": {
+      "title": "知识库搜索 PDF 内容经常搜不到",
+      "description": "用户反馈在知识库中搜索 PDF 内容时，经常出现无法检索到的情况，影响使用体验。",
+      "priority": "high"
+    },
+    "status": "success",
+    "content": "{\n  \"ticketNo\": \"TICKET-1780925514083\",\n  \"title\": \"知识库搜索 PDF 内容经常搜不到\",\n  \"description\": \"用户反馈在知识库中搜索 PDF 内容时，经常出现无法检索到的情况，影响使用体验。\",\n  \"priority\": \"high\",\n  \"status\": \"created\",\n  \"message\": \"工单已创建，后续将由技术支持人员跟进。\"\n}",
+    "durationMs": 2
+  }
+]
+
+========== LangGraph LLM 节点，第 2 轮 ==========
+
+状态中的 messages 数量:
+4
+
+实际传给模型的 messages 数量:
+4
+
+模型返回 content:
+工单已创建，后续将由技术支持人员跟进。
+
+模型返回 tool_calls:
+[]
+
+========== Human-in-the-loop 最终结果 ==========
+当前节点： final_answer
+停止原因： final_answer
+本轮循环轮次： 2
+
+最终回答：
+工单已创建，后续将由技术支持人员跟进。
+
+人工确认结果：
+{
+  "approved": true,
+  "comment": "确认创建高优先级工单。",
+  "reviewer": "demo-user",
+  "reviewedAt": "2026-06-08T13:31:49.017Z"
+}
+
+最后一次工具结果：
+{
+  "toolName": "create_ticket",
+  "toolCallId": "call_73a5f86f14504d3fb731a10b",
+  "args": {
+    "title": "知识库搜索 PDF 内容经常搜不到",
+    "description": "用户反馈在知识库中搜索 PDF 内容时，经常出现无法检索到的情况，影响使用体验。",
+    "priority": "high"
+  },
+  "status": "success",
+  "content": "{\n  \"ticketNo\": \"TICKET-1780925514083\",\n  \"title\": \"知识库搜索 PDF 内容经常搜不到\",\n  \"description\": \"用户反馈在知识库中搜索 PDF 内容时，经常出现无法检索到的情况，影响使用体验。\",\n  \"priority\": \"high\",\n  \"status\": \"created\",\n  \"message\": \"工单已创建，后续将由技术支持人员跟进。\"\n}",
+  "durationMs": 2
+}
+
+Checkpoint 中累计 messages 数量： 5
+累计 traceSteps 数量： 5
+累计工具执行记录数量： 1
+
+
+========================================
+thread_id： lesson12-approval-rejected
+是否已有历史： false
+用户输入： 帮我创建一个中优先级工单，反馈 RAG 检索效果不好。
+
+========== LangGraph LLM 节点，第 1 轮 ==========
+
+状态中的 messages 数量:
+2
+
+实际传给模型的 messages 数量:
+2
+
+模型返回 content:
+
+
+模型返回 tool_calls:
+[
+  {
+    "name": "create_ticket",
+    "args": {
+      "title": "RAG 检索效果不好",
+      "description": "用户反馈 RAG 检索效果不佳，需要技术支持介入排查。",
+      "priority": "medium"
+    },
+    "type": "tool_call",
+    "id": "call_5fce80b88aea4d2a994ec833"
+  }
+]
+
+========== 触发人工确认 ==========
+[
+  {
+    "type": "tool_approval",
+    "message": "工具 create_ticket 需要人工确认后才能执行。",
+    "pendingAction": {
+      "actionId": "approval-1780925516198",
+      "toolName": "create_ticket",
+      "toolCallId": "call_5fce80b88aea4d2a994ec833",
+      "args": {
+        "title": "RAG 检索效果不好",
+        "description": "用户反馈 RAG 检索效果不佳，需要技术支持介入排查。",
+        "priority": "medium"
+      },
+      "riskLevel": "high",
+      "reason": "该工具会创建业务数据，需要用户确认后才能执行。",
+      "createdAt": "2026-06-08T13:31:56.198Z"
+    }
+  }
+]
+
+========== 模拟人工确认结果 ==========
+{
+  "approved": false,
+  "comment": "先不创建工单，等进一步确认问题范围。",
+  "reviewer": "demo-user",
+  "reviewedAt": "2026-06-08T13:31:54.487Z"
+}
+
+========== Human-in-the-loop 最终结果 ==========
+当前节点： human_rejected
+停止原因： human_rejected
+本轮循环轮次： 1
+
+最终回答：
+已取消执行该操作。由于该工具调用需要人工确认，而你选择了拒绝，因此本次不会执行对应工具。
+
+人工确认结果：
+{
+  "approved": false,
+  "comment": "先不创建工单，等进一步确认问题范围。",
+  "reviewer": "demo-user",
+  "reviewedAt": "2026-06-08T13:31:54.487Z"
+}
+
+最后一次工具结果：
+null
+
+Checkpoint 中累计 messages 数量： 4
+累计 traceSteps 数量： 3
+累计工具执行记录数量： 0
+
+
+========================================
+thread_id： lesson12-safe-query
+是否已有历史： false
+用户输入： 我们的企业知识库支持哪些数据源接入？
+
+========== LangGraph LLM 节点，第 1 轮 ==========
+
+状态中的 messages 数量:
+2
+
+实际传给模型的 messages 数量:
+2
+
+模型返回 content:
+
+
+模型返回 tool_calls:
+[
+  {
+    "name": "search_knowledge_base",
+    "args": {
+      "query": "数据源接入"
+    },
+    "type": "tool_call",
+    "id": "call_eaec310b247e491ba629dc45"
+  }
+]
+
+========== LangGraph Tool 节点 ==========
+
+工具执行日志:
+[
+  {
+    "toolName": "search_knowledge_base",
+    "toolCallId": "call_eaec310b247e491ba629dc45",
+    "args": {
+      "query": "数据源接入"
+    },
+    "status": "success",
+    "content": "{\n  \"query\": \"数据源接入\",\n  \"count\": 0,\n  \"results\": []\n}",
+    "durationMs": 0
+  }
+]
+
+========== LangGraph LLM 节点，第 2 轮 ==========
+
+状态中的 messages 数量:
+4
+
+实际传给模型的 messages 数量:
+4
+
+模型返回 content:
+
+
+模型返回 tool_calls:
+[
+  {
+    "name": "search_knowledge_base",
+    "args": {
+      "query": "RAG 文档接入"
+    },
+    "type": "tool_call",
+    "id": "call_8705877706614f0c97dc656b"
+  }
+]
+
+========== LangGraph Tool 节点 ==========
+
+工具执行日志:
+[
+  {
+    "toolName": "search_knowledge_base",
+    "toolCallId": "call_8705877706614f0c97dc656b",
+    "args": {
+      "query": "RAG 文档接入"
+    },
+    "status": "success",
+    "content": "{\n  \"query\": \"RAG 文档接入\",\n  \"count\": 0,\n  \"results\": []\n}",
+    "durationMs": 0
+  }
+]
+
+========== LangGraph LLM 节点，第 3 轮 ==========
+
+状态中的 messages 数量:
+6
+
+实际传给模型的 messages 数量:
+6
+
+模型返回 content:
+
+
+模型返回 tool_calls:
+[
+  {
+    "name": "search_knowledge_base",
+    "args": {
+      "query": "知识库 接入"
+    },
+    "type": "tool_call",
+    "id": "call_ab41420c83b5440dae005b1b"
+  }
+]
+
+========== LangGraph Tool 节点 ==========
+
+工具执行日志:
+[
+  {
+    "toolName": "search_knowledge_base",
+    "toolCallId": "call_ab41420c83b5440dae005b1b",
+    "args": {
+      "query": "知识库 接入"
+    },
+    "status": "success",
+    "content": "{\n  \"query\": \"知识库 接入\",\n  \"count\": 0,\n  \"results\": []\n}",
+    "durationMs": 0
+  }
+]
+
+========== LangGraph LLM 节点，第 4 轮 ==========
+
+状态中的 messages 数量:
+8
+
+实际传给模型的 messages 数量:
+8
+
+模型返回 content:
+
+
+模型返回 tool_calls:
+[
+  {
+    "name": "search_knowledge_base",
+    "args": {
+      "query": "数据源"
+    },
+    "type": "tool_call",
+    "id": "call_edd5c17c44354e6ba4f406d4"
+  }
+]
+
+========== LangGraph Tool 节点 ==========
+
+工具执行日志:
+[
+  {
+    "toolName": "search_knowledge_base",
+    "toolCallId": "call_edd5c17c44354e6ba4f406d4",
+    "args": {
+      "query": "数据源"
+    },
+    "status": "success",
+    "content": "{\n  \"query\": \"数据源\",\n  \"count\": 1,\n  \"results\": [\n    {\n      \"id\": \"doc-001\",\n      \"title\": \"企业知识库支持的数据源\",\n      \"content\": \"企业知识库当前支持 Markdown、PDF、Word、网页 URL、内部 FAQ 文档等数据源。后续会扩展数据库表和工单系统数据。\",\n      \"tags\": [\n        \"knowledge_base\",\n        \"datasource\",\n        \"rag\"\n      ]\n    }\n  ]\n}",
+    "durationMs": 0
+  }
+]
+
+========== LangGraph LLM 节点，第 5 轮 ==========
+
+状态中的 messages 数量:
+10
+
+实际传给模型的 messages 数量:
+9
+
+模型返回 content:
+根据知识库查询结果，企业知识库目前支持以下数据源接入：
+
+*   **Markdown**
+*   **PDF**
+*   **Word**
+*   **网页 URL**
+*   **内部 FAQ 文档**
+
+此外，计划后续还会扩展对**数据库表**和**工单系统数据**的支持。
+
+模型返回 tool_calls:
+[]
+
+========== Human-in-the-loop 最终结果 ==========
+当前节点： final_answer
+停止原因： final_answer
+本轮循环轮次： 5
+
+最终回答：
+根据知识库查询结果，企业知识库目前支持以下数据源接入：
+
+*   **Markdown**
+*   **PDF**
+*   **Word**
+*   **网页 URL**
+*   **内部 FAQ 文档**
+
+此外，计划后续还会扩展对**数据库表**和**工单系统数据**的支持。
+
+人工确认结果：
+null
+
+最后一次工具结果：
+{
+  "toolName": "search_knowledge_base",
+  "toolCallId": "call_edd5c17c44354e6ba4f406d4",
+  "args": {
+    "query": "数据源"
+  },
+  "status": "success",
+  "content": "{\n  \"query\": \"数据源\",\n  \"count\": 1,\n  \"results\": [\n    {\n      \"id\": \"doc-001\",\n      \"title\": \"企业知识库支持的数据源\",\n      \"content\": \"企业知识库当前支持 Markdown、PDF、Word、网页 URL、内部 FAQ 文档等数据源。后续会扩展数据库表和工单系统数据。\",\n      \"tags\": [\n        \"knowledge_base\",\n        \"datasource\",\n        \"rag\"\n      ]\n    }\n  ]\n}",
+  "durationMs": 0
+}
+
+Checkpoint 中累计 messages 数量： 11
+累计 traceSteps 数量： 10
+累计工具执行记录数量： 4
