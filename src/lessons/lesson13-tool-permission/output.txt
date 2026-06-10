@@ -1,0 +1,510 @@
+========================================
+thread_id： lesson13-viewer-query
+当前用户： viewer-user
+用户角色： viewer
+是否已有历史： false
+用户输入： 我们的企业知识库支持哪些数据源接入？
+
+========== LangGraph LLM 节点，第 1 轮 ==========
+
+状态中的 messages 数量:
+2
+
+实际传给模型的 messages 数量:
+2
+
+模型返回 content:
+
+
+模型返回 tool_calls:
+[
+  {
+    "name": "search_knowledge_base",
+    "args": {
+      "query": "数据源接入"
+    },
+    "type": "tool_call",
+    "id": "call_4aa806fcd43941548a293480"
+  }
+]
+
+========== LangGraph Tool 节点 ==========
+
+工具执行日志:
+[
+  {
+    "toolName": "search_knowledge_base",
+    "toolCallId": "call_4aa806fcd43941548a293480",
+    "args": {
+      "query": "数据源接入"
+    },
+    "status": "success",
+    "content": "{\n  \"query\": \"数据源接入\",\n  \"count\": 0,\n  \"results\": []\n}",
+    "durationMs": 1
+  }
+]
+
+========== LangGraph LLM 节点，第 2 轮 ==========
+
+状态中的 messages 数量:
+4
+
+实际传给模型的 messages 数量:
+4
+
+模型返回 content:
+
+
+模型返回 tool_calls:
+[
+  {
+    "name": "search_knowledge_base",
+    "args": {
+      "query": "RAG 数据源"
+    },
+    "type": "tool_call",
+    "id": "call_c9c1908778c4447fac259b43"
+  }
+]
+
+========== LangGraph Tool 节点 ==========
+
+工具执行日志:
+[
+  {
+    "toolName": "search_knowledge_base",
+    "toolCallId": "call_c9c1908778c4447fac259b43",
+    "args": {
+      "query": "RAG 数据源"
+    },
+    "status": "success",
+    "content": "{\n  \"query\": \"RAG 数据源\",\n  \"count\": 0,\n  \"results\": []\n}",
+    "durationMs": 1
+  }
+]
+
+========== LangGraph LLM 节点，第 3 轮 ==========
+
+状态中的 messages 数量:
+6
+
+实际传给模型的 messages 数量:
+6
+
+模型返回 content:
+
+
+模型返回 tool_calls:
+[
+  {
+    "name": "search_knowledge_base",
+    "args": {
+      "query": "知识库"
+    },
+    "type": "tool_call",
+    "id": "call_78ed4a052be84129b635b276"
+  }
+]
+
+========== LangGraph Tool 节点 ==========
+
+工具执行日志:
+[
+  {
+    "toolName": "search_knowledge_base",
+    "toolCallId": "call_78ed4a052be84129b635b276",
+    "args": {
+      "query": "知识库"
+    },
+    "status": "success",
+    "content": "{\n  \"query\": \"知识库\",\n  \"count\": 1,\n  \"results\": [\n    {\n      \"id\": \"doc-001\",\n      \"title\": \"企业知识库支持的数据源\",\n      \"content\": \"企业知识库当前支持 Markdown、PDF、Word、网页 URL、内部 FAQ 文档等数据源。后续会扩展数据库表和工单系统数据。\",\n      \"tags\": [\n        \"knowledge_base\",\n        \"datasource\",\n        \"rag\"\n      ]\n    }\n  ]\n}",
+    "durationMs": 1
+  }
+]
+
+========== LangGraph LLM 节点，第 4 轮 ==========
+
+状态中的 messages 数量:
+8
+
+实际传给模型的 messages 数量:
+8
+
+模型返回 content:
+根据查询结果，企业知识库当前支持以下数据源接入：
+
+*   **Markdown**
+*   **PDF**
+*   **Word**
+*   **网页 URL**
+*   **内部 FAQ 文档**
+
+此外，计划后续还会扩展对**数据库表**和**工单系统数据**的支持。
+
+模型返回 tool_calls:
+[]
+
+========== Human-in-the-loop 最终结果 ==========
+当前节点： final_answer
+停止原因： final_answer
+本轮循环轮次： 4
+
+最终回答：
+根据查询结果，企业知识库当前支持以下数据源接入：
+
+*   **Markdown**
+*   **PDF**
+*   **Word**
+*   **网页 URL**
+*   **内部 FAQ 文档**
+
+此外，计划后续还会扩展对**数据库表**和**工单系统数据**的支持。
+
+权限判断结果：
+null
+
+人工确认结果：
+null
+
+最后一次工具结果：
+{
+  "toolName": "search_knowledge_base",
+  "toolCallId": "call_78ed4a052be84129b635b276",
+  "args": {
+    "query": "知识库"
+  },
+  "status": "success",
+  "content": "{\n  \"query\": \"知识库\",\n  \"count\": 1,\n  \"results\": [\n    {\n      \"id\": \"doc-001\",\n      \"title\": \"企业知识库支持的数据源\",\n      \"content\": \"企业知识库当前支持 Markdown、PDF、Word、网页 URL、内部 FAQ 文档等数据源。后续会扩展数据库表和工单系统数据。\",\n      \"tags\": [\n        \"knowledge_base\",\n        \"datasource\",\n        \"rag\"\n      ]\n    }\n  ]\n}",
+  "durationMs": 1
+}
+
+Checkpoint 中累计 messages 数量： 9
+累计 traceSteps 数量： 8
+累计工具执行记录数量： 3
+
+
+========================================
+thread_id： lesson13-viewer-create-ticket
+当前用户： viewer-user
+用户角色： viewer
+是否已有历史： false
+用户输入： 帮我创建一个高优先级工单，反馈知识库 PDF 搜不到。
+
+========== LangGraph LLM 节点，第 1 轮 ==========
+
+状态中的 messages 数量:
+2
+
+实际传给模型的 messages 数量:
+2
+
+模型返回 content:
+
+
+模型返回 tool_calls:
+[
+  {
+    "name": "create_ticket",
+    "args": {
+      "title": "知识库 PDF 搜不到",
+      "description": "反馈知识库中的 PDF 文档无法被搜索到。",
+      "priority": "high"
+    },
+    "type": "tool_call",
+    "id": "call_c6161d655088462bafd3756b"
+  }
+]
+
+========== Human-in-the-loop 最终结果 ==========
+当前节点： permission_denied
+停止原因： permission_denied
+本轮循环轮次： 1
+
+最终回答：
+当前用户无权执行工具 create_ticket。原因：用户缺少执行工具 create_ticket 所需角色：support, admin
+
+权限判断结果：
+{
+  "allowed": false,
+  "toolName": "create_ticket",
+  "requiredRoles": [
+    "support",
+    "admin"
+  ],
+  "userRoles": [
+    "viewer"
+  ],
+  "reason": "用户缺少执行工具 create_ticket 所需角色：support, admin"
+}
+
+人工确认结果：
+null
+
+最后一次工具结果：
+null
+
+Checkpoint 中累计 messages 数量： 4
+累计 traceSteps 数量： 2
+累计工具执行记录数量： 0
+
+
+========================================
+thread_id： lesson13-support-create-ticket
+当前用户： support-user
+用户角色： support
+是否已有历史： false
+用户输入： 帮我创建一个中优先级工单，反馈 RAG 检索效果不好。
+
+========== LangGraph LLM 节点，第 1 轮 ==========
+
+状态中的 messages 数量:
+2
+
+实际传给模型的 messages 数量:
+2
+
+模型返回 content:
+
+
+模型返回 tool_calls:
+[
+  {
+    "name": "create_ticket",
+    "args": {
+      "title": "RAG 检索效果不好",
+      "description": "用户反馈 RAG 检索效果不佳，需要技术支持介入排查。",
+      "priority": "medium"
+    },
+    "type": "tool_call",
+    "id": "call_be2220e1f3a84354bb1e3a18"
+  }
+]
+
+========== 触发人工确认 ==========
+[
+  {
+    "type": "tool_approval",
+    "message": "工具 create_ticket 需要人工确认后才能执行。",
+    "pendingAction": {
+      "actionId": "approval-1781084845478",
+      "toolName": "create_ticket",
+      "toolCallId": "call_be2220e1f3a84354bb1e3a18",
+      "args": {
+        "title": "RAG 检索效果不好",
+        "description": "用户反馈 RAG 检索效果不佳，需要技术支持介入排查。",
+        "priority": "medium"
+      },
+      "riskLevel": "high",
+      "reason": "该工具会创建业务数据，需要用户确认后才能执行。",
+      "createdAt": "2026-06-10T09:47:25.478Z"
+    }
+  }
+]
+
+========== 模拟人工确认结果 ==========
+{
+  "approved": true,
+  "comment": "客服确认创建工单。",
+  "reviewer": "support-user",
+  "reviewedAt": "2026-06-10T09:47:23.573Z"
+}
+
+========== LangGraph Tool 节点 ==========
+
+工具执行日志:
+[
+  {
+    "toolName": "create_ticket",
+    "toolCallId": "call_be2220e1f3a84354bb1e3a18",
+    "args": {
+      "title": "RAG 检索效果不好",
+      "description": "用户反馈 RAG 检索效果不佳，需要技术支持介入排查。",
+      "priority": "medium"
+    },
+    "status": "success",
+    "content": "{\n  \"ticketNo\": \"TICKET-1781084845497\",\n  \"title\": \"RAG 检索效果不好\",\n  \"description\": \"用户反馈 RAG 检索效果不佳，需要技术支持介入排查。\",\n  \"priority\": \"medium\",\n  \"status\": \"created\",\n  \"message\": \"工单已创建，后续将由技术支持人员跟进。\"\n}",
+    "durationMs": 0
+  }
+]
+
+========== LangGraph LLM 节点，第 2 轮 ==========
+
+状态中的 messages 数量:
+4
+
+实际传给模型的 messages 数量:
+4
+
+模型返回 content:
+工单已创建，后续将由技术支持人员跟进。
+
+模型返回 tool_calls:
+[]
+
+========== Human-in-the-loop 最终结果 ==========
+当前节点： final_answer
+停止原因： final_answer
+本轮循环轮次： 2
+
+最终回答：
+工单已创建，后续将由技术支持人员跟进。
+
+权限判断结果：
+null
+
+人工确认结果：
+{
+  "approved": true,
+  "comment": "客服确认创建工单。",
+  "reviewer": "support-user",
+  "reviewedAt": "2026-06-10T09:47:23.573Z"
+}
+
+最后一次工具结果：
+{
+  "toolName": "create_ticket",
+  "toolCallId": "call_be2220e1f3a84354bb1e3a18",
+  "args": {
+    "title": "RAG 检索效果不好",
+    "description": "用户反馈 RAG 检索效果不佳，需要技术支持介入排查。",
+    "priority": "medium"
+  },
+  "status": "success",
+  "content": "{\n  \"ticketNo\": \"TICKET-1781084845497\",\n  \"title\": \"RAG 检索效果不好\",\n  \"description\": \"用户反馈 RAG 检索效果不佳，需要技术支持介入排查。\",\n  \"priority\": \"medium\",\n  \"status\": \"created\",\n  \"message\": \"工单已创建，后续将由技术支持人员跟进。\"\n}",
+  "durationMs": 0
+}
+
+Checkpoint 中累计 messages 数量： 5
+累计 traceSteps 数量： 5
+累计工具执行记录数量： 1
+
+
+========================================
+thread_id： lesson13-admin-create-ticket
+当前用户： admin-user
+用户角色： admin
+是否已有历史： false
+用户输入： 帮我创建一个低优先级工单，记录 Agent 工具调用规范优化建议。
+
+========== LangGraph LLM 节点，第 1 轮 ==========
+
+状态中的 messages 数量:
+2
+
+实际传给模型的 messages 数量:
+2
+
+模型返回 content:
+
+
+模型返回 tool_calls:
+[
+  {
+    "name": "create_ticket",
+    "args": {
+      "title": "Agent 工具调用规范优化建议",
+      "description": "记录关于 Agent 工具调用规范的优化建议。",
+      "priority": "low"
+    },
+    "type": "tool_call",
+    "id": "call_30b9318c25b14a619b468fa8"
+  }
+]
+
+========== 触发人工确认 ==========
+[
+  {
+    "type": "tool_approval",
+    "message": "工具 create_ticket 需要人工确认后才能执行。",
+    "pendingAction": {
+      "actionId": "approval-1781084848916",
+      "toolName": "create_ticket",
+      "toolCallId": "call_30b9318c25b14a619b468fa8",
+      "args": {
+        "title": "Agent 工具调用规范优化建议",
+        "description": "记录关于 Agent 工具调用规范的优化建议。",
+        "priority": "low"
+      },
+      "riskLevel": "high",
+      "reason": "该工具会创建业务数据，需要用户确认后才能执行。",
+      "createdAt": "2026-06-10T09:47:28.916Z"
+    }
+  }
+]
+
+========== 模拟人工确认结果 ==========
+{
+  "approved": true,
+  "comment": "管理员确认创建工单。",
+  "reviewer": "admin-user",
+  "reviewedAt": "2026-06-10T09:47:25.963Z"
+}
+
+========== LangGraph Tool 节点 ==========
+
+工具执行日志:
+[
+  {
+    "toolName": "create_ticket",
+    "toolCallId": "call_30b9318c25b14a619b468fa8",
+    "args": {
+      "title": "Agent 工具调用规范优化建议",
+      "description": "记录关于 Agent 工具调用规范的优化建议。",
+      "priority": "low"
+    },
+    "status": "success",
+    "content": "{\n  \"ticketNo\": \"TICKET-1781084848921\",\n  \"title\": \"Agent 工具调用规范优化建议\",\n  \"description\": \"记录关于 Agent 工具调用规范的优化建议。\",\n  \"priority\": \"low\",\n  \"status\": \"created\",\n  \"message\": \"工单已创建，后续将由技术支持人员跟进。\"\n}",
+    "durationMs": 0
+  }
+]
+
+========== LangGraph LLM 节点，第 2 轮 ==========
+
+状态中的 messages 数量:
+4
+
+实际传给模型的 messages 数量:
+4
+
+模型返回 content:
+工单已创建，工单号为 **TICKET-1781084848921**。后续将由技术支持人员跟进。
+
+模型返回 tool_calls:
+[]
+
+========== Human-in-the-loop 最终结果 ==========
+当前节点： final_answer
+停止原因： final_answer
+本轮循环轮次： 2
+
+最终回答：
+工单已创建，工单号为 **TICKET-1781084848921**。后续将由技术支持人员跟进。
+
+权限判断结果：
+null
+
+人工确认结果：
+{
+  "approved": true,
+  "comment": "管理员确认创建工单。",
+  "reviewer": "admin-user",
+  "reviewedAt": "2026-06-10T09:47:25.963Z"
+}
+
+最后一次工具结果：
+{
+  "toolName": "create_ticket",
+  "toolCallId": "call_30b9318c25b14a619b468fa8",
+  "args": {
+    "title": "Agent 工具调用规范优化建议",
+    "description": "记录关于 Agent 工具调用规范的优化建议。",
+    "priority": "low"
+  },
+  "status": "success",
+  "content": "{\n  \"ticketNo\": \"TICKET-1781084848921\",\n  \"title\": \"Agent 工具调用规范优化建议\",\n  \"description\": \"记录关于 Agent 工具调用规范的优化建议。\",\n  \"priority\": \"low\",\n  \"status\": \"created\",\n  \"message\": \"工单已创建，后续将由技术支持人员跟进。\"\n}",
+  "durationMs": 0
+}
+
+Checkpoint 中累计 messages 数量： 5
+累计 traceSteps 数量： 5
+累计工具执行记录数量： 1
