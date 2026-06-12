@@ -18,7 +18,8 @@
     "lesson:11": "tsx src/lessons/lesson11-conversation-memory/index.ts",
     "lesson:12": "tsx src/lessons/lesson12-human-approval/index.ts",
     "lesson:13": "tsx src/lessons/lesson13-tool-permission/index.ts",
-    "lesson:14": "tsx src/lessons/lesson14-rag-introduction/index.ts"
+    "lesson:14": "tsx src/lessons/lesson14-rag-introduction/index.ts",
+    "lesson:15": "tsx src/lessons/lesson15-document-loader-splitter/index.ts"
   },
   "keywords": [],
   "author": "",
