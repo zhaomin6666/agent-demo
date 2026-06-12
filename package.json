@@ -22,7 +22,8 @@
     "lesson:15": "tsx src/lessons/lesson15-document-loader-splitter/index.ts",
     "lesson:16": "tsx src/lessons/lesson16-embedding-introduction/index.ts",
     "lesson:17": "tsx src/lessons/lesson17-memory-vector-store/index.ts",
-    "lesson:18": "tsx src/lessons/lesson18-rag-qa-chain/index.ts"
+    "lesson:18": "tsx src/lessons/lesson18-rag-qa-chain/index.ts",
+    "lesson:19": "tsx src/lessons/lesson19-rag-as-agent-tool/index.ts"
   },
   "keywords": [],
   "author": "",
