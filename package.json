@@ -21,7 +21,8 @@
     "lesson:14": "tsx src/lessons/lesson14-rag-introduction/index.ts",
     "lesson:15": "tsx src/lessons/lesson15-document-loader-splitter/index.ts",
     "lesson:16": "tsx src/lessons/lesson16-embedding-introduction/index.ts",
-    "lesson:17": "tsx src/lessons/lesson17-memory-vector-store/index.ts"
+    "lesson:17": "tsx src/lessons/lesson17-memory-vector-store/index.ts",
+    "lesson:18": "tsx src/lessons/lesson18-rag-qa-chain/index.ts"
   },
   "keywords": [],
   "author": "",
