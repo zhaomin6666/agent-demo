@@ -1,0 +1,168 @@
+========== 文档加载结果 ==========
+[
+  {
+    id: 'agent-tool-policy',
+    title: 'Agent 工具调用规范',
+    source: 'agent-tool-policy.md',
+    contentLength: 215
+  },
+  {
+    id: 'knowledge-base-guide',
+    title: '企业知识库支持的数据源',
+    source: 'knowledge-base-guide.md',
+    contentLength: 235
+  },
+  {
+    id: 'rag-optimization',
+    title: 'RAG 检索效果不好怎么办',
+    source: 'rag-optimization.md',
+    contentLength: 285
+  }
+]
+
+========== Chunk 切分结果 ==========
+[
+  {
+    id: 'agent-tool-policy-chunk-1',
+    documentId: 'agent-tool-policy',
+    title: 'Agent 工具调用规范',
+    contentLength: 205
+  },
+  {
+    id: 'knowledge-base-guide-chunk-1',
+    documentId: 'knowledge-base-guide',
+    title: '企业知识库支持的数据源',
+    contentLength: 185
+  },
+  {
+    id: 'knowledge-base-guide-chunk-2',
+    documentId: 'knowledge-base-guide',
+    title: '企业知识库支持的数据源',
+    contentLength: 80
+  },
+  {
+    id: 'rag-optimization-chunk-1',
+    documentId: 'rag-optimization',
+    title: 'RAG 检索效果不好怎么办',
+    contentLength: 192
+  },
+  {
+    id: 'rag-optimization-chunk-2',
+    documentId: 'rag-optimization',
+    title: 'RAG 检索效果不好怎么办',
+    contentLength: 123
+  }
+]
+
+========== Embedding 结果概览 ==========
+[
+  {
+    chunkId: 'agent-tool-policy-chunk-1',
+    title: 'Agent 工具调用规范',
+    vectorDimension: 1024,
+    vectorPreview: [
+      -0.02458331547677517,
+      -0.0046045552007853985,
+      0.04149108752608299,
+      -0.02372020296752453,
+      -0.014295313507318497,
+      0.009054983034729958,
+      0.05530090257525444,
+      0.10394349694252014
+    ]
+  },
+  {
+    chunkId: 'knowledge-base-guide-chunk-1',
+    title: '企业知识库支持的数据源',
+    vectorDimension: 1024,
+    vectorPreview: [
+      -0.024702226743102074,
+      0.057754866778850555,
+      0.037822458893060684,
+      -0.026292165741324425,
+      0.003722784575074911,
+      -0.013469241559505463,
+      0.010127783752977848,
+      0.12316212803125381
+    ]
+  },
+  {
+    chunkId: 'knowledge-base-guide-chunk-2',
+    title: '企业知识库支持的数据源',
+    vectorDimension: 1024,
+    vectorPreview: [
+      -0.011853883042931557,
+      0.030394572764635086,
+      0.033466022461652756,
+      -0.031050454825162888,
+      0.05602199584245682,
+      0.01718093268573284,
+      0.045239921659231186,
+      0.09758257865905762
+    ]
+  },
+  {
+    chunkId: 'rag-optimization-chunk-1',
+    title: 'RAG 检索效果不好怎么办',
+    vectorDimension: 1024,
+    vectorPreview: [
+      -0.055015236139297485,
+      -0.02912304922938347,
+      -0.0033573033288121223,
+      -0.021861158311367035,
+      0.019415365532040596,
+      -0.03194627910852432,
+      0.05413958430290222,
+      0.0023287872318178415
+    ]
+  },
+  {
+    chunkId: 'rag-optimization-chunk-2',
+    title: 'RAG 检索效果不好怎么办',
+    vectorDimension: 1024,
+    vectorPreview: [
+      -0.050709906965494156,
+      0.006674687843769789,
+      0.04001859202980995,
+      -0.011983427219092846,
+      0.0278801117092371,
+      -0.025443555787205696,
+      0.03352110832929611,
+      0.0640297457575798
+    ]
+  }
+]
+
+========== 第一条 Chunk Embedding 详情 ==========
+chunkId: agent-tool-policy-chunk-1
+title: Agent 工具调用规范
+source: agent-tool-policy.md
+content: # Agent 工具调用规范
+
+Agent 调用工具前应先判断用户意图，不能因为用户输入中出现某个关键词就直接调用工具。
+
+工具入参必须通过 schema 校验，避免模型生成不完整或错误的参数。
+
+工具执行失败时需要有兜底响应，不能把底层异常直接暴露给用户。
+
+操作型工具应结合权限控制和人工确认。
+
+例如创建工单、提交审批、发送通知、删除数据等工具，都应该先检查用户权限，再根据风险等级决定是否需要人工确认。
+vectorDimension: 1024
+vector 前 20 项: [
+   -0.02458331547677517, -0.0046045552007853985,
+    0.04149108752608299,   -0.02372020296752453,
+  -0.014295313507318497,   0.009054983034729958,
+    0.05530090257525444,    0.10394349694252014,
+  -0.001876500784419477,    0.09642208367586136,
+   0.011521020904183388,    0.03461700677871704,
+   -0.06054123118519783,   0.044511985033750534,
+  -0.015828881412744522,  -0.002304204273968935,
+   0.025246063247323036,   -0.06174342334270477,
+  -0.052865687757730484,    0.05070790648460388
+]
+
+========== 统计信息 ==========
+文档数量： 3
+Chunk 数量： 5
+Embedding 数量： 5
