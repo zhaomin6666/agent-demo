@@ -1,0 +1,518 @@
+========== Hybrid RAG Runtime 初始化完成 ==========
+检索模式： hybrid
+文档数量： 3
+Chunk 数量： 5
+Embedding 数量： 5
+
+
+========================================
+thread_id： lesson20-viewer-datasource
+当前用户： viewer-user
+用户角色： viewer
+是否已有历史： false
+用户输入： 知识库可以接入 PDF、Word 这类资料吗？
+
+========== LangGraph LLM 节点，第 1 轮 ==========
+
+状态中的 messages 数量:
+2
+
+实际传给模型的 messages 数量:
+2
+
+模型返回 content:
+
+
+模型返回 tool_calls:
+[
+  {
+    "name": "search_knowledge_base",
+    "args": {
+      "query": "知识库可以接入 PDF、Word 这类资料吗？"
+    },
+    "type": "tool_call",
+    "id": "call_af754f1a05be4a668af605e7"
+  }
+]
+
+========== LangGraph Tool 节点 ==========
+chunkId:knowledge-base-guide-chunk-1, v_score:0.78968790704331, k_score:0.5714285714285714, t_score:0.7242101063588884
+chunkId:knowledge-base-guide-chunk-2, v_score:0.6679179334380922, k_score:0.42857142857142855, t_score:0.5961139819780932
+chunkId:rag-optimization-chunk-2, v_score:0.6509408564899901, k_score:0.2857142857142857, t_score:0.5413728852572788
+chunkId:rag-optimization-chunk-1, v_score:0.4817298202676788, k_score:0, t_score:0.33721087418737516
+chunkId:agent-tool-policy-chunk-1, v_score:0.4607596773463609, k_score:0, t_score:0.3225317741424526
+
+工具执行日志:
+[
+  {
+    "toolName": "search_knowledge_base",
+    "toolCallId": "call_af754f1a05be4a668af605e7",
+    "args": {
+      "query": "知识库可以接入 PDF、Word 这类资料吗？"
+    },
+    "status": "success",
+    "content": "{\n  \"status\": \"success\",\n  \"query\": \"知识库可以接入 PDF、Word 这类资料吗？\",\n  \"answer\": \"可以。根据现有资料，企业知识库当前已支持接入 **PDF** 和 **Word** 格式文档（同时支持 Markdown、网页 URL 及内部 FAQ 等数据源）。此类文件通常用于沉淀企业制度、项目方案、验收材料及用户手册等业务资料。\\n\\n参考来源：knowledge-base-guide.md（企业知识库支持的数据源）\",\n  \"sources\": [\n    {\n      \"title\": \"企业知识库支持的数据源\",\n      \"source\": \"knowledge-base-guide.md\",\n      \"score\": 0.7242,\n      \"contentPreview\": \"# 企业知识库支持的数据源\\n\\n企业知识库当前支持 Markdown、PDF、Word、网页 URL、内部 FAQ 文档等数据源。\\n\\nMarkdown 文档适合沉淀结构化技术文档，例如系统说明、接口说明、部署说明和排障手册。\\n\\nPDF 和 W\"\n    },\n    {\n      \"title\": \"企业知识库支持的数据源\",\n      \"source\": \"knowledge-base-guide.md\",\n      \"score\": 0.5961,\n      \"contentPreview\": \"户手册。\\n\\n网页 URL 可以用于接入在线帮助文档、产品说明页面和内部知识门户。\\n\\n后续计划扩展数据库表、工单系统数据和接口文档，让知识库覆盖更多企业内部资料。\"\n    },\n    {\n      \"title\": \"RAG 检索效果不好怎么办\",\n      \"source\": \"rag-optimization.md\",\n      \"score\": 0.5414,\n      \"contentPreview\": \"语义匹配能力。不同语言、不同业务领域，适合的 Embedding 模型可能不同。\\n\\n召回数量 topK 也需要调优。topK 太小可能漏掉相关资料，topK 太大可能引入噪音。\\n\\n在企业知识库中，还可以结合关键词检索和向量检索，形成混合检索\"\n    }\n  ]\n}",
+    "durationMs": 4389
+  }
+]
+
+========== LangGraph LLM 节点，第 2 轮 ==========
+
+状态中的 messages 数量:
+4
+
+实际传给模型的 messages 数量:
+4
+
+模型返回 content:
+可以。企业知识库当前已支持接入 **PDF** 和 **Word** 格式文档，同时也支持 Markdown、网页 URL 及内部 FAQ 等数据源。这类文件通常用于沉淀企业制度、项目方案、验收材料及用户手册等业务资料。
+
+模型返回 tool_calls:
+[]
+
+========== Agent + Hybrid RAG Tool 最终结果 ==========
+当前节点： final_answer
+停止原因： final_answer
+本轮循环轮次： 2
+
+最终回答：
+可以。企业知识库当前已支持接入 **PDF** 和 **Word** 格式文档，同时也支持 Markdown、网页 URL 及内部 FAQ 等数据源。这类文件通常用于沉淀企业制度、项目方案、验收材料及用户手册等业务资料。
+
+权限判断结果：
+null
+
+人工确认结果：
+null
+
+最后一次工具结果：
+{
+  "toolName": "search_knowledge_base",
+  "toolCallId": "call_af754f1a05be4a668af605e7",
+  "args": {
+    "query": "知识库可以接入 PDF、Word 这类资料吗？"
+  },
+  "status": "success",
+  "content": "{\n  \"status\": \"success\",\n  \"query\": \"知识库可以接入 PDF、Word 这类资料吗？\",\n  \"answer\": \"可以。根据现有资料，企业知识库当前已支持接入 **PDF** 和 **Word** 格式文档（同时支持 Markdown、网页 URL 及内部 FAQ 等数据源）。此类文件通常用于沉淀企业制度、项目方案、验收材料及用户手册等业务资料。\\n\\n参考来源：knowledge-base-guide.md（企业知识库支持的数据源）\",\n  \"sources\": [\n    {\n      \"title\": \"企业知识库支持的数据源\",\n      \"source\": \"knowledge-base-guide.md\",\n      \"score\": 0.7242,\n      \"contentPreview\": \"# 企业知识库支持的数据源\\n\\n企业知识库当前支持 Markdown、PDF、Word、网页 URL、内部 FAQ 文档等数据源。\\n\\nMarkdown 文档适合沉淀结构化技术文档，例如系统说明、接口说明、部署说明和排障手册。\\n\\nPDF 和 W\"\n    },\n    {\n      \"title\": \"企业知识库支持的数据源\",\n      \"source\": \"knowledge-base-guide.md\",\n      \"score\": 0.5961,\n      \"contentPreview\": \"户手册。\\n\\n网页 URL 可以用于接入在线帮助文档、产品说明页面和内部知识门户。\\n\\n后续计划扩展数据库表、工单系统数据和接口文档，让知识库覆盖更多企业内部资料。\"\n    },\n    {\n      \"title\": \"RAG 检索效果不好怎么办\",\n      \"source\": \"rag-optimization.md\",\n      \"score\": 0.5414,\n      \"contentPreview\": \"语义匹配能力。不同语言、不同业务领域，适合的 Embedding 模型可能不同。\\n\\n召回数量 topK 也需要调优。topK 太小可能漏掉相关资料，topK 太大可能引入噪音。\\n\\n在企业知识库中，还可以结合关键词检索和向量检索，形成混合检索\"\n    }\n  ]\n}",
+  "durationMs": 4389
+}
+
+Checkpoint 中累计 messages 数量： 5
+累计 traceSteps 数量： 4
+累计工具执行记录数量： 1
+
+
+========================================
+thread_id： lesson20-viewer-retrieval
+当前用户： viewer-user
+用户角色： viewer
+是否已有历史： false
+用户输入： 知识库召回不准应该怎么优化？
+
+========== LangGraph LLM 节点，第 1 轮 ==========
+
+状态中的 messages 数量:
+2
+
+实际传给模型的 messages 数量:
+2
+
+模型返回 content:
+
+
+模型返回 tool_calls:
+[
+  {
+    "name": "search_knowledge_base",
+    "args": {
+      "query": "知识库召回不准应该怎么优化"
+    },
+    "type": "tool_call",
+    "id": "call_244cca555d5d49a9934f966b"
+  }
+]
+
+========== LangGraph Tool 节点 ==========
+chunkId:rag-optimization-chunk-2, v_score:0.7477309921421698, k_score:0.5, t_score:0.6734116944995189
+chunkId:rag-optimization-chunk-1, v_score:0.7101909451609938, k_score:0.5, t_score:0.6471336616126956
+chunkId:knowledge-base-guide-chunk-1, v_score:0.5098854117357958, k_score:0.25, t_score:0.43191978821505705
+chunkId:knowledge-base-guide-chunk-2, v_score:0.5082820599354866, k_score:0.25, t_score:0.4307974419548406
+chunkId:agent-tool-policy-chunk-1, v_score:0.46884127673244835, k_score:0, t_score:0.3281888937127138
+
+工具执行日志:
+[
+  {
+    "toolName": "search_knowledge_base",
+    "toolCallId": "call_244cca555d5d49a9934f966b",
+    "args": {
+      "query": "知识库召回不准应该怎么优化"
+    },
+    "status": "success",
+    "content": "{\n  \"status\": \"success\",\n  \"query\": \"知识库召回不准应该怎么优化\",\n  \"answer\": \"针对知识库召回不准的问题，建议结合以下方向进行优化：\\n\\n1. **优化文档切分**：合理设置 chunk 大小。切分过大会混入无关内容，过小则容易丢失上下文信息。\\n2. **匹配 Embedding 模型**：根据实际使用的语言及具体业务领域，选择适配的 Embedding 模型，以提升语义匹配能力。\\n3. **调优召回数量（TopK）**：根据实际场景调整 TopK 值。过小可能漏掉相关资料，过大则容易引入噪音。\\n4. **采用混合检索策略**：在企业知识库中，建议将向量检索与关键词检索结合使用，形成混合检索以提升召回准确率。\\n5. **补充关键词与重排序**：在文档中补充核心业务关键词；在初步检索完成后，增加重排序（Re-ranking）环节进一步过滤低相关结果。\\n6. **强化 Prompt 约束**：通过提示词明确检索边界与匹配规则，辅助系统更精准地理解查询意图。\\n\\n参考来源：rag-optimization.md（资料1、资料2）\",\n  \"sources\": [\n    {\n      \"title\": \"RAG 检索效果不好怎么办\",\n      \"source\": \"rag-optimization.md\",\n      \"score\": 0.6734,\n      \"contentPreview\": \"语义匹配能力。不同语言、不同业务领域，适合的 Embedding 模型可能不同。\\n\\n召回数量 topK 也需要调优。topK 太小可能漏掉相关资料，topK 太大可能引入噪音。\\n\\n在企业知识库中，还可以结合关键词检索和向量检索，形成混合检索\"\n    },\n    {\n      \"title\": \"RAG 检索效果不好怎么办\",\n      \"source\": \"rag-optimization.md\",\n      \"score\": 0.6471,\n      \"contentPreview\": \"# RAG 检索效果不好怎么办\\n\\n如果 RAG 检索效果不好，可以从文档切分、Embedding 模型、召回数量、关键词补充、重排序、Prompt 约束等方面优化。\\n\\n文档切分会直接影响检索质量。chunk 太大，可能包含过多无关内容；ch\"\n    },\n    {\n      \"title\": \"企业知识库支持的数据源\",\n      \"source\": \"knowledge-base-guide.md\",\n      \"score\": 0.4319,\n      \"contentPreview\": \"# 企业知识库支持的数据源\\n\\n企业知识库当前支持 Markdown、PDF、Word、网页 URL、内部 FAQ 文档等数据源。\\n\\nMarkdown 文档适合沉淀结构化技术文档，例如系统说明、接口说明、部署说明和排障手册。\\n\\nPDF 和 W\"\n    }\n  ]\n}",
+    "durationMs": 13863
+  }
+]
+
+========== LangGraph LLM 节点，第 2 轮 ==========
+
+状态中的 messages 数量:
+4
+
+实际传给模型的 messages 数量:
+4
+
+模型返回 content:
+针对知识库召回不准的问题，建议结合以下方向进行优化：
+
+1. **优化文档切分**：合理设置 chunk 大小。切分过大会混入无关内容，过小则容易丢失上下文信息。
+2. **匹配 Embedding 模型**：根据实际使用的语言及具体业务领域，选择适配的 Embedding 模型，以提升语义匹配能力。
+3. **调优召回数量（TopK）**：根据实际场景调整 TopK 值。过小可能漏掉相关资料，过大则容易引入噪音。
+4. **采用混合检索策略**：在企业知识库中，建议将向量检索与关键词检索结合使用，形成混合检索以提升召回准确率。
+5. **补充关键词与重排序**：在文档中补充核心业务关键词；在初步检索完成后，增加重排序（Re-ranking）环节进一步过滤低相关结果。
+6. **强化 Prompt 约束**：通过提示词明确检索边界与匹配规则，辅助系统更精准地理解查询意图。
+
+模型返回 tool_calls:
+[]
+
+========== Agent + Hybrid RAG Tool 最终结果 ==========
+当前节点： final_answer
+停止原因： final_answer
+本轮循环轮次： 2
+
+最终回答：
+针对知识库召回不准的问题，建议结合以下方向进行优化：
+
+1. **优化文档切分**：合理设置 chunk 大小。切分过大会混入无关内容，过小则容易丢失上下文信息。
+2. **匹配 Embedding 模型**：根据实际使用的语言及具体业务领域，选择适配的 Embedding 模型，以提升语义匹配能力。
+3. **调优召回数量（TopK）**：根据实际场景调整 TopK 值。过小可能漏掉相关资料，过大则容易引入噪音。
+4. **采用混合检索策略**：在企业知识库中，建议将向量检索与关键词检索结合使用，形成混合检索以提升召回准确率。
+5. **补充关键词与重排序**：在文档中补充核心业务关键词；在初步检索完成后，增加重排序（Re-ranking）环节进一步过滤低相关结果。
+6. **强化 Prompt 约束**：通过提示词明确检索边界与匹配规则，辅助系统更精准地理解查询意图。
+
+权限判断结果：
+null
+
+人工确认结果：
+null
+
+最后一次工具结果：
+{
+  "toolName": "search_knowledge_base",
+  "toolCallId": "call_244cca555d5d49a9934f966b",
+  "args": {
+    "query": "知识库召回不准应该怎么优化"
+  },
+  "status": "success",
+  "content": "{\n  \"status\": \"success\",\n  \"query\": \"知识库召回不准应该怎么优化\",\n  \"answer\": \"针对知识库召回不准的问题，建议结合以下方向进行优化：\\n\\n1. **优化文档切分**：合理设置 chunk 大小。切分过大会混入无关内容，过小则容易丢失上下文信息。\\n2. **匹配 Embedding 模型**：根据实际使用的语言及具体业务领域，选择适配的 Embedding 模型，以提升语义匹配能力。\\n3. **调优召回数量（TopK）**：根据实际场景调整 TopK 值。过小可能漏掉相关资料，过大则容易引入噪音。\\n4. **采用混合检索策略**：在企业知识库中，建议将向量检索与关键词检索结合使用，形成混合检索以提升召回准确率。\\n5. **补充关键词与重排序**：在文档中补充核心业务关键词；在初步检索完成后，增加重排序（Re-ranking）环节进一步过滤低相关结果。\\n6. **强化 Prompt 约束**：通过提示词明确检索边界与匹配规则，辅助系统更精准地理解查询意图。\\n\\n参考来源：rag-optimization.md（资料1、资料2）\",\n  \"sources\": [\n    {\n      \"title\": \"RAG 检索效果不好怎么办\",\n      \"source\": \"rag-optimization.md\",\n      \"score\": 0.6734,\n      \"contentPreview\": \"语义匹配能力。不同语言、不同业务领域，适合的 Embedding 模型可能不同。\\n\\n召回数量 topK 也需要调优。topK 太小可能漏掉相关资料，topK 太大可能引入噪音。\\n\\n在企业知识库中，还可以结合关键词检索和向量检索，形成混合检索\"\n    },\n    {\n      \"title\": \"RAG 检索效果不好怎么办\",\n      \"source\": \"rag-optimization.md\",\n      \"score\": 0.6471,\n      \"contentPreview\": \"# RAG 检索效果不好怎么办\\n\\n如果 RAG 检索效果不好，可以从文档切分、Embedding 模型、召回数量、关键词补充、重排序、Prompt 约束等方面优化。\\n\\n文档切分会直接影响检索质量。chunk 太大，可能包含过多无关内容；ch\"\n    },\n    {\n      \"title\": \"企业知识库支持的数据源\",\n      \"source\": \"knowledge-base-guide.md\",\n      \"score\": 0.4319,\n      \"contentPreview\": \"# 企业知识库支持的数据源\\n\\n企业知识库当前支持 Markdown、PDF、Word、网页 URL、内部 FAQ 文档等数据源。\\n\\nMarkdown 文档适合沉淀结构化技术文档，例如系统说明、接口说明、部署说明和排障手册。\\n\\nPDF 和 W\"\n    }\n  ]\n}",
+  "durationMs": 13863
+}
+
+Checkpoint 中累计 messages 数量： 5
+累计 traceSteps 数量： 4
+累计工具执行记录数量： 1
+
+
+========================================
+thread_id： lesson20-viewer-tool-policy
+当前用户： viewer-user
+用户角色： viewer
+是否已有历史： false
+用户输入： agent-tool-policy.md 里关于工具调用安全是怎么说的？
+
+========== LangGraph LLM 节点，第 1 轮 ==========
+
+状态中的 messages 数量:
+2
+
+实际传给模型的 messages 数量:
+2
+
+模型返回 content:
+
+
+模型返回 tool_calls:
+[
+  {
+    "name": "search_knowledge_base",
+    "args": {
+      "query": "agent-tool-policy.md 里关于工具调用安全是怎么说的？"
+    },
+    "type": "tool_call",
+    "id": "call_f30d8151628b4850b06e3dc3"
+  }
+]
+
+========== LangGraph Tool 节点 ==========
+chunkId:agent-tool-policy-chunk-1, v_score:0.7682625130124032, k_score:0.8, t_score:0.7777837591086822
+chunkId:rag-optimization-chunk-2, v_score:0.4125712247786053, k_score:0, t_score:0.28879985734502367
+chunkId:knowledge-base-guide-chunk-2, v_score:0.4005785739360727, k_score:0, t_score:0.2804050017552509
+chunkId:knowledge-base-guide-chunk-1, v_score:0.38164071121830623, k_score:0, t_score:0.26714849785281436
+chunkId:rag-optimization-chunk-1, v_score:0.36525296771319027, k_score:0, t_score:0.2556770773992332
+
+工具执行日志:
+[
+  {
+    "toolName": "search_knowledge_base",
+    "toolCallId": "call_f30d8151628b4850b06e3dc3",
+    "args": {
+      "query": "agent-tool-policy.md 里关于工具调用安全是怎么说的？"
+    },
+    "status": "success",
+    "content": "{\n  \"status\": \"success\",\n  \"query\": \"agent-tool-policy.md 里关于工具调用安全是怎么说的？\",\n  \"answer\": \"根据《agent-tool-policy.md》中的“Agent 工具调用规范”，关于工具调用安全主要明确以下四项要求：\\n\\n1. **严格意图识别**：调用前需准确判断用户真实意图，禁止仅因输入文本中出现某个关键词就直接触发工具调用。\\n2. **强制参数校验**：所有工具入参必须通过 Schema 进行校验，防止模型生成不完整或错误的参数引发潜在风险。\\n3. **安全异常处理**：工具执行失败时必须提供兜底响应，严禁将底层系统异常直接暴露给用户。\\n4. **权限管控与人工复核**：操作型/高风险工具（如创建工单、提交审批、发送通知、删除数据等）必须结合权限控制，并根据风险等级决定是否增加人工确认环节。\\n\\n参考来源：agent-tool-policy.md\",\n  \"sources\": [\n    {\n      \"title\": \"Agent 工具调用规范\",\n      \"source\": \"agent-tool-policy.md\",\n      \"score\": 0.7778,\n      \"contentPreview\": \"# Agent 工具调用规范\\n\\nAgent 调用工具前应先判断用户意图，不能因为用户输入中出现某个关键词就直接调用工具。\\n\\n工具入参必须通过 schema 校验，避免模型生成不完整或错误的参数。\\n\\n工具执行失败时需要有兜底响应，不能把底层异\"\n    }\n  ]\n}",
+    "durationMs": 6825
+  }
+]
+
+========== LangGraph LLM 节点，第 2 轮 ==========
+
+状态中的 messages 数量:
+4
+
+实际传给模型的 messages 数量:
+4
+
+模型返回 content:
+根据《agent-tool-policy.md》中的“Agent 工具调用规范”，关于工具调用安全主要明确以下四项要求：
+
+1. **严格意图识别**：调用前需准确判断用户真实意图，禁止仅因输入文本中出现某个关键词就直接触发工具调用。
+2. **强制参数校验**：所有工具入参必须通过 Schema 进行校验，防止模型生成不完整或错误的参数引发潜在风险。
+3. **安全异常处理**：工具执行失败时必须提供兜底响应，严禁将底层系统异常直接暴露给用户。
+4. **权限管控与人工复核**：操作型/高风险工具（如创建工单、提交审批、发送通知、删除数据等）必须结合权限控制，并根据风险等级决定是否增加人工确认环节。
+
+模型返回 tool_calls:
+[]
+
+========== Agent + Hybrid RAG Tool 最终结果 ==========
+当前节点： final_answer
+停止原因： final_answer
+本轮循环轮次： 2
+
+最终回答：
+根据《agent-tool-policy.md》中的“Agent 工具调用规范”，关于工具调用安全主要明确以下四项要求：
+
+1. **严格意图识别**：调用前需准确判断用户真实意图，禁止仅因输入文本中出现某个关键词就直接触发工具调用。
+2. **强制参数校验**：所有工具入参必须通过 Schema 进行校验，防止模型生成不完整或错误的参数引发潜在风险。
+3. **安全异常处理**：工具执行失败时必须提供兜底响应，严禁将底层系统异常直接暴露给用户。
+4. **权限管控与人工复核**：操作型/高风险工具（如创建工单、提交审批、发送通知、删除数据等）必须结合权限控制，并根据风险等级决定是否增加人工确认环节。
+
+权限判断结果：
+null
+
+人工确认结果：
+null
+
+最后一次工具结果：
+{
+  "toolName": "search_knowledge_base",
+  "toolCallId": "call_f30d8151628b4850b06e3dc3",
+  "args": {
+    "query": "agent-tool-policy.md 里关于工具调用安全是怎么说的？"
+  },
+  "status": "success",
+  "content": "{\n  \"status\": \"success\",\n  \"query\": \"agent-tool-policy.md 里关于工具调用安全是怎么说的？\",\n  \"answer\": \"根据《agent-tool-policy.md》中的“Agent 工具调用规范”，关于工具调用安全主要明确以下四项要求：\\n\\n1. **严格意图识别**：调用前需准确判断用户真实意图，禁止仅因输入文本中出现某个关键词就直接触发工具调用。\\n2. **强制参数校验**：所有工具入参必须通过 Schema 进行校验，防止模型生成不完整或错误的参数引发潜在风险。\\n3. **安全异常处理**：工具执行失败时必须提供兜底响应，严禁将底层系统异常直接暴露给用户。\\n4. **权限管控与人工复核**：操作型/高风险工具（如创建工单、提交审批、发送通知、删除数据等）必须结合权限控制，并根据风险等级决定是否增加人工确认环节。\\n\\n参考来源：agent-tool-policy.md\",\n  \"sources\": [\n    {\n      \"title\": \"Agent 工具调用规范\",\n      \"source\": \"agent-tool-policy.md\",\n      \"score\": 0.7778,\n      \"contentPreview\": \"# Agent 工具调用规范\\n\\nAgent 调用工具前应先判断用户意图，不能因为用户输入中出现某个关键词就直接调用工具。\\n\\n工具入参必须通过 schema 校验，避免模型生成不完整或错误的参数。\\n\\n工具执行失败时需要有兜底响应，不能把底层异\"\n    }\n  ]\n}",
+  "durationMs": 6825
+}
+
+Checkpoint 中累计 messages 数量： 5
+累计 traceSteps 数量： 4
+累计工具执行记录数量： 1
+
+
+========================================
+thread_id： lesson20-support-query-then-ticket
+当前用户： support-user
+用户角色： support
+是否已有历史： false
+用户输入： 先查知识库了解 RAG 检索优化建议，然后创建一个中优先级工单跟进。
+
+========== LangGraph LLM 节点，第 1 轮 ==========
+
+状态中的 messages 数量:
+2
+
+实际传给模型的 messages 数量:
+2
+
+模型返回 content:
+
+
+模型返回 tool_calls:
+[
+  {
+    "name": "search_knowledge_base",
+    "args": {
+      "query": "RAG 检索优化建议"
+    },
+    "type": "tool_call",
+    "id": "call_819e1483c88d440ea7f4bdb7"
+  }
+]
+
+========== LangGraph Tool 节点 ==========
+chunkId:rag-optimization-chunk-1, v_score:0.8285482924573536, k_score:0.75, t_score:0.8049838047201475
+chunkId:rag-optimization-chunk-2, v_score:0.5782696979213443, k_score:0.5, t_score:0.554788788544941
+chunkId:agent-tool-policy-chunk-1, v_score:0.36103161860045313, k_score:0, t_score:0.25272213302031715
+chunkId:knowledge-base-guide-chunk-2, v_score:0.35202974692725414, k_score:0.25, t_score:0.32142082284907786
+chunkId:knowledge-base-guide-chunk-1, v_score:0.3463352705075678, k_score:0.25, t_score:0.31743468935529745
+
+工具执行日志:
+[
+  {
+    "toolName": "search_knowledge_base",
+    "toolCallId": "call_819e1483c88d440ea7f4bdb7",
+    "args": {
+      "query": "RAG 检索优化建议"
+    },
+    "status": "success",
+    "content": "{\n  \"status\": \"success\",\n  \"query\": \"RAG 检索优化建议\",\n  \"answer\": \"根据资料上下文，针对 RAG 检索效果优化，建议从以下维度进行调整：\\n\\n1. **优化文档切分**：合理控制 `chunk` 大小。切分过大易混入无关内容，过小则可能丢失关键上下文，直接影响检索质量。\\n2. **选型合适的 Embedding 模型**：不同语言或垂直业务领域适用的模型存在差异，需结合实际场景选型以增强语义匹配能力。\\n3. **调优召回数量（TopK）**：`TopK` 设置过小容易漏掉相关资料，过大则会引入噪音，需根据实际业务需求进行平衡测试。\\n4. **采用混合检索策略**：在企业知识库场景中，建议将关键词检索与向量检索结合使用，提升整体召回准确率。\\n5. **其他辅助优化**：可尝试补充业务关键词、引入重排序（Rerank）机制，或通过 Prompt 约束来规范最终输出结果。\\n\\n参考来源：rag-optimization.md\",\n  \"sources\": [\n    {\n      \"title\": \"RAG 检索效果不好怎么办\",\n      \"source\": \"rag-optimization.md\",\n      \"score\": 0.805,\n      \"contentPreview\": \"# RAG 检索效果不好怎么办\\n\\n如果 RAG 检索效果不好，可以从文档切分、Embedding 模型、召回数量、关键词补充、重排序、Prompt 约束等方面优化。\\n\\n文档切分会直接影响检索质量。chunk 太大，可能包含过多无关内容；ch\"\n    },\n    {\n      \"title\": \"RAG 检索效果不好怎么办\",\n      \"source\": \"rag-optimization.md\",\n      \"score\": 0.5548,\n      \"contentPreview\": \"语义匹配能力。不同语言、不同业务领域，适合的 Embedding 模型可能不同。\\n\\n召回数量 topK 也需要调优。topK 太小可能漏掉相关资料，topK 太大可能引入噪音。\\n\\n在企业知识库中，还可以结合关键词检索和向量检索，形成混合检索\"\n    },\n    {\n      \"title\": \"企业知识库支持的数据源\",\n      \"source\": \"knowledge-base-guide.md\",\n      \"score\": 0.3214,\n      \"contentPreview\": \"户手册。\\n\\n网页 URL 可以用于接入在线帮助文档、产品说明页面和内部知识门户。\\n\\n后续计划扩展数据库表、工单系统数据和接口文档，让知识库覆盖更多企业内部资料。\"\n    }\n  ]\n}",
+    "durationMs": 9572
+  }
+]
+
+========== LangGraph LLM 节点，第 2 轮 ==========
+
+状态中的 messages 数量:
+4
+
+实际传给模型的 messages 数量:
+4
+
+模型返回 content:
+
+
+模型返回 tool_calls:
+[
+  {
+    "name": "create_ticket",
+    "args": {
+      "title": "跟进 RAG 检索优化建议",
+      "description": "根据知识库查询结果，RAG 检索优化建议如下：\n1. **优化文档切分**：合理控制 `chunk` 大小。切分过大易混入无关内容，过小则可能丢失关键上下文，直接影响检索质量。\n2. **选型合适的 Embedding 模型**：不同语言或垂直业务领域适用的模型存在差异，需结合实际场景选型以增强语义匹配能力。\n3. **调优召回数量（TopK）**：`TopK` 设置过小容易漏掉相关资料，过大则会引入噪音，需根据实际业务需求进行平衡测试。\n4. **采用混合检索策略**：在企业知识库场景中，建议将关键词检索与向量检索结合使用，提升整体召回准确率。\n5. **其他辅助优化**：可尝试补充业务关键词、引入重排序（Rerank）机制，或通过 Prompt 约束来规范最终输出结果。\n\n请相关团队评估并落实上述优化措施。",
+      "priority": "medium"
+    },
+    "type": "tool_call",
+    "id": "call_0b50eb8ca29e4e9f9f88bc8c"
+  }
+]
+
+========== 触发人工确认 ==========
+[
+  {
+    "type": "tool_approval",
+    "message": "工具 create_ticket 需要人工确认后才能执行。",
+    "pendingAction": {
+      "actionId": "approval-1781268405351",
+      "toolName": "create_ticket",
+      "toolCallId": "call_0b50eb8ca29e4e9f9f88bc8c",
+      "args": {
+        "title": "跟进 RAG 检索优化建议",
+        "description": "根据知识库查询结果，RAG 检索优化建议如下：\n1. **优化文档切分**：合理控制 `chunk` 大小。切分过大易混入无关内容，过小则可能丢失关键上下文，直接影响检索质量。\n2. **选型合适的 Embedding 模型**：不同语言或垂直业务领域适用的模型存在差异，需结合实际场景选型以增强语义匹配能力。\n3. **调优召回数量（TopK）**：`TopK` 设置过小容易漏掉相关资料，过大则会引入噪音，需根据实际业务需求进行平衡测试。\n4. **采用混合检索策略**：在企业知识库场景中，建议将关键词检索与向量检索结合使用，提升整体召回准确率。\n5. **其他辅助优化**：可尝试补充业务关键词、引入重排序（Rerank）机制，或通过 Prompt 约束来规范最终输出结果。\n\n请相关团队评估并落实上述优化措施。",
+        "priority": "medium"
+      },
+      "riskLevel": "high",
+      "reason": "该工具会创建业务数据，需要用户确认后才能执行。",
+      "createdAt": "2026-06-12T12:46:45.351Z"
+    }
+  }
+]
+
+========== 模拟人工确认结果 ==========
+{
+  "approved": true,
+  "comment": "客服确认基于混合检索结果创建工单。",
+  "reviewer": "support-user",
+  "reviewedAt": "2026-06-12T12:46:32.971Z"
+}
+
+========== LangGraph Tool 节点 ==========
+
+工具执行日志:
+[
+  {
+    "toolName": "create_ticket",
+    "toolCallId": "call_0b50eb8ca29e4e9f9f88bc8c",
+    "args": {
+      "title": "跟进 RAG 检索优化建议",
+      "description": "根据知识库查询结果，RAG 检索优化建议如下：\n1. **优化文档切分**：合理控制 `chunk` 大小。切分过大易混入无关内容，过小则可能丢失关键上下文，直接影响检索质量。\n2. **选型合适的 Embedding 模型**：不同语言或垂直业务领域适用的模型存在差异，需结合实际场景选型以增强语义匹配能力。\n3. **调优召回数量（TopK）**：`TopK` 设置过小容易漏掉相关资料，过大则会引入噪音，需根据实际业务需求进行平衡测试。\n4. **采用混合检索策略**：在企业知识库场景中，建议将关键词检索与向量检索结合使用，提升整体召回准确率。\n5. **其他辅助优化**：可尝试补充业务关键词、引入重排序（Rerank）机制，或通过 Prompt 约束来规范最终输出结果。\n\n请相关团队评估并落实上述优化措施。",
+      "priority": "medium"
+    },
+    "status": "success",
+    "content": "{\n  \"ticketNo\": \"TICKET-1781268405370\",\n  \"title\": \"跟进 RAG 检索优化建议\",\n  \"description\": \"根据知识库查询结果，RAG 检索优化建议如下：\\n1. **优化文档切分**：合理控制 `chunk` 大小。切分过大易混入无关内容，过小则可能丢失关键上下文，直接影响检索质量。\\n2. **选型合适的 Embedding 模型**：不同语言或垂直业务领域适用的模型存在差异，需结合实际场景选型以增强语义匹配能力。\\n3. **调优召回数量（TopK）**：`TopK` 设置过小容易漏掉相关资料，过大则会引入噪音，需根据实际业务需求进行平衡测试。\\n4. **采用混合检索策略**：在企业知识库场景中，建议将关键词检索与向量检索结合使用，提升整体召回准确率。\\n5. **其他辅助优化**：可尝试补充业务关键词、引入重排序（Rerank）机制，或通过 Prompt 约束来规范最终输出结果。\\n\\n请相关团队评估并落实上述优化措施。\",\n  \"priority\": \"medium\",\n  \"status\": \"created\",\n  \"message\": \"工单已创建，后续将由技术支持人员跟进。\"\n}",
+    "durationMs": 1
+  }
+]
+
+========== LangGraph LLM 节点，第 3 轮 ==========
+
+状态中的 messages 数量:
+6
+
+实际传给模型的 messages 数量:
+6
+
+模型返回 content:
+已为您查询知识库并创建工单。
+
+**RAG 检索优化建议如下：**
+1. **优化文档切分**：合理控制 `chunk` 大小，避免过大混入无关内容或过小丢失上下文。
+2. **选型合适的 Embedding 模型**：根据语言和业务领域选择匹配的模型以增强语义匹配。
+3. **调优召回数量（TopK）**：平衡 TopK 设置，防止漏掉资料或引入噪音。
+4. **采用混合检索策略**：结合关键词检索与向量检索，提升整体召回准确率。
+5. **其他辅助优化**：可尝试补充业务关键词、引入重排序（Rerank）机制或通过 Prompt 约束规范输出。
+
+**工单信息：**
+- **工单号**：TICKET-1781268405370
+- **标题**：跟进 RAG 检索优化建议
+- **优先级**：中 (medium)
+- **状态**：已创建，后续将由技术支持人员跟进。
+
+模型返回 tool_calls:
+[]
+
+========== Agent + Hybrid RAG Tool 最终结果 ==========
+当前节点： final_answer
+停止原因： final_answer
+本轮循环轮次： 3
+
+最终回答：
+已为您查询知识库并创建工单。
+
+**RAG 检索优化建议如下：**
+1. **优化文档切分**：合理控制 `chunk` 大小，避免过大混入无关内容或过小丢失上下文。
+2. **选型合适的 Embedding 模型**：根据语言和业务领域选择匹配的模型以增强语义匹配。
+3. **调优召回数量（TopK）**：平衡 TopK 设置，防止漏掉资料或引入噪音。
+4. **采用混合检索策略**：结合关键词检索与向量检索，提升整体召回准确率。
+5. **其他辅助优化**：可尝试补充业务关键词、引入重排序（Rerank）机制或通过 Prompt 约束规范输出。
+
+**工单信息：**
+- **工单号**：TICKET-1781268405370
+- **标题**：跟进 RAG 检索优化建议
+- **优先级**：中 (medium)
+- **状态**：已创建，后续将由技术支持人员跟进。
+
+权限判断结果：
+null
+
+人工确认结果：
+{
+  "approved": true,
+  "comment": "客服确认基于混合检索结果创建工单。",
+  "reviewer": "support-user",
+  "reviewedAt": "2026-06-12T12:46:32.971Z"
+}
+
+最后一次工具结果：
+{
+  "toolName": "create_ticket",
+  "toolCallId": "call_0b50eb8ca29e4e9f9f88bc8c",
+  "args": {
+    "title": "跟进 RAG 检索优化建议",
+    "description": "根据知识库查询结果，RAG 检索优化建议如下：\n1. **优化文档切分**：合理控制 `chunk` 大小。切分过大易混入无关内容，过小则可能丢失关键上下文，直接影响检索质量。\n2. **选型合适的 Embedding 模型**：不同语言或垂直业务领域适用的模型存在差异，需结合实际场景选型以增强语义匹配能力。\n3. **调优召回数量（TopK）**：`TopK` 设置过小容易漏掉相关资料，过大则会引入噪音，需根据实际业务需求进行平衡测试。\n4. **采用混合检索策略**：在企业知识库场景中，建议将关键词检索与向量检索结合使用，提升整体召回准确率。\n5. **其他辅助优化**：可尝试补充业务关键词、引入重排序（Rerank）机制，或通过 Prompt 约束来规范最终输出结果。\n\n请相关团队评估并落实上述优化措施。",
+    "priority": "medium"
+  },
+  "status": "success",
+  "content": "{\n  \"ticketNo\": \"TICKET-1781268405370\",\n  \"title\": \"跟进 RAG 检索优化建议\",\n  \"description\": \"根据知识库查询结果，RAG 检索优化建议如下：\\n1. **优化文档切分**：合理控制 `chunk` 大小。切分过大易混入无关内容，过小则可能丢失关键上下文，直接影响检索质量。\\n2. **选型合适的 Embedding 模型**：不同语言或垂直业务领域适用的模型存在差异，需结合实际场景选型以增强语义匹配能力。\\n3. **调优召回数量（TopK）**：`TopK` 设置过小容易漏掉相关资料，过大则会引入噪音，需根据实际业务需求进行平衡测试。\\n4. **采用混合检索策略**：在企业知识库场景中，建议将关键词检索与向量检索结合使用，提升整体召回准确率。\\n5. **其他辅助优化**：可尝试补充业务关键词、引入重排序（Rerank）机制，或通过 Prompt 约束来规范最终输出结果。\\n\\n请相关团队评估并落实上述优化措施。\",\n  \"priority\": \"medium\",\n  \"status\": \"created\",\n  \"message\": \"工单已创建，后续将由技术支持人员跟进。\"\n}",
+  "durationMs": 1
+}
+
+Checkpoint 中累计 messages 数量： 7
+累计 traceSteps 数量： 7
+累计工具执行记录数量： 2

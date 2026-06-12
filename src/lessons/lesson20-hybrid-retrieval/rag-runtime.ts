@@ -1,0 +1,69 @@
+import path from "node:path";
+
+import type { RagChatModel } from "./rag/rag-qa-chain.js";
+import { createEmbeddingModel } from "./embedding/create-embedding-model.js";
+import { embedChunks } from "./embedding/chunk-embedding.js";
+import { loadMarkdownDocuments } from "./loader/markdown-loader.js";
+import { splitDocumentsIntoChunks } from "./loader/text-splitter.js";
+import { RagQaChain } from "./rag/rag-qa-chain.js";
+import { HybridRetriever } from "./retrieval/hybrid-retriever.js";
+import { KeywordRetriever } from "./retrieval/keyword-retriever.js";
+import { MemoryVectorStore } from "./vector-store/memory-vector-store.js";
+
+export type RagRuntime = {
+  ragQaChain: RagQaChain;
+  documentCount: number;
+  chunkCount: number;
+  embeddingCount: number;
+  retrievalMode: "hybrid";
+};
+
+export async function createRagRuntime(params: {
+  model: RagChatModel;
+}): Promise<RagRuntime> {
+  const docsDir = path.resolve(
+    process.cwd(),
+    "src/lessons/lesson20-hybrid-retrieval/documents",
+  );
+
+  const documents = await loadMarkdownDocuments({
+    docsDir,
+  });
+
+  const chunks = splitDocumentsIntoChunks(documents, {
+    maxChunkChars: 220,
+    overlapChars: 40,
+  });
+
+  const embeddings = createEmbeddingModel();
+
+  const chunkEmbeddings = await embedChunks({
+    chunks,
+    embeddings,
+  });
+
+  const vectorStore = new MemoryVectorStore(embeddings, chunkEmbeddings);
+
+  const keywordRetriever = new KeywordRetriever(chunkEmbeddings);
+
+  const hybridRetriever = new HybridRetriever({
+    vectorStore,
+    keywordRetriever,
+    vectorWeight: 0.7,
+    keywordWeight: 0.3,
+    candidateKMultiplier: 3,
+  });
+
+  const ragQaChain = new RagQaChain(params.model, hybridRetriever, {
+    topK: 3,
+    minScore: 0.3,
+  });
+
+  return {
+    ragQaChain,
+    documentCount: documents.length,
+    chunkCount: chunks.length,
+    embeddingCount: chunkEmbeddings.length,
+    retrievalMode: "hybrid",
+  };
+}
