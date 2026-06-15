@@ -1,0 +1,245 @@
+========== RAG Evaluation 初始化完成 ==========
+检索模式： hybrid_with_rerank
+文档数量： 3
+Chunk 数量： 5
+Embedding 数量： 5
+评测用例数量： 7
+
+========== RAG Evaluation Summary ==========
+总用例数： 7
+通过数量： 7
+失败数量： 0
+通过率： 100.00%
+有依据问题通过： 6/6
+无依据问题通过： 1/1
+
+========== RAG Evaluation Details ==========
+
+----------------------------------------
+用例： datasource-basic
+结果： PASS
+问题： 企业知识库支持哪些类型的数据源？
+说明： 基础数据源问题，应该命中知识库数据源文档。
+预期来源： knowledge-base-guide.md
+实际来源： knowledge-base-guide.md, rag-optimization.md
+是否应该有依据： true
+实际是否有依据： true
+
+检索结果：
+Top 1
+title: 企业知识库支持的数据源
+source: knowledge-base-guide.md
+score: 0.7563
+originalScore: 0.8296
+rerankScore: 0.7563
+retrievalSources: vector, keyword
+matchedKeywords: 知识库, 数据源
+rerankReasons: 同时被向量检索和关键词检索召回；标题命中查询关键词；正文内容命中查询关键词；关键词检索命中：知识库, 数据源；多路检索结果一致，增加可信度
+Top 2
+title: 企业知识库支持的数据源
+source: knowledge-base-guide.md
+score: 0.6115
+originalScore: 0.6269
+rerankScore: 0.6115
+retrievalSources: vector, keyword
+matchedKeywords: 知识库, 数据源
+rerankReasons: 同时被向量检索和关键词检索召回；标题命中查询关键词；正文内容命中查询关键词；关键词检索命中：知识库, 数据源；多路检索结果一致，增加可信度
+Top 3
+title: RAG 检索效果不好怎么办
+source: rag-optimization.md
+score: 0.4207
+originalScore: 0.5286
+rerankScore: 0.4207
+retrievalSources: vector, keyword
+matchedKeywords: 知识库
+rerankReasons: 同时被向量检索和关键词检索召回；正文内容命中查询关键词；关键词检索命中：知识库；多路检索结果一致，增加可信度
+
+答案预览：
+根据现有资料，企业知识库当前支持的数据源如下：
+
+* **Markdown**：适合沉淀结构化技术文档（如系统说明、接口说明、部署说明和排障手册）。
+* **PDF / Word**：常见于企业制度、项目方案、验收材料和用户手册。
+* **网页 URL**：可用于接入在线帮助文档、产品说明页面和内部知识门户。
+* **
+
+----------------------------------------
+用例： datasource-exact-keyword
+结果： PASS
+问题： 知识库支持 PDF、Word 和 Markdown 文档接入吗？
+说明： 包含 PDF、Word、Markdown 等精确关键词，应该命中数据源文档。
+预期来源： knowledge-base-guide.md
+实际来源： knowledge-base-guide.md
+是否应该有依据： true
+实际是否有依据： true
+
+检索结果：
+Top 1
+title: 企业知识库支持的数据源
+source: knowledge-base-guide.md
+score: 0.7112
+originalScore: 0.8272
+rerankScore: 0.7112
+retrievalSources: vector, keyword
+matchedKeywords: 知识库支持, pdf, word, markdown, 知识库, 文档, 接入
+rerankReasons: 同时被向量检索和关键词检索召回；标题命中查询关键词；正文内容命中查询关键词；关键词检索命中：知识库支持, pdf, word, markdown, 知识库, 文档, 接入；多路检索结果一致，增加可信度
+Top 2
+title: 企业知识库支持的数据源
+source: knowledge-base-guide.md
+score: 0.5213
+originalScore: 0.6068
+rerankScore: 0.5213
+retrievalSources: vector, keyword
+matchedKeywords: 知识库支持, 知识库, 文档, 接入
+rerankReasons: 同时被向量检索和关键词检索召回；标题命中查询关键词；正文内容命中查询关键词；关键词检索命中：知识库支持, 知识库, 文档, 接入；多路检索结果一致，增加可信度
+
+答案预览：
+是的，企业知识库目前支持 PDF、Word 和 Markdown 文档的接入。
+
+- **Markdown**：适合沉淀结构化技术文档（如系统说明、接口说明、部署说明和排障手册）。
+- **PDF 和 Word**：常见于企业制度、项目方案、验收材料和用户手册。
+
+此外，知识库当前还支持网页 URL 和内部 FAQ 文
+
+----------------------------------------
+用例： rag-optimization-semantic
+结果： PASS
+问题： 知识库召回不准应该怎么优化？
+说明： 表达和标题不完全一致，测试语义检索和混合检索能力。
+预期来源： rag-optimization.md
+实际来源： rag-optimization.md
+是否应该有依据： true
+实际是否有依据： true
+
+检索结果：
+Top 1
+title: RAG 检索效果不好怎么办
+source: rag-optimization.md
+score: 0.5291
+originalScore: 0.6802
+rerankScore: 0.5291
+retrievalSources: vector, keyword
+matchedKeywords: 知识库, 召回
+rerankReasons: 同时被向量检索和关键词检索召回；正文内容命中查询关键词；关键词检索命中：知识库, 召回；多路检索结果一致，增加可信度
+Top 2
+title: RAG 检索效果不好怎么办
+source: rag-optimization.md
+score: 0.5113
+originalScore: 0.6478
+rerankScore: 0.5113
+retrievalSources: vector, keyword
+matchedKeywords: 召回, 优化
+rerankReasons: 同时被向量检索和关键词检索召回；正文内容命中查询关键词；关键词检索命中：召回, 优化；多路检索结果一致，增加可信度
+
+答案预览：
+针对知识库召回不准的问题，可优先从以下几个维度进行优化（基于现有资料）：
+
+- **优化文档切分**：合理调整 `chunk` 大小。切分过大易混入无关内容，过小则可能丢失关键上下文。
+- **适配 Embedding 模型**：不同语言或垂直业务领域对语义理解要求不同，需选择或微调更匹配的 Embedding 模型以
+
+----------------------------------------
+用例： rag-optimization-direct
+结果： PASS
+问题： RAG 检索效果不好怎么办？
+说明： 和文档标题高度一致，应该稳定命中 RAG 优化文档。
+预期来源： rag-optimization.md
+实际来源： rag-optimization.md
+是否应该有依据： true
+实际是否有依据： true
+
+检索结果：
+Top 1
+title: RAG 检索效果不好怎么办
+source: rag-optimization.md
+score: 0.9738
+originalScore: 0.9523
+rerankScore: 0.9738
+retrievalSources: vector, keyword
+matchedKeywords: rag, 检索效果不好怎么办, 检索
+rerankReasons: 同时被向量检索和关键词检索召回；标题命中查询关键词；来源或文件名命中查询关键词；正文内容命中查询关键词；关键词检索命中：rag, 检索效果不好怎么办, 检索；多路检索结果一致，增加可信度
+Top 2
+title: RAG 检索效果不好怎么办
+source: rag-optimization.md
+score: 0.7802
+originalScore: 0.7216
+rerankScore: 0.7802
+retrievalSources: vector, keyword
+matchedKeywords: rag, 检索效果不好怎么办, 检索
+rerankReasons: 同时被向量检索和关键词检索召回；标题命中查询关键词；来源或文件名命中查询关键词；正文内容命中查询关键词；关键词检索命中：rag, 检索效果不好怎么办, 检索；多路检索结果一致，增加可信度
+
+答案预览：
+如果 RAG 检索效果不佳，建议从以下核心维度进行优化：
+
+1. **优化文档切分**：合理调整 chunk 大小。chunk 过大会混入过多无关内容，过小则容易丢失关键上下文。
+2. **选型合适的 Embedding 模型**：不同语言及垂直业务领域适用的模型存在差异，需针对性选型以保障语义匹配能力。
+3. **调
+
+----------------------------------------
+用例： agent-tool-policy
+结果： PASS
+问题： agent-tool-policy.md 里关于工具调用安全是怎么说的？
+说明： 包含精确文件名，测试关键词检索和 rerank 对 source 的加权。
+预期来源： agent-tool-policy.md
+实际来源： agent-tool-policy.md
+是否应该有依据： true
+实际是否有依据： true
+
+检索结果：
+Top 1
+title: Agent 工具调用规范
+source: agent-tool-policy.md
+score: 0.7318
+originalScore: 0.7778
+rerankScore: 0.7318
+retrievalSources: vector, keyword
+matchedKeywords: agent-tool-policy.md, 工具, agent, tool
+rerankReasons: 同时被向量检索和关键词检索召回；标题命中查询关键词；来源或文件名命中查询关键词；正文内容命中查询关键词；关键词检索命中：agent-tool-policy.md, 工具, agent, tool；多路检索结果一致，增加可信度
+
+答案预览：
+根据《agent-tool-policy.md》（Agent 工具调用规范），关于工具调用安全主要包含以下核心要求：
+
+1. **意图识别**：调用前必须先判断用户真实意图，禁止仅因输入中出现某个关键词就直接触发工具。
+2. **参数校验**：工具入参必须通过 Schema 校验，避免模型生成不完整或错误的参数导致执行
+
+----------------------------------------
+用例： ticket-security
+结果： PASS
+问题： 创建工单前需要做哪些权限控制和人工确认？
+说明： 测试 Agent 工具安全规范相关问题。
+预期来源： agent-tool-policy.md
+实际来源： agent-tool-policy.md
+是否应该有依据： true
+实际是否有依据： true
+
+检索结果：
+Top 1
+title: Agent 工具调用规范
+source: agent-tool-policy.md
+score: 0.5626
+originalScore: 0.6730
+rerankScore: 0.5626
+retrievalSources: vector, keyword
+matchedKeywords: 工单, 权限, 人工确认
+rerankReasons: 同时被向量检索和关键词检索召回；正文内容命中查询关键词；关键词检索命中：工单, 权限, 人工确认；多路检索结果一致，增加可信度
+
+答案预览：
+根据《Agent 工具调用规范》，在创建工单前需按以下顺序执行控制与确认：
+
+1. **权限校验**：必须先检查当前用户的操作权限，确保其具备创建工单的对应权限。
+2. **风险分级确认**：根据该工单操作的风险等级，动态判断是否触发人工二次确认。高风险操作需在获得人工明确确认后才会正式执行。
+
+参考来源：Agent 
+
+----------------------------------------
+用例： no-evidence-performance
+结果： PASS
+问题： 接口响应很慢应该怎么排查？
+说明： 当前知识库没有接口性能排查资料，应该返回无可靠依据。
+预期来源： 无
+实际来源： 无
+是否应该有依据： false
+实际是否有依据： false
+
+检索结果：
+
+答案预览：
+当前知识库中没有找到可靠依据，无法基于已有资料回答这个问题。建议补充相关文档后再查询。
