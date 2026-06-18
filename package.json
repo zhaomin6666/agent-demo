@@ -26,7 +26,8 @@
     "lesson:19": "tsx src/lessons/lesson19-rag-as-agent-tool/index.ts",
     "lesson:20": "tsx src/lessons/lesson20-hybrid-retrieval/index.ts",
     "lesson:21": "tsx src/lessons/lesson21-rerank-introduction/index.ts",
-    "lesson:22": "tsx src/lessons/lesson22-rag-evaluation/index.ts"
+    "lesson:22": "tsx src/lessons/lesson22-rag-evaluation/index.ts",
+    "lesson:23": "tsx src/lessons/lesson23-observability/index.ts"
   },
   "keywords": [],
   "author": "",

@@ -1,0 +1,159 @@
+========== Observability Demo 初始化完成 ==========
+检索模式： hybrid_with_rerank
+文档数量： 3
+Chunk 数量： 5
+Embedding 数量： 5
+评测用例数量： 7
+
+========== 当前运行评测用例 ==========
+caseId： datasource-basic
+question： 企业知识库支持哪些类型的数据源？
+
+========== RAG Evaluation Summary ==========
+总用例数： 1
+通过数量： 1
+失败数量： 0
+通过率： 100.00%
+有依据问题通过： 1/1
+无依据问题通过： 0/0
+
+========== RAG Evaluation Details ==========
+
+----------------------------------------
+用例： datasource-basic
+结果： PASS
+问题： 企业知识库支持哪些类型的数据源？
+说明： 基础数据源问题，应该命中知识库数据源文档。
+预期来源： knowledge-base-guide.md
+实际来源： knowledge-base-guide.md
+是否应该有依据： true
+实际是否有依据： true
+
+检索结果：
+Top 1
+title: 企业知识库支持的数据源
+source: knowledge-base-guide.md
+score: 0.7563
+originalScore: 0.8296
+rerankScore: 0.7563
+retrievalSources: vector, keyword
+matchedKeywords: 知识库, 数据源
+rerankReasons: 同时被向量检索和关键词检索召回；标题命中查询关键词；正文内容命中查询关键词；关键词检索命中：知识库, 数据源；多路检索结果一致，增加可信度
+
+答案预览：
+根据现有资料，企业知识库当前支持以下数据源：
+
+- **Markdown**：适合沉淀结构化技术文档（如系统说明、接口说明、部署说明和排障手册）。
+- **PDF / Word**：常用于企业制度、项目方案、验收材料和用户手册等。
+- **网页 URL**：可用于接入在线帮助文档、产品说明页面和内部知识门户。
+- **
+
+========== Trace Summary ==========
+事件总数： 10
+完成事件数： 5
+失败事件数： 0
+Trace 数量： 1
+
+按类型统计：
+- evaluation.case: total=2, completed=1, failed=0
+- rag.invoke: total=2, completed=1, failed=0
+- rag.retrieve: total=2, completed=1, failed=0
+- rag.context: total=2, completed=1, failed=0
+- rag.generate: total=2, completed=1, failed=0
+
+========== Trace Details ==========
+
+----------------------------------------
+traceId: trace-a6562abe-bbe1-49f5-ad1d-84331d9dfefb
+spanId: span-7a135521-eecc-4679-b360-5b0e2a8a9f18
+type: rag.retrieve
+name: retriever.similaritySearch
+status: completed
+durationMs: 220
+metadata: {
+  "topK": 3,
+  "minScore": 0.5
+}
+output: {
+  "resultCount": 1,
+  "sources": [
+    "knowledge-base-guide.md"
+  ],
+  "topResults": [
+    {
+      "title": "企业知识库支持的数据源",
+      "source": "knowledge-base-guide.md",
+      "score": 0.7563,
+      "rerankScore": 0.7563
+    }
+  ]
+}
+
+----------------------------------------
+traceId: trace-a6562abe-bbe1-49f5-ad1d-84331d9dfefb
+spanId: span-eb41426c-50c7-4d02-8691-ff4a9ca043de
+type: rag.context
+name: buildRagContext
+status: completed
+durationMs: 0
+metadata: {}
+output: {
+  "contextLength": 417
+}
+
+----------------------------------------
+traceId: trace-a6562abe-bbe1-49f5-ad1d-84331d9dfefb
+spanId: span-2e0416a9-17d6-4671-b0dc-c8138c035067
+type: rag.generate
+name: model.invoke
+status: completed
+durationMs: 5080
+metadata: {}
+output: {
+  "answerPreview": "根据现有资料，企业知识库当前支持以下数据源：\n\n- **Markdown**：适合沉淀结构化技术文档（如系统说明、接口说明、部署说明和排障手册）。\n- **PDF / Word**：常用于企业制度、项目方案、验收材料和用户手册等。\n- **网页 URL**：可用于接入在线帮助文档、产品说明页面和内部知识门户。\n- **"
+}
+
+----------------------------------------
+traceId: trace-a6562abe-bbe1-49f5-ad1d-84331d9dfefb
+spanId: span-f8c357f2-4f74-4df7-b056-b6ce1bae6bb9
+type: rag.invoke
+name: RagQaChain.invoke
+status: completed
+durationMs: 5300
+metadata: {
+  "topK": 3,
+  "minScore": 0.5
+}
+output: {
+  "status": "success",
+  "resultCount": 1,
+  "sources": [
+    "knowledge-base-guide.md"
+  ],
+  "answerPreview": "根据现有资料，企业知识库当前支持以下数据源：\n\n- **Markdown**：适合沉淀结构化技术文档（如系统说明、接口说明、部署说明和排障手册）。\n- **PDF / Word**：常用于企业制度、项目方案、验收材料和用户手册等。\n- **网页 URL**：可用于接入在线帮助文档、产品说明页面和内部知识门户。\n- **"
+}
+
+----------------------------------------
+traceId: trace-a6562abe-bbe1-49f5-ad1d-84331d9dfefb
+spanId: span-7a7fc70b-1c20-4111-a1b6-abce424c0985
+type: evaluation.case
+name: datasource-basic
+status: completed
+durationMs: 5301
+metadata: {
+  "expectedSources": [
+    "knowledge-base-guide.md"
+  ],
+  "shouldHaveEvidence": true,
+  "note": "基础数据源问题，应该命中知识库数据源文档。"
+}
+output: {
+  "passed": true,
+  "expectedSources": [
+    "knowledge-base-guide.md"
+  ],
+  "actualSources": [
+    "knowledge-base-guide.md"
+  ],
+  "hasEvidence": true
+}
