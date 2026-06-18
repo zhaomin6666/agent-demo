@@ -1,453 +1,1459 @@
 ---
-title: "从零到一，规划一个 30 节课的 AI Agent 实战学习路线"
-slug: "ai-agent-30-lessons-roadmap"
-summary: "一个 Java 后端开发者转型 AI Agent 方向的 30 节课学习计划。从第一次 LLM 调用到 RAG 知识库、LangGraph 状态图、前后端集成、部署上线，完整记录一个企业级 AI Agent Demo 的构建过程。"
-date: "2026-06-10"
-updatedAt: "2026-06-10"
-tags: ["AI Agent", "LangChain.js", "LangGraph", "RAG", "TypeScript", "学习计划"]
+title: "TypeScript + LangChain.js + LangGraph.js AI Agent 实战学习路线"
+slug: "ts-langchain-langgraph-ai-agent-course-roadmap"
+summary: "一套面向 Java 后端开发者和全栈学习者的 AI Agent 实战课程，从 LLM 调用、Tool Calling、LangGraph、RAG、API 服务化、前端流式交互、多 Agent、Memory，到企业级 Agent 7 层架构。"
+date: "2026-06-18"
+updatedAt: "2026-06-18"
+tags: ["AI Agent", "LangChain.js", "LangGraph", "RAG", "Memory", "Multi-Agent", "TypeScript", "学习路线"]
 series: "TypeScript + LangChain.js + LangGraph.js AI Agent 实战"
 seriesSlug: "ts-langchain-langgraph-agent"
 seriesOrder: 0
 status: "published"
 lang: "zh"
 cover: ""
-seoTitle: "从零到一，规划一个 30 节课的 AI Agent 实战学习路线"
-seoDescription: "一个 Java 后端开发者转型全栈 AI Agent 方向的 30 节课学习路线图，覆盖 LLM 调用、Tool Calling、LangGraph 状态图、RAG 知识库、API 服务化、前端 UI、Docker 部署和面试包装。"
+seoTitle: "TypeScript + LangChain.js + LangGraph.js AI Agent 实战学习路线"
+seoDescription: "一套完整的 AI Agent 实战课程说明，覆盖 TypeScript 工程化、LangChain.js、LangGraph.js、Tool Calling、RAG、API 服务化、SSE 流式输出、多 Agent、Memory 和企业级 Agent 架构。"
 ---
 
-# 从零到一，规划一个 30 节课的 AI Agent 实战学习路线
+# TypeScript + LangChain.js + LangGraph.js AI Agent 实战学习路线
 
 ## 前言
 
-最近 AI Agent 的讨论越来越多了。身边做后端的同事、技术社区里的文章、各种新框架的 release note，都在往这个方向靠。
+这套课程想解决一个很具体的问题：**如果一个 Java 后端开发者想认真学习 AI Agent 开发，应该按什么顺序学，最后能做出什么东西？**
 
-我花了一段时间思考：**作为一个 Java 后端开发者，我到底要不要认真学 Agent 开发？**
+我不太想把它做成一组零散的框架示例。只会调用一次大模型、只会写一个 Prompt、只会跑一个 RAG demo，其实都很难真正说明自己理解了 Agent 工程。
 
-想来想去，答案还是"要"。不是为了追热点，而是我确实看到了一些真实的变化——模型能力在变强、Tool Calling 在被更多框架采纳、RAG 正在成为企业落地 AI 的主流方案。这些不是概念炒作，是实实在在写代码就能感受到的东西。
+所以这套路线会围绕一个完整项目展开：从一个空的 TypeScript 项目开始，一步步做出一个企业级 AI 知识库 Agent Demo。
 
-但学什么、怎么学，一开始我也没太想清楚。
+这个 Demo 不只是聊天页面。它会逐步具备这些能力：
 
-网上有大量碎片教程：LangChain 的官方文档、各种"10 分钟上手 Agent"的视频、GitHub 上的示例项目。问题是它们大多只覆盖了某一个点——要么只讲 LLM 调用，要么只讲 RAG，要么只讲 LangGraph。很少有东西能把整条链路串起来，从一个空项目开始，一步步走到一个可以展示、可以部署、可以在面试里讲清楚的完整项目。
+```text
+1. 调用大模型并管理 Prompt
+2. 让模型输出结构化数据
+3. 支持 Tool Calling 和工具执行
+4. 使用 LangGraph 管理 Agent 状态
+5. 支持多轮对话、人工确认和权限控制
+6. 接入 RAG 知识库问答
+7. 支持混合检索、重排序和评估
+8. 提供 HTTP API 和 SSE 流式输出
+9. 提供前端 Chat UI 和 Trace 展示
+10. 理解多 Agent、Memory 和企业级 Agent 分层架构
+```
 
-所以我决定自己规划一条路线，**从第一次 LLM 调用开始，用一个 30 节课的系列，逐步完成一个企业级 AI 知识库 Agent Demo**。
+我更愿意把这套课程理解成一条工程化路线，而不是单纯的技术清单。
 
-这篇文章就是这份路线图的整理。写的时候我还没有开始写后面的课程，所以它更像是一个阶段性的规划——是我对"Agent 开发到底要学哪些东西"这个问题的理解和拆解。后面实际推进的时候，可能会根据情况调整，但大方向应该不会差太多。
+它的重点不是“用上某个框架”，而是把一个 Agent 系统从最小模型调用，逐步推进到可以被页面调用、可以追踪执行过程、可以解释知识来源、可以拆分架构边界的状态。
 
 ---
 
-## 我想要做什么样的项目
+## 课程适合谁
 
-先说清楚终点，再说路线。
+这套课程主要适合几类人：
 
-我想做的项目是一个 **企业级 AI 知识库助手**。它的核心能力是：
+```text
+1. 有 Java 后端经验，想转向 AI Agent / 全栈方向的人
+2. 已经会一点 TypeScript，但想通过真实项目提高工程能力的人
+3. 学过 LangChain 或 RAG，但不知道怎么把它们串成完整项目的人
+4. 想做一个能展示、能讲清楚、有工程含量的 AI Agent Demo 的人
+5. 希望从后端系统设计角度理解 Agent，而不是只停留在 Prompt 层面的人
+```
 
-1. 接入企业内部文档，用户可以用自然语言提问，系统基于知识库回答
-2. Agent 可以调用工具（查知识库、创建工单、查询状态等）
-3. 高风险操作需要人工确认
-4. 工具调用有权限控制
-5. 支持多轮对话，记住上下文
-6. 执行过程可追踪、可解释
-7. 有 API 接口和前端页面
-8. 能用 Docker 部署
+如果你完全没有编程基础，这套路线可能会有点快。
 
-技术栈：
-
-- **TypeScript** — 我在转型全栈，TypeScript 是必须拿下的
-- **LangChain.js** — LLM 调用、Prompt 管理、结构化输出
-- **LangGraph.js** — Agent 状态图、多轮流程控制
-- **阿里云百炼 / 通义千问** — 国内模型，接入方便
-- **zod** — 结构化校验
-- **Fastify** — API 服务
-- **Docker** — 部署
+但如果你已经写过后端服务，理解接口、状态、权限、日志、数据结构这些概念，那么学习 Agent 时反而会有一些优势。因为真正麻烦的部分，往往不只是模型，而是模型和真实系统之间的连接方式。
 
 ---
 
-## 路线图概览
+## 最终项目形态
 
-我把 30 节课分成了七个阶段。每个阶段有一个明确的目标，课程之间有依赖关系，但不要求每个阶段内部完全线性推进。
+课程最终会围绕一个企业级 AI 知识库 Agent Demo 展开。
+
+它的大致形态是：
 
 ```text
-第一阶段（第 1 ~ 4 课）：LLM 基础、Prompt、结构化输出、意图识别
-第二阶段（第 5 ~ 7 课）：Tool Calling、ToolExecutor、Agent Loop
-第三阶段（第 8 ~ 13 课）：LangGraph、状态增强、持久化、人工确认、权限控制
-第四阶段（第 14 ~ 19 课）：RAG 核心链路，从文档到 Agent Tool
-第五阶段（第 20 ~ 23 课）：RAG 优化、评估、Agent 可观测性
-第六阶段（第 24 ~ 27 课）：API 服务化、会话接口、前端页面、Trace 展示
-第七阶段（第 28 ~ 30 课）：Docker 部署、作品集包装、面试答辩
+用户
+  ↓
+前端 Chat 页面
+  ↓
+HTTP / SSE API
+  ↓
+Agent Graph / Multi-Agent Orchestration
+  ↓
+Tool Executor / RAG / Memory
+  ↓
+Trace / Evaluation / Governance
 ```
 
-下面逐阶段展开。
+这个项目会尽量覆盖企业级 Agent 中比较核心的工程问题：
+
+```text
+1. 用户如何和 Agent 交互
+2. Agent 如何决定下一步执行什么
+3. 工具调用如何注册、执行和兜底
+4. 高风险操作如何人工确认
+5. 不同用户角色如何做权限控制
+6. 知识库如何加载、切分、检索和回答
+7. RAG 效果如何评估和优化
+8. 多 Agent 如何分工、协作和传递状态
+9. Memory 如何抽取、写入、检索、注入和遗忘
+10. 系统如何通过 Trace、日志和评测集持续优化
+```
+
+这些内容看起来多，但它们不是孤立的。前面的课程会不断为后面的能力打基础，后面的课程也会反过来解释前面为什么要那样设计。
 
 ---
 
-## 第一阶段：LLM 基础与结构化输出
+## 技术栈
 
-这个阶段的目标很简单：**先跑通，再理解**。
-
-从零搭建项目，完成第一次 LLM 调用，然后逐步学习消息模型、Prompt 模板、结构化输出。到第 4 课结束时，能有一个可用的意图识别器，为后面的 Tool Calling 打基础。
-
-### 第 1 课：搭建 TypeScript AI 项目，完成第一次 LLM 调用
-
-从一个空目录开始。用 pnpm 初始化项目，配置 TypeScript 环境，接入阿里云百炼的 OpenAI 兼容接口，跑通第一次 `ChatOpenAI` 调用。
-
-这是整个系列的起点，不追求复杂，先让模型回复一句话就行。
+这套课程主要使用：
 
 ```text
-产出：lesson01-first-llm-call
+TypeScript
+LangChain.js
+LangGraph.js
+zod
+Fastify
+Server-Sent Events
+前端 Chat UI
+阿里云百炼 / 通义千问
+RAG
+Tool Calling
+Memory
+Trace / Evaluation
 ```
 
-### 第 2 课：LangChain.js 消息模型与 Prompt 基础
+选择 TypeScript，是因为它适合把前后端、模型调用、工具定义和结构化数据放在同一个学习路径里。
 
-理解 `SystemMessage` / `HumanMessage` / `AIMessage` 三种消息角色，学习 `ChatPromptTemplate` 和模板变量。
+选择 LangChain.js 和 LangGraph.js，是因为它们能比较自然地覆盖模型调用、工具绑定、状态图、Checkpoint、多轮对话这些 Agent 开发中的关键概念。
 
-作为 Java 后端，我会把这些概念和 Controller-Service 的参数传递做一个类比——消息对象就是请求参数，Prompt 模板就是接口的入参模板。
-
-```text
-产出：lesson02-prompt-messages
-```
-
-### 第 3 课：让大模型输出 JSON，并用 zod 做结构化校验
-
-让模型严格返回 JSON，处理 Markdown 代码块包裹的情况，用 zod 做类型校验，最后实现一个简单的意图识别。
-
-这一课解决的问题是：**模型的输出是自由文本，但程序需要结构化数据**。这是后面所有工程化的基础。
-
-```text
-产出：lesson03-structured-output
-```
-
-### 第 4 课：封装可复用的 Intent Classifier
-
-把意图识别封装成一个 class，增加 `success` / `rawOutput` / `errorMessage` 状态管理，加 fallback 兜底，批量测试多个输入。
-
-这一课的产出虽然看起来简单，但它引入了一个重要的工程化思路：**把 LLM 调用封装成可测试、可复用的组件**。后面的 Tool、Agent、RAG 都会沿用这个思路。
-
-```text
-产出：lesson04-intent-classifier
-```
+zod 会贯穿很多课程。原因也很简单：大模型输出不是天然可靠的，越往工程化走，越需要运行时校验。
 
 ---
 
-## 第二阶段：Tool Calling 与 Agent 基础
+# 一、课程路线总览
 
-第一阶段解决的是"和模型对话"的问题。这一阶段解决的是"让模型调用工具"的问题。
-
-这是 Agent 和普通聊天机器人的核心区别——Agent 不只是回答问题，还能执行操作。
-
-### 第 5 课：Tool Calling 入门
-
-理解 Tool Calling 的原理，定义 `search_knowledge_base` 和 `create_ticket` 两个工具，用 `bindTools` 绑定到模型，执行模型返回的 `tool_calls`。
-
-这一课会有一个比较有意思的观察：去看模型请求里实际发送的 `tools` schema 是什么样的。你会意识到模型并不是"直接调用函数"，而是返回一个结构化的调用指令，由你的代码来执行。
+整套课程分成九个阶段，共 47 课。
 
 ```text
-产出：lesson05-tool-calling
+阶段 A：LLM 基础与结构化输出
+阶段 B：Tool Calling 与 Agent Loop
+阶段 C：LangGraph 状态图
+阶段 D：RAG 知识库核心能力
+阶段 E：RAG 优化、评估与可观测性
+阶段 F：API 服务化与前端流式交互
+阶段 G：多 Agent 的本质和 Demo
+阶段 H：Memory 的记录、检索和治理
+阶段 I：企业级 Agent 的 7 层架构理解
 ```
 
-### 第 6 课：封装 Tool Executor
-
-统一注册、查找、执行工具，处理工具不存在和执行异常的情况，记录执行日志。
-
-这和 Java 后端的 Service 层设计很像——你需要一个统一的入口来管理所有工具的生命周期，而不是每个工具各写各的。
+如果把它压缩成一句话，就是：
 
 ```text
-产出：lesson06-tool-executor
-```
-
-### 第 7 课：Agent Loop 入门，开始工程化拆分
-
-理解 Agent Loop 的核心逻辑：调用模型 → 检查是否有 tool_calls → 执行工具 → 把结果喂回模型 → 重复。设置 `maxIterations` 防止死循环。
-
-同时开始拆分目录结构：`data` / `tools` / `executor` / `model` / `agent`。这一课还有一个比较头疼的问题：NodeNext 模块下本地 import 要加 `.js` 后缀，这对从 Java 过来的人来说需要适应一下。
-
-```text
-产出：lesson07-agent-loop
+先让模型稳定工作，再让模型调用工具；
+先做出单 Agent，再接入知识库；
+先提供 API 和页面，再理解多 Agent、Memory 和企业级架构。
 ```
 
 ---
 
-## 第三阶段：LangGraph 状态图
+# 二、阶段 A：LLM 基础与结构化输出
 
-前两个阶段用的是手写的 for 循环实现 Agent Loop。这一阶段引入 LangGraph，把循环改造成状态图。
+这个阶段先解决最基础的问题：如何在 TypeScript 项目里调用大模型，并让模型输出程序可以处理的数据。
 
-这个转换的意义不只是换了一个框架。状态图让 Agent 的流程变成了声明式的——每个节点做什么、条件边怎么走、状态怎么变化，都是显式定义的。这对后面加人工确认、权限控制、多轮记忆都很关键。
+这里不会急着做 Agent。因为 Agent 后面所有能力，都建立在稳定的模型调用、Prompt 管理和结构化输出之上。
 
-### 第 8 课：引入 LangGraph，把 Agent Loop 改造成状态图
+## 第 1 课：搭建 TypeScript AI 项目，完成第一次 LLM 调用
 
-安装 `@langchain/langgraph`，理解 `StateGraph` / `State` / `Node` / `Edge` 的概念，定义 `AgentState`，把 LLM 节点、Tool 节点、条件边组装起来，替换掉原来的 for 循环。
+目标：
 
 ```text
-产出：lesson08-langgraph-agent
+从零搭建 TypeScript 项目，接入阿里云百炼 OpenAI 兼容接口，完成第一次 ChatOpenAI 调用。
 ```
 
-### 第 9 课：LangGraph 状态增强，记录执行轨迹
-
-扩展 `AgentState`，记录 `currentNode`、`stopReason`、`traceSteps`、`lastToolResult`、`maxIterationsReached`。
-
-这一课解决的问题是：**Agent 执行完了，但你说不清楚它到底做了什么**。对调试和对用户展示来说，可追溯的执行过程都很重要。
+主要内容：
 
 ```text
-产出：lesson09-langgraph-state
+1. 使用 pnpm 初始化项目
+2. 配置 TypeScript 开发环境
+3. 配置环境变量
+4. 创建模型实例
+5. 完成第一次 LLM 调用
 ```
 
-### 第 10 课：LangGraph 持久化，使用 Checkpoint 保存 Agent 状态
-
-理解 Checkpoint 和 `thread_id` 的概念，保存每轮状态，支持同一会话恢复。
-
-这为多轮记忆和人工介入做好了基础——没有持久化，Agent 就是无状态的，每次对话都是全新的。
+产出：
 
 ```text
-产出：lesson10-langgraph-checkpoint
+lesson01-first-llm-call
 ```
 
-### 第 11 课：多轮对话记忆
+## 第 2 课：LangChain.js 消息模型与 Prompt 基础
 
-基于 `thread_id` 实现多轮对话，让 Agent 记住上一轮的问题和回答，控制 `messages` 长度防止上下文爆炸。
-
-这一课会区分短期记忆（当前会话）和长期记忆（跨会话），先实现短期记忆，长期记忆留到后面。
+目标：
 
 ```text
-产出：lesson11-conversation-memory
+理解 SystemMessage、HumanMessage、AIMessage，学习 Prompt 模板和消息组装。
 ```
 
-### 第 12 课：Human-in-the-loop，高风险工具调用前人工确认
-
-区分查询型工具（比如搜索知识库）和操作型工具（比如创建工单），为 `create_ticket` 增加确认流程，设计 `pendingAction` 状态，用户确认后才执行。
-
-这一课要回答的问题很现实：**你敢不敢让 Agent 直接操作生产环境？** 如果不敢，就需要一个确认机制。
+主要内容：
 
 ```text
-产出：lesson12-human-approval
+1. 理解消息角色
+2. 区分系统指令和用户输入
+3. 使用 ChatPromptTemplate
+4. 通过变量组装 Prompt
+5. 用后端参数传递的思路理解 Prompt
 ```
 
-### 第 13 课：工具权限控制
-
-设计 `userContext`，为工具配置权限要求，ToolExecutor 执行前检查权限，未授权时返回友好错误，记录权限拦截日志。
-
-和第 12 课的区别是：人工确认是"我同意你执行"，权限控制是"你有没有资格执行"。一个是流程控制，一个是访问控制。
+产出：
 
 ```text
-产出：lesson13-tool-permission
+lesson02-prompt-messages
 ```
 
----
+## 第 3 课：让大模型输出 JSON，并用 zod 做结构化校验
 
-## 第四阶段：RAG 知识库核心能力
-
-前三阶段搭好了 Agent 框架。这一阶段要解决的核心问题是：**Agent 怎么获取企业内部的知识？**
-
-关键词检索太弱了，直接把文档塞给模型上下文窗口又放不下。RAG（Retrieval-Augmented Generation）是目前最主流的方案：先检索相关文档片段，再把片段作为上下文交给模型生成回答。
-
-### 第 14 课：RAG 入门，理解企业知识库问答流程
-
-理解 RAG 是什么，为什么企业知识库需要它，设计"加载 → 切分 → 向量化 → 检索 → 生成"的完整流程，用内存数据模拟跑通一遍。
+目标：
 
 ```text
-产出：lesson14-rag-introduction
+让模型返回结构化 JSON，并用 zod 做运行时校验。
 ```
 
-### 第 15 课：文档加载与切分
-
-准备 Markdown / TXT 文档，实现文档加载和文本切分，理解 `chunkSize` 和 `overlap` 参数的影响。
-
-切分看起来简单，但它是 RAG 效果的基础——切得太粗，检索不精准；切得太细，上下文丢失。
+主要内容：
 
 ```text
-产出：lesson15-document-loader-splitter
+1. 设计 JSON 输出格式
+2. 处理 Markdown 代码块包裹
+3. 使用 zod 校验模型输出
+4. 区分模型文本和程序数据
+5. 增加异常处理
 ```
 
-### 第 16 课：Embedding 入门
-
-理解 Embedding 的概念，调用阿里云百炼的 Embedding 接口，把文档 chunk 转成向量，理解向量维度，保存 chunk + embedding 结构。
+产出：
 
 ```text
-产出：lesson16-embedding
+lesson03-structured-output
 ```
 
-### 第 17 课：向量检索，实现内存版 Vector Store
+## 第 4 课：封装可复用的 Intent Classifier
 
-实现 cosine similarity，构建内存版 Vector Store，根据用户问题检索 TopK 文档片段，输出检索结果和相似度分数。
-
-这一课不引入外部向量数据库，先用内存实现，理解原理比用工具重要。
+目标：
 
 ```text
-产出：lesson17-memory-vector-store
+把意图识别封装成可复用组件。
 ```
 
-### 第 18 课：RAG 问答闭环
-
-用户问题转 embedding → 检索相关文档 chunk → 构造 RAG Prompt → 让模型基于上下文回答，同时限制模型不要编造知识库外的内容。
-
-这一课把前面的碎片串起来了。第一次看到模型基于你提供的文档回答问题的时候，还是挺有成就感的。
+主要内容：
 
 ```text
-产出：lesson18-rag-qa-chain
+1. 封装 IntentClassifier
+2. 增加 success / error / rawOutput
+3. 增加 fallback 逻辑
+4. 批量测试多组输入
+5. 为 Tool Calling 做准备
 ```
 
-### 第 19 课：把 RAG 封装成 Tool，接入 Agent
-
-将 RAG 问答封装成 `search_knowledge_base` 工具，替换之前的模拟实现，让 Agent 在对话中自动调用，在 LangGraph 中运行完整的 RAG Agent。
-
-到这里，Agent + RAG 的基本形态就完成了。
+产出：
 
 ```text
-产出：lesson19-rag-as-tool
+lesson04-intent-classifier
 ```
 
 ---
 
-## 第五阶段：RAG 优化与评估
+# 三、阶段 B：Tool Calling 与 Agent Loop
 
-第四阶段跑通了 RAG 链路。但"能跑"和"好用"之间还有很大的距离。这一阶段要解决的问题是：**怎么让检索更准、回答更好、效果可衡量？**
+这个阶段开始进入 Agent 的核心：让模型不只是回答问题，还能决定是否调用工具。
 
-### 第 20 课：混合检索，加入关键词召回
+这里最重要的理解是：模型并不会真的执行函数。它只是返回一个结构化的工具调用意图，真正执行工具的是我们的程序。
 
-理解纯向量检索的局限（语义相似但关键词不匹配的场景），增加关键词检索，合并两种召回结果，去重排序，对比优化前后的效果。
+## 第 5 课：Tool Calling 入门
+
+目标：
 
 ```text
-产出：lesson20-hybrid-retrieval
+理解 Tool Calling 的基本原理，让模型返回工具调用指令。
 ```
 
-### 第 21 课：RAG 重排序入门
-
-理解 Rerank 的作用，设计简单的重排规则（基于标题、标签、正文匹配度），对比 TopK 结果的变化，为后续接入真实 rerank 模型做准备。
+主要内容：
 
 ```text
-产出：lesson21-rag-rerank
+1. 定义 search_knowledge_base 工具
+2. 定义 create_ticket 工具
+3. 使用 bindTools 绑定工具
+4. 观察模型返回的 tool_calls
+5. 执行模型请求的工具调用
 ```
 
-### 第 22 课：RAG 评估入门
-
-准备测试问题集，定义期望命中文档，记录检索命中率和回答质量，输出评估报告。
-
-没有评估的优化就是瞎调。这一课建立一套基本的评估流程，后面改什么都先跑一遍测试集。
+产出：
 
 ```text
-产出：lesson22-rag-evaluation
+lesson05-tool-calling
 ```
 
-### 第 23 课：Agent 执行日志增强，设计可观测 Trace
+## 第 6 课：封装 Tool Executor
 
-统一记录 LLM 调用、Tool 调用、RAG 检索结果和每步耗时，输出完整的 Trace JSON。
-
-这一课是 Agent 从"能用"到"可维护"的关键一步。出了问题能查，优化了能对比，而不是只能靠"感觉好像好了一点"。
+目标：
 
 ```text
-产出：lesson23-agent-observability
+统一管理工具注册、查找、执行和异常处理。
 ```
 
----
-
-## 第六阶段：服务化与前后端集成
-
-前五个阶段跑的都是命令行脚本。这一阶段要把 Agent 变成一个真正的服务：有 API、有前端、有会话管理。
-
-说实话，这是我最熟悉的部分——写 API、做前后端对接，后端开发者的基本盘。但把它和 Agent 结合起来，还是会有一些新的挑战。
-
-### 第 24 课：将 Agent 封装成 HTTP API 服务
-
-引入 Fastify，创建 `POST /api/chat` 接口，接收 `userInput` 和 `threadId`，调用 LangGraph Agent，返回最终回答、Trace 和工具日志。
+主要内容：
 
 ```text
-产出：lesson24-agent-api-server
+1. 设计 ToolExecutor
+2. 注册多个工具
+3. 查找工具定义
+4. 执行工具调用
+5. 记录工具执行结果和错误
 ```
 
-### 第 25 课：增加会话接口和历史记录查询
-
-设计 conversation 数据结构，管理 `threadId`，查询历史消息和 Agent 执行记录，为前端页面做准备。
+产出：
 
 ```text
-产出：lesson25-conversation-api
+lesson06-tool-executor
 ```
 
-### 第 26 课：前端 Chat UI 入门
+## 第 7 课：Agent Loop 入门，开始工程化拆分
 
-创建简单聊天页面，输入问题、调用 API、展示回答，处理 loading 和错误状态。
-
-前端不是我的强项，但一个能交互的 Demo 页面，比截图和 curl 输出有说服力得多。
+目标：
 
 ```text
-产出：lesson26-chat-ui
+实现模型调用、工具执行、结果回传、循环调用的基本 Agent Loop。
 ```
 
-### 第 27 课：前端展示 Agent Trace
-
-展示 Agent 的执行步骤、调用了哪些工具、RAG 检索到哪些文档、耗时和状态，做一个可解释的 Agent Demo 页面。
-
-这一课的产出会是一个在面试里可以直接演示的东西。
+主要内容：
 
 ```text
-产出：lesson27-agent-trace-ui
+1. 理解 Agent Loop
+2. 调用模型并检查 tool_calls
+3. 执行工具并把结果回传模型
+4. 使用 maxIterations 防止死循环
+5. 拆分 data / tools / executor / model / agent 目录
+```
+
+产出：
+
+```text
+lesson07-agent-loop
 ```
 
 ---
 
-## 第七阶段：部署、项目包装与求职沉淀
+# 四、阶段 C：LangGraph 状态图
 
-技术做完了，但"做完"和"能展示"之间还有距离。
+手写 Agent Loop 适合理解原理，但继续往下做多轮对话、人工确认、权限控制时，单纯的循环会变得很难维护。
 
-最后三课解决的问题是：**怎么把这个项目变成你的竞争力，而不是 GitHub 上又一个 demo。**
+这个阶段引入 LangGraph，把 Agent 流程改造成状态图。
 
-### 第 28 课：Docker 部署 Agent 服务
+## 第 8 课：引入 LangGraph，把 Agent Loop 改造成状态图
 
-编写 Dockerfile，配置环境变量，构建镜像，运行 Agent API 服务，为服务器部署做准备。
+目标：
 
 ```text
-产出：lesson28-docker-deploy
+用 LangGraph StateGraph 替代手写 Agent Loop。
 ```
 
-### 第 29 课：项目总结与作品集包装
-
-整理项目 README、技术架构图、核心亮点，规划个人网站展示内容和博客目录。
-
-这件事我以前不太重视，现在觉得挺重要——**你做出来的东西，别人看不到，就不存在。**
+主要内容：
 
 ```text
-产出：lesson29-project-summary-portfolio
+1. 安装 @langchain/langgraph
+2. 理解 StateGraph
+3. 定义 AgentState
+4. 创建 LLM 节点和 Tool 节点
+5. 使用条件边控制流程
 ```
 
-### 第 30 课：面试表达与项目答辩
-
-整理项目面试讲法，准备 3 分钟项目介绍和 10 个高频追问，整理技术难点和解决方案，写简历项目描述。
-
-最后一课不是技术课，但它可能是整个系列里最重要的一课。**能不能把项目讲清楚，决定了这个项目在你简历上的价值。**
+产出：
 
 ```text
-产出：lesson30-interview-project-pitch
+lesson08-langgraph-agent
+```
+
+## 第 9 课：LangGraph 状态增强，记录执行轨迹
+
+目标：
+
+```text
+扩展 AgentState，记录 Agent 执行过程。
+```
+
+主要内容：
+
+```text
+1. 增加 currentNode
+2. 增加 stopReason
+3. 增加 traceSteps
+4. 增加 lastToolResult
+5. 记录每一轮执行过程
+```
+
+产出：
+
+```text
+lesson09-langgraph-state
+```
+
+## 第 10 课：LangGraph 持久化，使用 Checkpoint 保存 Agent 状态
+
+目标：
+
+```text
+使用 Checkpoint 保存会话状态。
+```
+
+主要内容：
+
+```text
+1. 理解 thread_id
+2. 使用 MemorySaver
+3. 保存 Agent 状态
+4. 查询历史状态
+5. 为多轮对话和人工介入打基础
+```
+
+产出：
+
+```text
+lesson10-langgraph-checkpoint
+```
+
+## 第 11 课：多轮对话记忆
+
+目标：
+
+```text
+基于 thread_id 实现多轮上下文记忆。
+```
+
+主要内容：
+
+```text
+1. 保存多轮 messages
+2. 使用 thread_id 区分会话
+3. 控制上下文长度
+4. 裁剪历史消息
+5. 区分短期记忆和长期记忆
+```
+
+产出：
+
+```text
+lesson11-conversation-memory
+```
+
+## 第 12 课：Human-in-the-loop，高风险工具调用前人工确认
+
+目标：
+
+```text
+为 create_ticket 这类操作型工具增加人工确认。
+```
+
+主要内容：
+
+```text
+1. 区分查询型工具和操作型工具
+2. 设计 pendingAction
+3. 暂停 Agent 执行
+4. 接收用户确认
+5. 确认后继续执行工具
+```
+
+产出：
+
+```text
+lesson12-human-approval
+```
+
+## 第 13 课：工具权限控制
+
+目标：
+
+```text
+为工具调用增加角色权限校验。
+```
+
+主要内容：
+
+```text
+1. 设计 userContext
+2. 定义 roles
+3. 为工具配置权限要求
+4. 在执行前拦截未授权调用
+5. 将权限判断写入 Agent 状态
+```
+
+产出：
+
+```text
+lesson13-tool-permission
 ```
 
 ---
 
-## 写在后面
+# 五、阶段 D：RAG 知识库核心能力
 
-这份路线图是我对"AI Agent 开发到底要学哪些东西"的一次拆解。
+Agent 如果只依赖模型自己的通用知识，很难用于企业内部场景。
 
-它肯定不完美。有些课可能会在实际推进中调整顺序，有些内容可能会合并或拆分。但我觉得有一个清晰的规划，比没有规划强得多。
+这个阶段开始接入 RAG，让 Agent 能基于项目文档、业务资料和知识库内容回答问题。
 
-我现在的判断是，这 30 节课大概覆盖了一个 Java 后端开发者转型 Agent 方向需要掌握的核心能力：
+## 第 14 课：RAG 入门，理解企业知识库问答流程
+
+目标：
 
 ```text
-TypeScript 工程化
-LangChain.js 模型调用与 Prompt 工程
-zod 结构化校验与意图识别
-Tool Calling 与 ToolExecutor
-Agent Loop 与 LangGraph StateGraph
-Agent 状态追踪与 Checkpoint 持久化
-多轮对话记忆
-Human-in-the-loop 与工具权限控制
-RAG 全链路（文档加载、切分、Embedding、向量检索、问答）
-混合检索与 Rerank
-RAG 评估
-Agent 可观测 Trace
-HTTP API 服务与前后端集成
-Docker 部署
-简历、博客、面试表达
+理解 RAG 的完整流程。
 ```
 
-接下来就按这个路线一步步推进。
+主要内容：
 
-每节课完成后，对应的目录下会有完整的代码和一篇详细的技术博客。如果你也在学类似的东西，可以按顺序跟，也可以直接跳到你感兴趣的阶段。
+```text
+1. 理解 Retrieval-Augmented Generation
+2. 设计加载、切分、向量化、检索、生成流程
+3. 使用内存数据模拟知识库
+4. 构造基础问答链路
+5. 理解 RAG 和普通聊天的区别
+```
+
+产出：
+
+```text
+lesson14-rag-introduction
+```
+
+## 第 15 课：文档加载与切分
+
+目标：
+
+```text
+实现 Markdown 文档加载和 chunk 切分。
+```
+
+主要内容：
+
+```text
+1. 加载 Markdown / TXT 文档
+2. 设计 Document 结构
+3. 实现文本切分
+4. 理解 chunkSize
+5. 理解 overlap 对上下文的影响
+```
+
+产出：
+
+```text
+lesson15-document-loader-splitter
+```
+
+## 第 16 课：Embedding 入门
+
+目标：
+
+```text
+调用 Embedding 模型，把 chunk 转成向量。
+```
+
+主要内容：
+
+```text
+1. 理解 Embedding
+2. 调用阿里云百炼 Embedding 接口
+3. 将文本片段转成向量
+4. 保存 chunk + embedding
+5. 理解向量维度和相似度
+```
+
+产出：
+
+```text
+lesson16-embedding
+```
+
+## 第 17 课：向量检索，实现内存版 Vector Store
+
+目标：
+
+```text
+实现 cosine similarity 和内存版向量检索。
+```
+
+主要内容：
+
+```text
+1. 实现 cosine similarity
+2. 构建 MemoryVectorStore
+3. 实现 similaritySearch
+4. 返回 TopK 结果
+5. 输出相似度分数
+```
+
+产出：
+
+```text
+lesson17-memory-vector-store
+```
+
+## 第 18 课：RAG 问答闭环
+
+目标：
+
+```text
+实现用户问题 → 检索 → 构造 context → 模型回答的闭环。
+```
+
+主要内容：
+
+```text
+1. 实现 RagQaChain
+2. 将问题转成 embedding
+3. 检索相关文档片段
+4. 构造 RAG Prompt
+5. 返回 answer 和 sources
+```
+
+产出：
+
+```text
+lesson18-rag-qa-chain
+```
+
+## 第 19 课：把 RAG 封装成 Tool，接入 Agent
+
+目标：
+
+```text
+把 RAG 问答封装成 search_knowledge_base 工具。
+```
+
+主要内容：
+
+```text
+1. 封装 RAG Tool
+2. 替换模拟知识库工具
+3. 让 Agent 自动调用 RAG
+4. 将 RAG 结果回传模型
+5. 跑通 RAG Agent
+```
+
+产出：
+
+```text
+lesson19-rag-as-agent-tool
+```
 
 ---
 
-博客主题：**如何把 AI Agent Demo 讲成一个有工程价值的项目**
+# 六、阶段 E：RAG 优化、评估与可观测性
+
+RAG 跑通之后，下一个问题是效果。
+
+检索是否命中了正确资料，回答是否引用了可靠来源，优化是否真的带来提升，都需要被记录和评估。
+
+## 第 20 课：混合检索，加入关键词召回
+
+目标：
+
+```text
+在向量检索之外增加关键词检索。
+```
+
+主要内容：
+
+```text
+1. 理解纯向量检索的局限
+2. 实现 KeywordRetriever
+3. 实现 HybridRetriever
+4. 设置 vectorWeight 和 keywordWeight
+5. 合并多路召回结果
+```
+
+产出：
+
+```text
+lesson20-hybrid-retrieval
+```
+
+## 第 21 课：Rerank 入门，对混合检索结果进行二次排序
+
+目标：
+
+```text
+对初筛候选结果进行二次排序。
+```
+
+主要内容：
+
+```text
+1. 区分 Retrieval 和 Rerank
+2. 实现 SimpleRuleBasedReranker
+3. 实现 RerankedRetriever
+4. 输出 originalScore
+5. 输出 rerankScore 和 rerankReasons
+```
+
+产出：
+
+```text
+lesson21-rerank-introduction
+```
+
+## 第 22 课：RAG Evaluation 入门，构建最小评测集
+
+目标：
+
+```text
+为 RAG 构建最小评测集。
+```
+
+主要内容：
+
+```text
+1. 设计 EvaluationCase
+2. 定义 expectedSources
+3. 处理 shouldHaveEvidence
+4. 实现 RagEvaluator
+5. 输出 EvaluationReport
+```
+
+产出：
+
+```text
+lesson22-rag-evaluation
+```
+
+## 第 23 课：Observability 入门，为 RAG 和 Agent 增加运行观测日志
+
+目标：
+
+```text
+为 RAG、Evaluation、Tool Call 增加结构化 trace。
+```
+
+主要内容：
+
+```text
+1. 设计 TraceEvent
+2. 生成 traceId 和 spanId
+3. 实现 TraceRecorder
+4. 记录 rag.retrieve / rag.context / rag.generate
+5. 记录 evaluation.case 和 tool.call
+```
+
+产出：
+
+```text
+lesson23-observability
+```
+
+---
+
+# 七、阶段 F：API 服务化与前端流式交互
+
+命令行脚本能验证能力，但真正的 Agent 应用需要服务入口和用户界面。
+
+这个阶段会把 RAG 和 Agent 封装成 HTTP API，再通过前端页面完成真实交互。
+
+## 第 24 课：Fastify API Server 入门，封装 /health 和 /api/rag/ask
+
+目标：
+
+```text
+把 RagQaChain 封装成 HTTP API。
+```
+
+主要内容：
+
+```text
+1. 安装 Fastify
+2. 新增 server 目录
+3. 创建 API Server
+4. 新增 GET /health
+5. 新增 POST /api/rag/ask
+6. 返回 answer、sources、traceId
+```
+
+产出：
+
+```text
+lesson24-api-server-rag
+```
+
+## 第 25 课：封装 /api/chat，接入 Agent Graph 和 threadId
+
+目标：
+
+```text
+把 LangGraph Agent 封装成聊天接口。
+```
+
+主要内容：
+
+```text
+1. 新增 POST /api/chat
+2. 接收 userInput、threadId、userContext
+3. 接入 createAgentGraph
+4. 支持多轮会话
+5. 返回 finalAnswer、toolExecutionRecords、permissionDecision
+```
+
+产出：
+
+```text
+lesson25-agent-chat-api
+```
+
+## 第 26 课：实现 SSE 流式输出接口 /api/chat/stream
+
+目标：
+
+```text
+实现 Server-Sent Events，让后端可以流式返回内容。
+```
+
+主要内容：
+
+```text
+1. 理解普通 HTTP 响应和 SSE 的区别
+2. 新增 POST /api/chat/stream
+3. 设置 text/event-stream 响应头
+4. 设计 stream event 类型
+5. 支持 answer_delta、tool_call、trace_event、done、error
+```
+
+产出：
+
+```text
+lesson26-sse-chat-stream
+```
+
+## 第 27 课：前端 Chat UI 入门，页面调用后端 API
+
+目标：
+
+```text
+创建一个最小可用的聊天页面。
+```
+
+主要内容：
+
+```text
+1. 创建前端页面
+2. 设计 ChatMessage 类型
+3. 实现输入框和发送按钮
+4. 调用 /api/chat
+5. 展示用户消息、助手回答、loading 和错误状态
+```
+
+产出：
+
+```text
+lesson27-chat-ui
+```
+
+## 第 28 课：前端逐字输出，实现类 ChatGPT 的 streaming 体验
+
+目标：
+
+```text
+前端接入 /api/chat/stream，实现逐字输出。
+```
+
+主要内容：
+
+```text
+1. 前端调用 SSE 接口
+2. 解析 event-stream
+3. 处理 answer_delta
+4. 将 delta 追加到当前助手消息
+5. 处理 done、error 和中断状态
+```
+
+产出：
+
+```text
+lesson28-streaming-chat-ui
+```
+
+## 第 29 课：前端展示 sources、toolCalls、traceEvents
+
+目标：
+
+```text
+让前端不仅展示答案，还展示 Agent 的执行过程。
+```
+
+主要内容：
+
+```text
+1. 展示 RAG sources
+2. 展示 toolCalls
+3. 展示 toolExecutionRecords
+4. 展示 traceEvents
+5. 区分普通回答和工具调用过程
+```
+
+产出：
+
+```text
+lesson29-agent-trace-ui
+```
+
+---
+
+# 八、阶段 G：多 Agent 的本质和 Demo
+
+多 Agent 不是简单写几个角色 Prompt。
+
+真正需要理解的是任务如何拆分、谁负责调度、状态如何传递、结果如何合并，以及什么时候根本不需要多 Agent。
+
+## 第 30 课：多 Agent 的本质，Router / Supervisor / Worker 模式
+
+目标：
+
+```text
+从概念和工程角度理解多 Agent。
+```
+
+主要内容：
+
+```text
+1. 什么是多 Agent
+2. 多 Agent 和多个工具的区别
+3. Router 模式
+4. Supervisor / Worker 模式
+5. Reviewer 和 Debate 模式
+6. 多 Agent 的适用场景和滥用风险
+```
+
+产出：
+
+```text
+lesson30-multi-agent-concepts
+```
+
+## 第 31 课：实现最小 Router Agent，根据任务分发给不同子 Agent
+
+目标：
+
+```text
+实现一个 Router Agent，把任务分发给不同子 Agent。
+```
+
+主要内容：
+
+```text
+1. 定义 AgentRole
+2. 定义 SubAgent 接口
+3. 实现 KnowledgeAgent
+4. 实现 TicketAgent
+5. 实现 RouterAgent
+6. 根据用户意图选择子 Agent
+```
+
+产出：
+
+```text
+lesson31-router-agent
+```
+
+## 第 32 课：实现 Supervisor + Worker Demo
+
+目标：
+
+```text
+实现一个 Supervisor 调度多个 Worker 的 Demo。
+```
+
+主要内容：
+
+```text
+1. SupervisorAgent 负责规划
+2. WorkerAgent 负责执行
+3. KnowledgeWorker 查询知识库
+4. TicketWorker 创建工单
+5. ReviewWorker 检查答案
+6. Supervisor 汇总最终结果
+```
+
+产出：
+
+```text
+lesson32-supervisor-worker-agent
+```
+
+## 第 33 课：多 Agent 共享状态与消息协议
+
+目标：
+
+```text
+设计多 Agent 之间共享状态和消息传递协议。
+```
+
+主要内容：
+
+```text
+1. MultiAgentState
+2. AgentMessage
+3. TaskMessage
+4. AgentResult
+5. sharedContext
+6. agentOutputs
+7. handoffReason
+```
+
+产出：
+
+```text
+lesson33-multi-agent-state-protocol
+```
+
+## 第 34 课：多 Agent Trace，观察每个 Agent 的输入、输出和交接过程
+
+目标：
+
+```text
+把 Observability 扩展到多 Agent。
+```
+
+主要内容：
+
+```text
+1. 新增 agent.route
+2. 新增 agent.invoke
+3. 新增 agent.handoff
+4. 记录 Router 决策
+5. 记录 Supervisor 计划
+6. 输出 Multi-Agent Trace Report
+```
+
+产出：
+
+```text
+lesson34-multi-agent-trace
+```
+
+---
+
+# 九、阶段 H：Memory 的记录、检索和治理
+
+很多 Agent Demo 会把 Memory 简化成聊天记录，但真实系统里的 Memory 要复杂得多。
+
+这个阶段会把 Memory 拆成分类、抽取、写入、检索、注入、安全和遗忘几个问题。
+
+## 第 35 课：Memory 分类，短期记忆、长期记忆、用户偏好、任务记忆
+
+目标：
+
+```text
+系统理解 Agent Memory 的不同类型。
+```
+
+主要内容：
+
+```text
+1. Short-term Memory
+2. Long-term Memory
+3. Semantic Memory
+4. Episodic Memory
+5. Procedural Memory
+6. User Preference Memory
+7. Task Memory
+8. Working Memory
+```
+
+产出：
+
+```text
+lesson35-memory-taxonomy
+```
+
+## 第 36 课：从对话中抽取 Memory，设计 memory extraction
+
+目标：
+
+```text
+从用户对话中识别哪些信息值得记忆。
+```
+
+主要内容：
+
+```text
+1. MemoryExtractionInput
+2. MemoryCandidate
+3. MemoryType
+4. importance
+5. confidence
+6. expiresAt
+7. sensitive flag
+8. 使用 LLM 抽取候选记忆
+9. 使用 zod 校验
+```
+
+产出：
+
+```text
+lesson36-memory-extraction
+```
+
+## 第 37 课：Memory 写入策略，何时记录、何时忽略、何时更新
+
+目标：
+
+```text
+设计 Memory 写入规则。
+```
+
+主要内容：
+
+```text
+1. MemoryWritePolicy
+2. shouldWrite
+3. shouldUpdate
+4. shouldIgnore
+5. duplicate detection
+6. memory merge
+7. sensitive memory handling
+8. 用户确认机制
+```
+
+产出：
+
+```text
+lesson37-memory-write-policy
+```
+
+## 第 38 课：Memory 检索与注入，把长期记忆放回 Agent 上下文
+
+目标：
+
+```text
+让 Agent 在回答前检索相关 Memory，并注入上下文。
+```
+
+主要内容：
+
+```text
+1. MemoryStore
+2. MemoryRetriever
+3. memory similarity search
+4. 构造 memory context
+5. 注入 System / Human Message
+6. 控制注入数量
+7. 防止 Memory 干扰当前任务
+```
+
+产出：
+
+```text
+lesson38-memory-retrieval-injection
+```
+
+## 第 39 课：Memory 安全与遗忘机制，支持 delete / update / sensitive filter
+
+目标：
+
+```text
+为 Memory 增加安全、更新和遗忘能力。
+```
+
+主要内容：
+
+```text
+1. memory delete
+2. memory update
+3. memory disable
+4. sensitive filter
+5. user requested forgetting
+6. audit log
+7. memory visibility
+8. memory explainability
+```
+
+产出：
+
+```text
+lesson39-memory-safety-forgetting
+```
+
+---
+
+# 十、阶段 I：企业级 Agent 的 7 层架构理解
+
+最后这个阶段会把前面做过的能力重新放回系统架构里。
+
+一个企业级 Agent 不只是 LangChain 调用，也不只是 RAG 问答。它更像一个由交互、编排、记忆、工具、知识、安全和观测共同组成的系统。
+
+## 第 40 课：企业级 Agent 7 层架构总览
+
+目标：
+
+```text
+建立企业级 Agent 的整体架构认知。
+```
+
+主要内容：
+
+```text
+1. 为什么需要分层架构
+2. 7 层分别是什么
+3. 每一层解决什么问题
+4. 每一层对应前面哪些课程
+5. 单 Agent、多 Agent、RAG、Memory、Tool 如何放入架构
+```
+
+产出：
+
+```text
+lesson40-agent-architecture-overview
+```
+
+## 第 41 课：交互层，Web UI / API / SSE / 多端入口
+
+目标：
+
+```text
+理解 Agent 的交互入口设计。
+```
+
+主要内容：
+
+```text
+1. Web Chat UI
+2. HTTP API
+3. SSE Streaming
+4. 多端入口
+5. threadId
+6. userContext
+7. 用户体验和系统能力的关系
+```
+
+产出：
+
+```text
+lesson41-interaction-layer
+```
+
+## 第 42 课：编排层，LangGraph / Router / Supervisor / 状态机
+
+目标：
+
+```text
+理解 Agent 编排层的作用。
+```
+
+主要内容：
+
+```text
+1. Agent Loop
+2. LangGraph StateGraph
+3. Node / Edge / Conditional Edge
+4. Router
+5. Supervisor
+6. Worker
+7. 状态机和多 Agent 编排
+```
+
+产出：
+
+```text
+lesson42-orchestration-layer
+```
+
+## 第 43 课：记忆层，短期记忆、长期记忆、用户画像、任务状态
+
+目标：
+
+```text
+从架构层面理解 Memory。
+```
+
+主要内容：
+
+```text
+1. conversation memory
+2. working memory
+3. long-term memory
+4. user profile
+5. task memory
+6. memory extraction
+7. memory retrieval
+8. memory governance
+```
+
+产出：
+
+```text
+lesson43-memory-layer
+```
+
+## 第 44 课：工具层，Tool Registry、权限、审批、失败重试
+
+目标：
+
+```text
+理解企业 Agent 的工具层设计。
+```
+
+主要内容：
+
+```text
+1. Tool Registry
+2. Tool Schema
+3. Tool Executor
+4. Tool Permission
+5. Human Approval
+6. Retry
+7. Timeout
+8. Error Handling
+9. Tool Audit
+```
+
+产出：
+
+```text
+lesson44-tool-layer
+```
+
+## 第 45 课：知识层，RAG、向量库、混合检索、rerank、evaluation
+
+目标：
+
+```text
+理解企业 Agent 的知识层设计。
+```
+
+主要内容：
+
+```text
+1. Document Loader
+2. Text Splitter
+3. Embedding
+4. Vector Store
+5. Hybrid Retrieval
+6. Rerank
+7. RAG QA Chain
+8. Evaluation Dataset
+9. No Evidence 策略
+```
+
+产出：
+
+```text
+lesson45-knowledge-layer
+```
+
+## 第 46 课：安全与治理层，权限、审计、敏感信息、人工确认
+
+目标：
+
+```text
+理解企业级 Agent 的安全和治理。
+```
+
+主要内容：
+
+```text
+1. 用户身份
+2. 角色权限
+3. 工具权限
+4. 高风险操作确认
+5. 数据访问边界
+6. 敏感信息处理
+7. Memory 安全
+8. 审计日志
+9. 合规与责任边界
+```
+
+产出：
+
+```text
+lesson46-security-governance-layer
+```
+
+## 第 47 课：观测与评估层，Trace、日志、指标、评测集、质量回归
+
+目标：
+
+```text
+理解企业级 Agent 如何持续调试、评估和优化。
+```
+
+主要内容：
+
+```text
+1. Trace
+2. Span
+3. Structured Logs
+4. Metrics
+5. Evaluation Dataset
+6. Regression Test
+7. RAG Quality Report
+8. Agent Execution Report
+9. 线上问题排查流程
+```
+
+产出：
+
+```text
+lesson47-observability-evaluation-layer
+```
+
+---
+
+# 十一、学完整套课程后应该具备的能力
+
+学完整套课程后，我希望能真正讲清楚的不只是“我用过 LangChain”。
+
+更重要的是能讲清楚：
+
+```text
+1. 一个 Agent 系统从模型调用到工具执行的完整链路
+2. Tool Calling 和普通函数调用的区别
+3. LangGraph 状态图为什么适合管理 Agent 流程
+4. RAG 从文档加载到问答生成的完整过程
+5. 为什么 RAG 需要评估、Trace 和可观测性
+6. Agent 如何通过 API 和前端页面变成真实应用
+7. SSE 流式输出如何改善交互体验
+8. 多 Agent 什么时候有必要，什么时候只是过度设计
+9. Memory 为什么不是简单保存聊天记录
+10. 企业级 Agent 为什么需要分层架构
+```
+
+对我来说，这套课程的价值不只是做出一个 Demo。
+
+它更像是把 AI Agent 拆成一组可以被后端开发者理解和实现的工程问题：接口、状态、工具、权限、知识、记忆、日志、评估、架构。
+
+这些问题弄清楚之后，再去看新的框架、新的模型、新的 Agent 产品，心里会稳很多。
+
+---
+
+# 十二、课程使用建议
+
+如果是第一次学习，可以按课程顺序推进。
+
+前面几课可能看起来比较基础，但不要跳得太快。结构化输出、zod 校验、ToolExecutor、状态追踪这些能力，后面会反复用到。
+
+如果已经有一定基础，也可以按模块学习：
+
+```text
+想学 Agent 基础：第 1 ~ 13 课
+想学 RAG：第 14 ~ 23 课
+想学服务化和前端交互：第 24 ~ 29 课
+想学多 Agent：第 30 ~ 34 课
+想学 Memory：第 35 ~ 39 课
+想建立架构视角：第 40 ~ 47 课
+```
+
+我的建议是，每节课不要只看代码能不能跑。
+
+更重要的是在写完后问自己几个问题：
+
+```text
+1. 这一课解决的真实工程问题是什么？
+2. 这个能力在整个 Agent 系统里处在哪一层？
+3. 如果放到真实业务里，哪里会变复杂？
+4. 这个实现后面有没有可能被替换、扩展或抽象？
+```
+
+Agent 开发很容易被新概念带着跑。保持工程问题意识，会让这条学习路线更扎实一点。
