@@ -1,0 +1,500 @@
+$ curl.exe -N -X POST "http://localhost:3001/api/agent-demo/stream" \
+>   -H "Content-Type: application/json" \
+>   -d '{"message":"Explain SSE streaming in a simple way"}'
+event: start
+data: {"type":"start","requestId":"326eee7e-5b8c-4033-a167-3bc6e565528a"}
+
+event: delta
+data: {"type":"delta","content":"### "}
+
+event: delta
+data: {"type":"delta","content":"1. 一句话"}
+
+event: delta
+data: {"type":"delta","content":"定义\nS"}
+
+event: delta
+data: {"type":"delta","content":"SE（Server-S"}
+
+event: delta
+data: {"type":"delta","content":"ent Events）是一种"}
+
+event: delta
+data: {"type":"delta","content":"基于 HTTP 的"}
+
+event: delta
+data: {"type":"delta","content":"**单向实时推送"}
+
+event: delta
+data: {"type":"delta","content":"**技术。客户端"}
+
+event: delta
+data: {"type":"delta","content":"只需发起一次请求"}
+
+event: delta
+data: {"type":"delta","content":"，服务器即可通过"}
+
+event: delta
+data: {"type":"delta","content":"该连接持续向"}
+
+event: delta
+data: {"type":"delta","content":"客户端“"}
+
+event: delta
+data: {"type":"delta","content":"推”数据，"}
+
+event: delta
+data: {"type":"delta","content":"直到连接主动关闭"}
+
+event: delta
+data: {"type":"delta","content":"。\n\n###"}
+
+event: delta
+data: {"type":"delta","content":" 2. "}
+
+event: delta
+data: {"type":"delta","content":"核心机制（通俗"}
+
+event: delta
+data: {"type":"delta","content":"版）\n-"}
+
+event: delta
+data: {"type":"delta","content":" "}
+
+event: delta
+data: {"type":"delta","content":"传统 HTTP 是"}
+
+event: delta
+data: {"type":"delta","content":"“寄信模式"}
+
+event: delta
+data: {"type":"delta","content":"”：每次通信"}
+
+event: delta
+data: {"type":"delta","content":"都要重新建连"}
+
+event: delta
+data: {"type":"delta","content":"、传完整报文"}
+
+event: delta
+data: {"type":"delta","content":"、断开。\n"}
+
+event: delta
+data: {"type":"delta","content":"- SSE"}
+
+event: delta
+data: {"type":"delta","content":" 是“专线"}
+
+event: delta
+data: {"type":"delta","content":"对讲”：客户端"}
+
+event: delta
+data: {"type":"delta","content":"打开"}
+
+event: delta
+data: {"type":"delta","content":"一条长连接，"}
+
+event: delta
+data: {"type":"delta","content":"服务器按"}
+
+event: delta
+data: {"type":"delta","content":"固定格式（`"}
+
+event: delta
+data: {"type":"delta","content":"data: xxx"}
+
+event: delta
+data: {"type":"delta","content":"\\n\\n`）"}
+
+event: delta
+data: {"type":"delta","content":"不断写入数据并"}
+
+event: delta
+data: {"type":"delta","content":" `flush"}
+
+event: delta
+data: {"type":"delta","content":"()`，客户端逐"}
+
+event: delta
+data: {"type":"delta","content":"条"}
+
+event: delta
+data: {"type":"delta","content":"消费。连接意外"}
+
+event: delta
+data: {"type":"delta","content":"断开时，客户端"}
+
+event: delta
+data: {"type":"delta","content":"可自动重连"}
+
+event: delta
+data: {"type":"delta","content":"。\n\n### "}
+
+event: delta
+data: {"type":"delta","content":"3. Java "}
+
+event: delta
+data: {"type":"delta","content":"后端视角类比\n"}
+
+event: delta
+data: {"type":"delta","content":"在 Spring Boot"}
+
+event: delta
+data: {"type":"delta","content":" 中，S"}
+
+event: delta
+data: {"type":"delta","content":"SE 的实现逻辑"}
+
+event: delta
+data: {"type":"delta","content":"非常"}
+
+event: delta
+data: {"type":"delta","content":"贴近你熟悉的 MVC"}
+
+event: delta
+data: {"type":"delta","content":" 模型，只是"}
+
+event: delta
+data: {"type":"delta","content":"把“一次性返回"}
+
+event: delta
+data: {"type":"delta","content":"”改成了“"}
+
+event: delta
+data: {"type":"delta","content":"流式输出”"}
+
+event: delta
+data: {"type":"delta","content":"：\n| "}
+
+event: delta
+data: {"type":"delta","content":"传统"}
+
+event: delta
+data: {"type":"delta","content":"接口 | SSE "}
+
+event: delta
+data: {"type":"delta","content":"接口 |\n"}
+
+event: delta
+data: {"type":"delta","content":"|----------|----------"}
+
+event: delta
+data: {"type":"delta","content":"|\n| `"}
+
+event: delta
+data: {"type":"delta","content":"return ResponseEntity.ok(result"}
+
+event: delta
+data: {"type":"delta","content":")` | 返回"}
+
+event: delta
+data: {"type":"delta","content":" `SseEmitter"}
+
+event: delta
+data: {"type":"delta","content":"` 或 `"}
+
+event: delta
+data: {"type":"delta","content":"StreamingResponseBody` |"}
+
+event: delta
+data: {"type":"delta","content":"\n| 方法"}
+
+event: delta
+data: {"type":"delta","content":"执行完 → "}
+
+event: delta
+data: {"type":"delta","content":"组装完整 JSON →"}
+
+event: delta
+data: {"type":"delta","content":" 一次性写出"}
+
+event: delta
+data: {"type":"delta","content":" → 连接关闭"}
+
+event: delta
+data: {"type":"delta","content":" | 方法启动"}
+
+event: delta
+data: {"type":"delta","content":" → "}
+
+event: delta
+data: {"type":"delta","content":"返回流对象 →"}
+
+event: delta
+data: {"type":"delta","content":" 后台"}
+
+event: delta
+data: {"type":"delta","content":"线程/异步任务"}
+
+event: delta
+data: {"type":"delta","content":"不断 `emitter"}
+
+event: delta
+data: {"type":"delta","content":".send(data"}
+
+event: delta
+data: {"type":"delta","content":")` → 客户端"}
+
+event: delta
+data: {"type":"delta","content":"边收边渲染"}
+
+event: delta
+data: {"type":"delta","content":" → 调用 `."}
+
+event: delta
+data: {"type":"delta","content":"complete()` "}
+
+event: delta
+data: {"type":"delta","content":"或异常时自动"}
+
+event: delta
+data: {"type":"delta","content":"关闭 |\n\n底层"}
+
+event: delta
+data: {"type":"delta","content":"仍是 HTTP/1"}
+
+event: delta
+data: {"type":"delta","content":".1 "}
+
+event: delta
+data: {"type":"delta","content":"或 HTTP/2"}
+
+event: delta
+data: {"type":"delta","content":"，仅靠响应"}
+
+event: delta
+data: {"type":"delta","content":"头 `Content-Type"}
+
+event: delta
+data: {"type":"delta","content":": text/event-stream"}
+
+event: delta
+data: {"type":"delta","content":"` 和 `"}
+
+event: delta
+data: {"type":"delta","content":"Cache-Control: no"}
+
+event: delta
+data: {"type":"delta","content":"-cache` 告诉"}
+
+event: delta
+data: {"type":"delta","content":"浏览器：“这是一条"}
+
+event: delta
+data: {"type":"delta","content":"持续"}
+
+event: delta
+data: {"type":"delta","content":"的数据流，别"}
+
+event: delta
+data: {"type":"delta","content":"缓存"}
+
+event: delta
+data: {"type":"delta","content":"，别关”。"}
+
+event: delta
+data: {"type":"delta","content":"\n\n### 4"}
+
+event: delta
+data: {"type":"delta","content":". 与常见"}
+
+event: delta
+data: {"type":"delta","content":"方案的对比\n-"}
+
+event: delta
+data: {"type":"delta","content":" **vs HTTP "}
+
+event: delta
+data: {"type":"delta","content":"轮询**"}
+
+event: delta
+data: {"type":"delta","content":"：无需客户端反复"}
+
+event: delta
+data: {"type":"delta","content":"发请求"}
+
+event: delta
+data: {"type":"delta","content":"，显著降低带宽"}
+
+event: delta
+data: {"type":"delta","content":"与延迟。\n"}
+
+event: delta
+data: {"type":"delta","content":"- **vs"}
+
+event: delta
+data: {"type":"delta","content":" WebSocket**：S"}
+
+event: delta
+data: {"type":"delta","content":"SE 是**"}
+
+event: delta
+data: {"type":"delta","content":"单向**（服务端"}
+
+event: delta
+data: {"type":"delta","content":"→客户端"}
+
+event: delta
+data: {"type":"delta","content":"），协议更轻量"}
+
+event: delta
+data: {"type":"delta","content":"，内置重连"}
+
+event: delta
+data: {"type":"delta","content":"/"}
+
+event: delta
+data: {"type":"delta","content":"心跳/事件 ID"}
+
+event: delta
+data: {"type":"delta","content":" 机制；WebSocket"}
+
+event: delta
+data: {"type":"delta","content":" 是全双工"}
+
+event: delta
+data: {"type":"delta","content":"，适合聊天、"}
+
+event: delta
+data: {"type":"delta","content":"协同编辑等双向"}
+
+event: delta
+data: {"type":"delta","content":"高频"}
+
+event: delta
+data: {"type":"delta","content":"交互。\n\n###"}
+
+event: delta
+data: {"type":"delta","content":" 5."}
+
+event: delta
+data: {"type":"delta","content":" 典型企业场景"}
+
+event: delta
+data: {"type":"delta","content":"\n- AI"}
+
+event: delta
+data: {"type":"delta","content":" Agent 对话的"}
+
+event: delta
+data: {"type":"delta","content":"“"}
+
+event: delta
+data: {"type":"delta","content":"打字机”逐"}
+
+event: delta
+data: {"type":"delta","content":"字输出\n-"}
+
+event: delta
+data: {"type":"delta","content":" 实时任务进度"}
+
+event: delta
+data: {"type":"delta","content":"/日志推送"}
+
+event: delta
+data: {"type":"delta","content":"\n- 行情"}
+
+event: delta
+data: {"type":"delta","content":"看板、告警"}
+
+event: delta
+data: {"type":"delta","content":"通知"}
+
+event: delta
+data: {"type":"delta","content":"、审批流状态"}
+
+event: delta
+data: {"type":"delta","content":"更新\n\n### "}
+
+event: delta
+data: {"type":"delta","content":"6. 部署"}
+
+event: delta
+data: {"type":"delta","content":"注意事项（Java "}
+
+event: delta
+data: {"type":"delta","content":"团队"}
+
+event: delta
+data: {"type":"delta","content":"常踩坑）"}
+
+event: delta
+data: {"type":"delta","content":"\n- N"}
+
+event: delta
+data: {"type":"delta","content":"ginx/网关"}
+
+event: delta
+data: {"type":"delta","content":"需关闭缓冲："}
+
+event: delta
+data: {"type":"delta","content":"`proxy_buffer"}
+
+event: delta
+data: {"type":"delta","content":"ing off; proxy"}
+
+event: delta
+data: {"type":"delta","content":"_cache off;`"}
+
+event: delta
+data: {"type":"delta","content":"\n"}
+
+event: delta
+data: {"type":"delta","content":"- 避免同步"}
+
+event: delta
+data: {"type":"delta","content":"阻塞主线程，"}
+
+event: delta
+data: {"type":"delta","content":"建议配合 `@"}
+
+event: delta
+data: {"type":"delta","content":"Async`"}
+
+event: delta
+data: {"type":"delta","content":" 或虚拟线程"}
+
+event: delta
+data: {"type":"delta","content":"异步"}
+
+event: delta
+data: {"type":"delta","content":"生成数据\n-"}
+
+event: delta
+data: {"type":"delta","content":" 高"}
+
+event: delta
+data: {"type":"delta","content":"并发下注意连接"}
+
+event: delta
+data: {"type":"delta","content":"数"}
+
+event: delta
+data: {"type":"delta","content":"管控（如设置"}
+
+event: delta
+data: {"type":"delta","content":"超时、限流"}
+
+event: delta
+data: {"type":"delta","content":"、使用"}
+
+event: delta
+data: {"type":"delta","content":"连接池）\n\n"}
+
+event: delta
+data: {"type":"delta","content":"如需 Spring Boot "}
+
+event: delta
+data: {"type":"delta","content":"最小"}
+
+event: delta
+data: {"type":"delta","content":"可运行示例或"}
+
+event: delta
+data: {"type":"delta","content":"网关配置片段，"}
+
+event: delta
+data: {"type":"delta","content":"可随时告知。"}
+
+event: done
+data: {"type":"done","requestId":"326eee7e-5b8c-4033-a167-3bc6e565528a","durationMs":11914}

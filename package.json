@@ -28,7 +28,8 @@
     "lesson:21": "tsx src/lessons/lesson21-rerank-introduction/index.ts",
     "lesson:22": "tsx src/lessons/lesson22-rag-evaluation/index.ts",
     "lesson:23": "tsx src/lessons/lesson23-observability/index.ts",
-    "lesson:24": "tsx src/lessons/lesson24-agent-api-service/index.ts"
+    "lesson:24": "tsx src/lessons/lesson24-agent-api-service/index.ts",
+    "lesson:25": "tsx src/lessons/lesson25-sse-streaming/index.ts"
   },
   "keywords": [],
   "author": "",
