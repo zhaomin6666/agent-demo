@@ -29,7 +29,8 @@
     "lesson:22": "tsx src/lessons/lesson22-rag-evaluation/index.ts",
     "lesson:23": "tsx src/lessons/lesson23-observability/index.ts",
     "lesson:24": "tsx src/lessons/lesson24-agent-api-service/index.ts",
-    "lesson:25": "tsx src/lessons/lesson25-sse-streaming/index.ts"
+    "lesson:25": "tsx src/lessons/lesson25-sse-streaming/index.ts",
+    "lesson:26": "tsx src/lessons/lesson26-chat-ui/index.ts"
   },
   "keywords": [],
   "author": "",
@@ -42,6 +43,7 @@
   },
   "dependencies": {
     "@fastify/cors": "^11.2.0",
+    "@fastify/static": "^9.1.3",
     "@langchain/core": "^1.1.48",
     "@langchain/langgraph": "^1.3.3",
     "@langchain/openai": "^1.4.7",

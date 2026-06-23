@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lesson 26 Chat UI</title>
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <main class="page">
+      <section class="chat-shell">
+        <header class="chat-header">
+          <div>
+            <p class="eyebrow">Ts AI Agent 学习课程 · 第二阶段</p>
+            <h1>Lesson 26 Chat UI</h1>
+          </div>
+          <span class="status" id="status">Ready</span>
+        </header>
+
+        <section class="messages" id="messages">
+          <div class="message assistant">
+            <div class="role">AI Agent</div>
+            <div class="content">
+              你好，我是第 26 课的最小 Chat UI。输入问题后，我会通过 SSE 流式接口逐段返回答案。
+            </div>
+          </div>
+        </section>
+
+        <form class="composer" id="chatForm">
+          <textarea
+            id="messageInput"
+            rows="3"
+            placeholder="请输入你的问题，比如：请用 Java 后端类比解释 SSE 流式输出"
+          ></textarea>
+          <button type="submit" id="sendButton">发送</button>
+        </form>
+      </section>
+    </main>
+
+    <script src="./app.js"></script>
+  </body>
+</html>
