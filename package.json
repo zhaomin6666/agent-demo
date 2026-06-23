@@ -31,7 +31,8 @@
     "lesson:24": "tsx src/lessons/lesson24-agent-api-service/index.ts",
     "lesson:25": "tsx src/lessons/lesson25-sse-streaming/index.ts",
     "lesson:26": "tsx src/lessons/lesson26-chat-ui/index.ts",
-    "lesson:27": "tsx src/lessons/lesson27-token-by-token-output/index.ts"
+    "lesson:27": "tsx src/lessons/lesson27-token-by-token-output/index.ts",
+    "lesson:28": "tsx src/lessons/lesson28-trace-and-sources/index.ts"
   },
   "keywords": [],
   "author": "",
