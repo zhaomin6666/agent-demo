@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lesson 27 Token Output</title>
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <main class="page">
+      <section class="chat-shell">
+        <header class="chat-header">
+          <div>
+            <p class="eyebrow">Ts AI Agent 学习课程 · 第二阶段</p>
+            <h1>Lesson 27 Token-by-token Output</h1>
+          </div>
+          <span class="status" id="status">Ready</span>
+        </header>
+
+        <section class="messages" id="messages">
+          <div class="message assistant">
+            <div class="role">AI Agent</div>
+            <div class="content">
+              你好，我是第 27 课的 Chat UI。这一课会实现逐字输出，并支持停止生成。
+            </div>
+          </div>
+        </section>
+
+        <form class="composer" id="chatForm">
+          <textarea
+            id="messageInput"
+            rows="3"
+            placeholder="请输入你的问题，Ctrl + Enter 发送"
+          ></textarea>
+
+          <div class="actions">
+            <button type="submit" id="sendButton">发送</button>
+            <button type="button" id="stopButton" class="secondary" disabled>
+              停止
+            </button>
+          </div>
+        </form>
+      </section>
+    </main>
+
+    <script src="./app.js"></script>
+  </body>
+</html>
