@@ -34,7 +34,8 @@
     "lesson:27": "tsx src/lessons/lesson27-token-by-token-output/index.ts",
     "lesson:28": "tsx src/lessons/lesson28-trace-and-sources/index.ts",
     "lesson:29": "tsx src/lessons/lesson29-agent-demo-productization/index.ts",
-    "lesson:30": "tsx src/lessons/lesson30-router-agent/index.ts"
+    "lesson:30": "tsx src/lessons/lesson30-router-agent/index.ts",
+    "lesson:31": "tsx src/lessons/lesson31-router-agent-chat-ui/index.ts"
   },
   "keywords": [],
   "author": "",

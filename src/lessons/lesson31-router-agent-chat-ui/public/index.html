@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lesson 31 Router Agent Chat UI</title>
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <main class="app-shell">
+      <aside class="sidebar">
+        <div class="brand">
+          <p class="eyebrow">Ts AI Agent</p>
+          <h1>Agent Demo MVP</h1>
+        </div>
+
+        <button type="button" id="newChatButton" class="new-chat">
+          + 新会话
+        </button>
+
+        <div class="session-list" id="sessionList"></div>
+      </aside>
+
+      <section class="chat-shell">
+        <header class="chat-header">
+          <div>
+            <p class="eyebrow">Lesson 31 · Router Agent</p>
+            <h2 id="activeSessionTitle">新会话</h2>
+          </div>
+          <span class="status" id="status">Ready</span>
+        </header>
+
+        <div class="error-box hidden" id="errorBox"></div>
+
+        <section class="messages" id="messages"></section>
+
+        <form class="composer" id="chatForm">
+          <textarea
+            id="messageInput"
+            rows="3"
+            placeholder="请输入问题，Ctrl + Enter 发送"
+          ></textarea>
+
+          <div class="actions">
+            <button type="submit" id="sendButton">发送</button>
+            <button type="button" id="stopButton" class="secondary" disabled>
+              停止
+            </button>
+          </div>
+        </form>
+      </section>
+
+      <aside class="inspector">
+        <section class="panel">
+          <div class="panel-title">Request</div>
+          <div class="meta-row">
+            <span>sessionId</span>
+            <strong id="sessionId">-</strong>
+          </div>
+          <div class="meta-row">
+            <span>requestId</span>
+            <strong id="requestId">-</strong>
+          </div>
+          <div class="meta-row">
+            <span>selectedAgent</span>
+            <strong id="selectedAgent">-</strong>
+          </div>
+          <div class="meta-row">
+            <span>confidence</span>
+            <strong id="routerConfidence">-</strong>
+          </div>
+          <div class="meta-row">
+            <span>duration</span>
+            <strong id="duration">-</strong>
+          </div>
+        </section>
+
+        <section class="panel">
+          <div class="panel-title">Trace</div>
+          <div class="trace-list" id="traceList">
+            <p class="empty">等待请求开始...</p>
+          </div>
+        </section>
+
+        <section class="panel">
+          <div class="panel-title">Sources</div>
+          <div class="sources-list" id="sourcesList">
+            <p class="empty">暂无来源</p>
+          </div>
+        </section>
+      </aside>
+    </main>
+
+    <script src="./app.js"></script>
+  </body>
+</html>
